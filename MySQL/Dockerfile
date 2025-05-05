@@ -5,7 +5,7 @@ FROM mysql:latest
 ARG CONFIG_PATH="configuration"
 
 # Copy init file for the database
-COPY $CONFIG_PATH/employeesExampleDB.sql /docker-entrypoint-initdb.d/employeesExampleDB.sql
+COPY $CONFIG_PATH/* /docker-entrypoint-initdb.d/
 
 # Set the default user for the MySQL image
 #USER mysql
