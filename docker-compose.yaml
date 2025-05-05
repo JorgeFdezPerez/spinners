@@ -1,0 +1,18 @@
+services:
+  database:
+    build:
+      context: ./MySQL
+    container_name: spinners-mysql
+    ports:
+      - 3306:3306      
+    volumes:
+      - mysql_data
+    networks:
+      - spinners_network
+volumes:
+  mysql_data:
+    name: mysql_data
+networks:
+  spinners_network:
+    name: spinners_network
+
