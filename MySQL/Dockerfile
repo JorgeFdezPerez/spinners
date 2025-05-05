@@ -1,5 +1,5 @@
 # Official MySQL image
-FROM MySQL:latest
+FROM mysql:latest
 
 # Default container configuration folder
 ARG CONFIG_PATH="configuration"
