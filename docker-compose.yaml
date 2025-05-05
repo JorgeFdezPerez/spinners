@@ -3,6 +3,10 @@ services:
     build:
       context: ./MySQL
     container_name: spinners-mysql
+    environment:
+      - MYSQL_USER=admin
+      - MYSQL_PASSWORD=password
+      - MYSQL_DATABASE=database
     ports:
       - 3306:3306      
     volumes:

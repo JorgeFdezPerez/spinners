@@ -10,11 +10,6 @@ COPY $CONFIG_PATH/employeesExampleDB.sql /docker-entrypoint-initdb.d/employeesEx
 # Set the default user for the MySQL image
 USER mysql
 
-# Set environment variables for the new user
-ENV MYSQL_USER=admin
-ENV MYSQL_PASSWORD=password
-ENV MYSQL_DATABASE=database
-
 # Create the new user and grant them the necessary permissions
 RUN mysql -u root -p -e "CREATE USER '$MYSQL_USER'@'%' IDENTIFIED BY '$MYSQL_PASSWORD';"
 RUN mysql -u root -p -e "GRANT ALL PRIVILEGES ON $MYSQL_DATABASE.* TO '$MYSQL_USER'@'%';"
