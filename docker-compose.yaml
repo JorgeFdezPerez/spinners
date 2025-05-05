@@ -4,9 +4,10 @@ services:
       context: ./MySQL
     container_name: spinners-mysql
     environment:
+      - MYSQL_ROOT_PASSWORD=password
       - MYSQL_USER=admin
       - MYSQL_PASSWORD=password
-      - MYSQL_DATABASE=database
+      - MYSQL_DATABASE=employees
     ports:
       - 3306:3306      
     volumes:
