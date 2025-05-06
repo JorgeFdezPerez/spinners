@@ -15,19 +15,29 @@ services:
       - mysql_data:/var/lib/mysql
     networks:
       - spinners_network
-    
   devcontainer-python:
     build:
       context: ./devcontainer-python
     container_name: spinners-dev-python
     volumes:
-      - .:/dev-workspace
+      - .:/dev-workspace # bind mount git repository to folder dev-workspace on container
     networks:
       - spinners_network
     command: sleep infinity #otherwise it will exit immediately
+  devcontainer-csharp:
+    build:
+      context: ./devcontainer-csharp
+    container_name: spinners-dev-csharp
+    volumes:
+      - .:/dev-workspace
+    networks:
+      - spinners_network
+    command: sleep infinity
+
 volumes:
   mysql_data:
     name: mysql_data
+    
 networks:
   spinners_network:
     name: spinners_network

@@ -1,0 +1,6 @@
+{
+    "name": "CSharp devcontainer",
+    "dockerComposeFile": ["../../docker-compose.yaml"],
+    "service": "devcontainer-csharp",
+    "workspaceFolder": "/dev-workspace/csharp-apps"
+}
