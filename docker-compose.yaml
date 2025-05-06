@@ -1,3 +1,4 @@
+version: "3.7"
 services:
   database:
     build:
@@ -11,7 +12,7 @@ services:
     ports:
       - 3306:3306      
     volumes:
-      - mysql_data:/data
+      - mysql_data:/var/lib/mysql
     networks:
       - spinners_network
 volumes:

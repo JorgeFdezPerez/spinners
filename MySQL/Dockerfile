@@ -4,13 +4,13 @@ FROM mysql:latest
 # Default container configuration folder
 ARG CONFIG_PATH="configuration"
 
-# Copy init file for the database
+# Copy init files for the database
 COPY $CONFIG_PATH/* /docker-entrypoint-initdb.d/
 
 # Set the default user for the MySQL image
 #USER mysql
 
-# Create the new user and grant them the necessary permissions
+# If we need to create new users
 #RUN mysql -u root -p -e "CREATE USER '$MYSQL_USER'@'%' IDENTIFIED BY '$MYSQL_PASSWORD';"
 #RUN mysql -u root -p -e "GRANT ALL PRIVILEGES ON $MYSQL_DATABASE.* TO '$MYSQL_USER'@'%';"
 #RUN mysql -u root -p -e "FLUSH PRIVILEGES;"
