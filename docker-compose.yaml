@@ -28,8 +28,6 @@ services:
 volumes:
   mysql_data:
     name: mysql_data
-  dev_workspace_data:
-    name: dev_workspace_data
 networks:
   spinners_network:
     name: spinners_network
