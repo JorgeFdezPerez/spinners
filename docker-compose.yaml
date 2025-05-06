@@ -15,9 +15,21 @@ services:
       - mysql_data:/var/lib/mysql
     networks:
       - spinners_network
+    
+  devcontainer-python:
+    build:
+      context: ./devcontainer-python
+    container_name: spinners-dev-python
+    volumes:
+      - .:/dev-workspace
+    networks:
+      - spinners_network
+    command: sleep infinity #otherwise it will exit immediately
 volumes:
   mysql_data:
     name: mysql_data
+  dev_workspace_data:
+    name: dev_workspace_data
 networks:
   spinners_network:
     name: spinners_network

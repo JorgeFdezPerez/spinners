@@ -1,0 +1,6 @@
+{
+    "name": "Python devcontainer",
+    "dockerComposeFile": ["../../docker-compose.yaml"],
+    "service": "devcontainer-python",
+    "workspaceFolder": "/dev-workspace/python-scripts"
+}
