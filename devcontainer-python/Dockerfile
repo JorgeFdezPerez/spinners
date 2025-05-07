@@ -9,5 +9,5 @@ RUN pip install --upgrade pip
 #RUN pip install -r /tmp/requirements.txt && rm /tmp/requirements.txt
 
 RUN pip install asyncua
-RUN pip install python-statemachine
+RUN pip install transitions
 RUN pip install mysql-connector-python
