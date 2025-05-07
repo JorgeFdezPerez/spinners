@@ -10,4 +10,4 @@ RUN pip install --upgrade pip
 
 RUN pip install asyncua
 RUN pip install python-statemachine
-
+RUN pip install mysql-connector-python
