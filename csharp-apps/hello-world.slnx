@@ -1,7 +1,0 @@
-<Solution>
-  <Folder Name="/HMI/">
-    <Project Path="HMI/HMI.Client/HMI.Client.csproj" />
-    <Project Path="HMI/HMI/HMI.csproj" />
-  </Folder>
-  <Project Path="hello-world/hello-world.csproj" />
-</Solution>

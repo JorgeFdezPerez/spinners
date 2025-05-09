@@ -1,6 +1,6 @@
 using MudBlazor.Services;
-using HMI.Client.Pages;
-using HMI.Components;
+using interfaz.Client.Pages;
+using interfaz.Components;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -27,12 +27,11 @@ else
 
 app.UseHttpsRedirection();
 
-
+app.UseStaticFiles();
 app.UseAntiforgery();
 
-app.MapStaticAssets();
 app.MapRazorComponents<App>()
     .AddInteractiveWebAssemblyRenderMode()
-    .AddAdditionalAssemblies(typeof(HMI.Client._Imports).Assembly);
+    .AddAdditionalAssemblies(typeof(interfaz.Client._Imports).Assembly);
 
 app.Run();
