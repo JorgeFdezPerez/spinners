@@ -14,7 +14,7 @@ class JsonSocketServer:
 
     async def start(self):
         """Starts the server.
-        """        
+        """
         # Host must be 0.0.0.0 on Docker
         self._server = await asyncio.start_server(
             client_connected_cb=self._onConnection,
@@ -28,7 +28,7 @@ class JsonSocketServer:
         """Constructor for socket server.
 
         Args:
-            fnHandleMessage (Callable[[dict[str,str]], None]): Function that will process messages received.
+            fnHandleMessage (Callable[[dict[str,str]], None]): Function that will process messages received, and errors.
             port (int): Port for TCP communication.
             EOM (str, optional): Marks the End Of Message.
                 Is deleted from the message when decoding. Defaults to "\\r\\n".
@@ -56,21 +56,38 @@ class JsonSocketServer:
         asyncio.gather(self._readLoop(), self._writeLoop())
 
     async def _readLoop(self):
-        """Reads messages from client, decodes them and sends them to the handler function
+        """Reads messages from client, decodes them and sends them to the handler function.
+
+        Sends {"error": "socketServerDecoding"} to message handler if there
+        is an error when deserializing and decoding the dictionary.
         """
         while True:
             received = await self._reader.readuntil(self._EOM.encode(self._encoding))
-            message = json.loads(received.decode(
-                self._encoding).removesuffix(self._EOM))
-            # Send message to external handler
             loop = asyncio.get_running_loop()
-            loop.create_task(self._fnHandleMessage(message))
+            try:
+                message = json.loads(received.decode(
+                    self._encoding).removesuffix(self._EOM))
+            except:
+                message = {"error": "socketServerDecoding"}
+            finally:
+                # Send message to external handler
+                loop.create_task(self._fnHandleMessage(message))
 
     async def _writeLoop(self):
-        """Encodes and sends messages stored in the queue
+        """Encodes and sends messages stored in the queue.
+
+        Sends {"error": "socketServerEncoding"} to message handler if there
+        is an error when serializing and encoding the dictionary.
         """
         while True:
             message = await self.sendQueue.get()
-            self._writer.write(
-                (json.dumps(message) + self._EOM).encode(self._encoding))
-            await self._writer.drain()
+            try:
+                messageEncoded = (json.dumps(message) +
+                                  self._EOM).encode(self._encoding)
+            except:
+                loop = asyncio.get_running_loop()
+                loop.create_task(self._fnHandleMessage(
+                    {"error": "socketServerEncoding"}))
+            else:
+                self._writer.write()
+                await self._writer.drain()
