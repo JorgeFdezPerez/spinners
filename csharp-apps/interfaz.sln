@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "interfaz", "interfaz\interf
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "interfaz.Client", "interfaz\interfaz.Client\interfaz.Client.csproj", "{9F2D79AC-13BE-4191-8489-2177E1422B95}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "socketTester", "socketTester\socketTester.csproj", "{02CD086A-14CD-4CFA-AA15-B25F6F5C9774}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -26,6 +28,10 @@ Global
 		{9F2D79AC-13BE-4191-8489-2177E1422B95}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9F2D79AC-13BE-4191-8489-2177E1422B95}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9F2D79AC-13BE-4191-8489-2177E1422B95}.Release|Any CPU.Build.0 = Release|Any CPU
+		{02CD086A-14CD-4CFA-AA15-B25F6F5C9774}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{02CD086A-14CD-4CFA-AA15-B25F6F5C9774}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{02CD086A-14CD-4CFA-AA15-B25F6F5C9774}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{02CD086A-14CD-4CFA-AA15-B25F6F5C9774}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{224763A5-79EA-4C18-92D1-DC36BA67B226} = {CE6F7450-0F5A-43CF-BA80-9E4B7D4A8CB5}
