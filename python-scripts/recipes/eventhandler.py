@@ -3,7 +3,7 @@ from appstatemachine import AppSM
 
 
 class EventHandler:
-    async def putEvent(self, event: dict[str, str]):
+    async def handleEvent(self, event: dict[str, str]):
         """Add event to queue
 
         Args:
@@ -21,9 +21,9 @@ class EventHandler:
                 type = next(iter(event))
                 match type:
                     case "error":
-                        self._processError(event)
+                        await self._processError(event)
                     case "hmiEvent":
-                        self._processHmiEvent(event)
+                        await self._processHmiEvent(event)
                     case _:
                         print(
                             "Event handler got event of unknown type : " + str(type))
@@ -32,7 +32,7 @@ class EventHandler:
 
     def __init__(self, appSM: AppSM):
         self._eventQueue = asyncio.Queue()
-        self._appSM = AppSM
+        self._appSM = appSM
 
     async def _processHmiEvent(self, event: dict[str, str]):
         eventCode = event["hmiEvent"]

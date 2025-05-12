@@ -13,7 +13,9 @@ class States(enum.Enum):
     controllingManually = 6
     producingBatch = 7
 
+
 APP_SM_GRAPH_FILENAME = "App state machine.png"
+
 
 class AppSM:
     """Highest level state machine, for controlling start, stop, modes, etc. of the recipe management application.
@@ -32,7 +34,7 @@ class AppSM:
             recipeDone()
     """
 
-    def __init__(self, makeGraph = False):
+    def __init__(self, makeGraph=False):
         # Executing a recipe (TEMP - replace with lower level HSM for recipe execution)
         producingBatchState = States.producingBatch
 
@@ -52,7 +54,7 @@ class AppSM:
             States.stopped  # Due to some fatal error, such as lost connection to plant
         ]
 
-        if(makeGraph):
+        if (makeGraph):
             graphEngine = "graphviz"
         else:
             graphEngine = "mermaid"
@@ -60,6 +62,8 @@ class AppSM:
         self.machine = HierarchicalAsyncGraphMachine(
             states=self._states,
             initial=States.starting,
+            # When an event ocurrs that shouldn't trigger a transition, don't launch an exception
+            ignore_invalid_triggers=True,
             graph_engine=graphEngine)
 
         # Transitions
@@ -97,6 +101,6 @@ class AppSM:
             "recipeDone", States.producingBatch, States.idle
         )
 
-        if(makeGraph):
-            graph = self.machine.get_combined_graph(title = "App state machine")
-            graph.draw(filename = APP_SM_GRAPH_FILENAME, format="png")
+        if (makeGraph):
+            graph = self.machine.get_combined_graph(title="App state machine")
+            graph.draw(filename=APP_SM_GRAPH_FILENAME, format="png")

@@ -24,17 +24,18 @@ class JsonSocketServer:
         loop = asyncio.get_running_loop()
         loop.create_task(self._server.serve_forever())
 
-    def __init__(self, fnHandleMessage: Callable[[dict[str, str]], None], port: int, EOM="\r\n", encoding="utf-8"):
+    def __init__(self, eventHandler: any, port: int, EOM="\r\n", encoding="utf-8"):
         """Constructor for socket server.
 
         Args:
-            fnHandleMessage (Callable[[dict[str,str]], None]): Function that will process messages received, and errors.
+            eventHandler (any): Object that will handle events received. Must have a method:
+                eventHandler.handleEvent(event: dict[str,str])
             port (int): Port for TCP communication.
             EOM (str, optional): Marks the End Of Message.
                 Is deleted from the message when decoding. Defaults to "\\r\\n".
             encoding (str, optional): Byte encoding. **Must be the same on client and server.** Defaults to "utf-8".
         """
-        self._fnHandleMessage = fnHandleMessage
+        self._eventHandler = eventHandler
         self._port = port
         self._EOM = EOM
         self._encoding = encoding
@@ -78,7 +79,7 @@ class JsonSocketServer:
                     message = {"error": "socketServerDecoding"}
                 finally:
                     # Send message to external handler
-                    loop.create_task(self._fnHandleMessage(message))
+                    loop.create_task(self._eventHandler.handleEvent(message))
 
     async def _writeLoop(self):
         """Encodes and sends messages stored in the queue.
@@ -93,7 +94,7 @@ class JsonSocketServer:
                                   self._EOM).encode(self._encoding)
             except:
                 loop = asyncio.get_running_loop()
-                loop.create_task(self._fnHandleMessage(
+                loop.create_task(self._eventHandler.handleEvent(
                     {"error": "socketServerEncoding"}))
             else:
                 self._writer.write(messageEncoded)
