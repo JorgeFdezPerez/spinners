@@ -9,11 +9,12 @@ PORT = 10000
 async def main():
 
     sm = AppSM(makeGraph=True)
+    server = JsonSocketServer(port=PORT)
     eventHandler = EventHandler(appSM=sm)
 
-    server = JsonSocketServer(eventHandler=eventHandler, port=PORT)
-    await server.start()
+    await sm.start(eventHandler=eventHandler)
+    await server.start(eventHandler=eventHandler)
+
     mainLoop = asyncio.get_running_loop()
-    
     await eventHandler.loop()
 asyncio.run(main())

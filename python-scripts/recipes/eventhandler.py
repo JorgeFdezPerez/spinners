@@ -10,6 +10,7 @@ class EventHandler:
             event (dict[str,str]): Event to add.
                 Dict with first key { type : eventCode }. Some events can optionally have more keys.
         """
+        print(event)
         await self._eventQueue.put(event)
 
     async def loop(self):
@@ -22,6 +23,8 @@ class EventHandler:
                 match type:
                     case "error":
                         await self._processError(event)
+                    case "appSMEvent":
+                        await self._processAppSMEvent(event)
                     case "hmiEvent":
                         await self._processHmiEvent(event)
                     case _:
@@ -38,12 +41,35 @@ class EventHandler:
         eventCode = event["hmiEvent"]
         match eventCode:
             case "resetPlant":
+                # TODO: Load reset recipe
                 await self._appSM.machine.resetPlant()
             case "manualSelected":
                 await self._appSM.machine.manualSelected()
             case "recipeSelected":
                 # TODO: Load recipe
                 await self._appSM.machine.recipeSelected()
+
+    async def _processAppSMEvent(self, event: dict[str, str]):
+        eventCode = event["appSMEvent"]
+        match eventCode:
+            case "enterStarting":
+                # TODO: Start opc connection if disconnected
+                # TODO: Start mysql connection if disconnected
+
+                # TODO: Check if everything is started, then go to active, else go to stopped
+                await self._appSM.machine.startedApp() # temp
+            case "enterResetting":
+                # TODO: Load resetting recipe and execute it
+                # Recipe executor should send its own event once done
+                await self._appSM.machine.resetComplete() # temp
+            case "enterControllingManually":
+                # TODO: Enable manual control
+                pass
+            case "exitControllingManually":
+                # TODO: Disable manual control
+                pass
+            case "enterProducingBatch":
+                pass
 
     async def _processError(self, error: dict[str, str]):
         errorCode = error["error"]

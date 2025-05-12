@@ -11,10 +11,17 @@ class JsonSocketServer:
     Attributes:
         sendQueue (asyncio.Queue): Put messages here to send them.
     """
-
-    async def start(self):
+    
+    async def start(self, eventHandler: any):
         """Starts the server.
+
+        Args:
+            eventHandler (any): Object that will handle events received. Must have a method:
+                eventHandler.handleEvent(event: dict[str,str])
         """
+        self._eventHandler = eventHandler
+        if(self._eventHandler == None):
+            raise TypeError("Event handler was not set")
         # Host must be 0.0.0.0 on Docker
         self._server = await asyncio.start_server(
             client_connected_cb=self._onConnection,
@@ -24,18 +31,16 @@ class JsonSocketServer:
         loop = asyncio.get_running_loop()
         loop.create_task(self._server.serve_forever())
 
-    def __init__(self, eventHandler: any, port: int, EOM="\r\n", encoding="utf-8"):
+    def __init__(self, port: int, EOM="\r\n", encoding="utf-8"):
         """Constructor for socket server.
 
         Args:
-            eventHandler (any): Object that will handle events received. Must have a method:
-                eventHandler.handleEvent(event: dict[str,str])
             port (int): Port for TCP communication.
             EOM (str, optional): Marks the End Of Message.
                 Is deleted from the message when decoding. Defaults to "\\r\\n".
             encoding (str, optional): Byte encoding. **Must be the same on client and server.** Defaults to "utf-8".
         """
-        self._eventHandler = eventHandler
+        self._eventHandler = None
         self._port = port
         self._EOM = EOM
         self._encoding = encoding

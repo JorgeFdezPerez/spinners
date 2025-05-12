@@ -34,7 +34,24 @@ class AppSM:
             recipeDone()
     """
 
-    def __init__(self, makeGraph=False):
+    async def start(self, eventHandler: any):
+        """Start machine by reentering the initial state (starting). This activates the on_enter action.
+        Also sets event handler to be used.
+
+        Args:
+            eventHandler (any): Object that will handle events received. Must have a method:
+                eventHandler.handleEvent(event: dict[str,str])
+        """
+        self._eventHandler = eventHandler
+        if(self._eventHandler == None):
+            raise TypeError("Event handler was not set")
+        await self.machine.to_starting()
+
+
+    def __init__(self, makeGraph: bool = False):
+        self._eventHandler = None
+
+        # States
         # Executing a recipe (TEMP - replace with lower level HSM for recipe execution)
         producingBatchState = States.producingBatch
 
@@ -101,6 +118,40 @@ class AppSM:
             "recipeDone", States.producingBatch, States.idle
         )
 
+        # Actions
+        self.machine.on_enter_starting(self._onEnterStarting)
+        self.machine.on_enter_stopped(self._onEnterStopped)
+        self.machine.on_enter_active_waitingToReset(self._onEnterWaitingToReset)
+        self.machine.on_enter_active_resetting(self._onEnterResetting)
+        self.machine.on_enter_active_idle(self._onEnterIdle)
+        self.machine.on_enter_active_controllingManually(self._onEnterControllingManually)
+        self.machine.on_exit_active_controllingManually(self._onExitControllingManually)
+        self.machine.on_enter_active_producingBatch(self._onEnterProducingBatch)
+
         if (makeGraph):
             graph = self.machine.get_combined_graph(title="App state machine")
             graph.draw(filename=APP_SM_GRAPH_FILENAME, format="png")
+
+    async def _onEnterStarting(self):
+        await self._eventHandler.handleEvent({"appSMEvent" : "enterStarting"})
+
+    async def _onEnterStopped(self):
+        await self._eventHandler.handleEvent({"appSMEvent" : "enterStopped"})
+
+    async def _onEnterWaitingToReset(self):
+        await self._eventHandler.handleEvent({"appSMEvent" : "enterWaitingToReset"})
+        
+    async def _onEnterResetting(self):
+        await self._eventHandler.handleEvent({"appSMEvent" : "enterResetting"})
+
+    async def _onEnterIdle(self):
+        await self._eventHandler.handleEvent({"appSMEvent" : "enterIdle"})
+
+    async def _onEnterControllingManually(self):
+        await self._eventHandler.handleEvent({"appSMEvent" : "enterControllingManually"})
+
+    async def _onExitControllingManually(self):
+        await self._eventHandler.handleEvent({"appSMEvent" : "exitControllingManually"})
+
+    async def _onEnterProducingBatch(self):
+        await self._eventHandler.handleEvent({"appSMEvent" : "enterProducingBatch"})
