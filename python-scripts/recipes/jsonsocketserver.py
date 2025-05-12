@@ -43,12 +43,12 @@ class JsonSocketServer:
 
         self.sendQueue = asyncio.Queue()
 
-    async def _onConnection(self, reader: asyncio.StreamReader, writer: asyncio.StreamReader):
+    async def _onConnection(self, reader: asyncio.StreamReader, writer: asyncio.StreamWriter):
         """Launches loops to read and write messages to connected client.
 
         Args:
             reader (asyncio.StreamReader): Stream reader created by asyncio.start_server().
-            writer (asyncio.StreamReader): Stream writer created by asyncio.start_server().
+            writer (asyncio.StreamWriter): Stream writer created by asyncio.start_server().
         """
         self._reader = reader
         self._writer = writer
@@ -62,16 +62,23 @@ class JsonSocketServer:
         is an error when deserializing and decoding the dictionary.
         """
         while True:
-            received = await self._reader.readuntil(self._EOM.encode(self._encoding))
-            loop = asyncio.get_running_loop()
-            try:
-                message = json.loads(received.decode(
-                    self._encoding).removesuffix(self._EOM))
-            except:
-                message = {"error": "socketServerDecoding"}
-            finally:
-                # Send message to external handler
-                loop.create_task(self._fnHandleMessage(message))
+            # Check if connection ended
+            if (self._reader.at_eof()):
+                loop.create_task(self._fnHandleMessage(
+                    {"error": "socketClientDisconnected"}))
+                await self._writer.write_eof()
+            else:
+                # Wait for message that ends with EOM
+                received = await self._reader.readuntil(self._EOM.encode(self._encoding))
+                loop = asyncio.get_running_loop()
+                try:
+                    message = json.loads(received.decode(
+                        self._encoding).removesuffix(self._EOM))
+                except:
+                    message = {"error": "socketServerDecoding"}
+                finally:
+                    # Send message to external handler
+                    loop.create_task(self._fnHandleMessage(message))
 
     async def _writeLoop(self):
         """Encodes and sends messages stored in the queue.
@@ -89,5 +96,5 @@ class JsonSocketServer:
                 loop.create_task(self._fnHandleMessage(
                     {"error": "socketServerEncoding"}))
             else:
-                self._writer.write()
+                self._writer.write(messageEncoded)
                 await self._writer.drain()
