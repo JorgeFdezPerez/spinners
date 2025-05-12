@@ -11,16 +11,30 @@ class States(enum.Enum):
     resetting = 4
     idle = 5
     controllingManually = 6
-    executingRecipe = 7
+    producingBatch = 7
 
+APP_SM_GRAPH_FILENAME = "App state machine.png"
 
-class AppStateMachine:
+class AppSM:
     """Highest level state machine, for controlling start, stop, modes, etc. of the recipe management application.
+
+    See diagram in "App state machine.png".
+
+    Attributes:
+        machine (HierarchicalAsyncGraphMachine): State machine. Call these functions to transition:
+            startedApp()
+            fatalError()
+            retryStartingApp()
+            resetPlant()
+            resetComplete()
+            recipeSelected()
+            manualSelected()
+            recipeDone()
     """
 
-    def __init__(self):
+    def __init__(self, makeGraph = False):
         # Executing a recipe (TEMP - replace with lower level HSM for recipe execution)
-        executingRecipeState = States.executingRecipe
+        producingBatchState = States.producingBatch
 
         activeState = {
             "name": States.active,
@@ -29,7 +43,7 @@ class AppStateMachine:
                 States.resetting,  # Resetting plant to initial state
                 States.idle,  # Awaiting orders from HMI
                 States.controllingManually,  # Manual control of plant by calling services
-                executingRecipeState  # Running a recipe
+                producingBatchState  # Running a recipe
             ]
         }
         self._states = [
@@ -38,8 +52,15 @@ class AppStateMachine:
             States.stopped  # Due to some fatal error, such as lost connection to plant
         ]
 
+        if(makeGraph):
+            graphEngine = "graphviz"
+        else:
+            graphEngine = "mermaid"
+
         self.machine = HierarchicalAsyncGraphMachine(
-            states=self._states, initial=States.starting, graph_engine="graphviz")
+            states=self._states,
+            initial=States.starting,
+            graph_engine=graphEngine)
 
         # Transitions
         # Once initial steps are done, go to active - enter at waiting to reset
@@ -65,7 +86,7 @@ class AppStateMachine:
         )
         # Recipe has been selected and parametrised
         self.machine.add_transition(
-            "recipeSelected", States.idle, States.executingRecipe
+            "recipeSelected", States.idle, States.producingBatch
         )
         # Manual control has been selected
         self.machine.add_transition(
@@ -73,18 +94,9 @@ class AppStateMachine:
         )
         # TEMP - CHANGE LATER
         self.machine.add_transition(
-            "recipeDone", States.executingRecipe, States.idle
+            "recipeDone", States.producingBatch, States.idle
         )
 
-
-async def main():
-    sm = AppStateMachine()
-    print(sm.machine.state)
-    await sm.machine.startedApp()
-    print(sm.machine.state)
-
-    graph = sm.machine.get_combined_graph(title = "App state machine")
-    graph.draw(filename = "App state machine.png", format="png")
-
-
-asyncio.run(main())
+        if(makeGraph):
+            graph = self.machine.get_combined_graph(title = "App state machine")
+            graph.draw(filename = APP_SM_GRAPH_FILENAME, format="png")
