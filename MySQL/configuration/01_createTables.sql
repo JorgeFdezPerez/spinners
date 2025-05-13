@@ -99,7 +99,8 @@ CREATE TABLE variables_me (
     node_id_variable_me VARCHAR(255) NOT NULL,
     PRIMARY KEY (id_variable_me),
     UNIQUE KEY (codigo_variable_me),
-    UNIQUE KEY (node_id_variable_me)
+    UNIQUE KEY (node_id_variable_me),
+    FOREIGN KEY (id_modulo_equipamiento) REFERENCES modulos_equipamiento (id_modulo_equipamiento) ON UPDATE CASCADE ON DELETE RESTRICT
 );
 
 CREATE TABLE fases_equipamiento (
