@@ -1,0 +1,34 @@
+USE spinners;
+
+SELECT 'LOADING USER DATA' as 'INFO';
+
+LOAD DATA INFILE '/var/lib/mysql-files/usuarios.csv' INTO TABLE usuarios
+FIELDS TERMINATED by ';' ENCLOSED BY '"' LINES TERMINATED BY '\r\n'
+IGNORE 1 LINES;
+
+SELECT 'USERS LOADED' as 'INFO';
+
+
+SELECT 'LOADING MASTER RECIPES DATA' as 'INFO';
+
+LOAD DATA INFILE '/var/lib/mysql-files/recetas_maestras.csv' INTO TABLE recetas_maestras
+FIELDS TERMINATED by ';' ENCLOSED BY '"' LINES TERMINATED BY '\r\n'
+IGNORE 1 LINES;
+
+LOAD DATA INFILE '/var/lib/mysql-files/etapas.csv' INTO TABLE etapas
+FIELDS TERMINATED by ';' ENCLOSED BY '"' LINES TERMINATED BY '\r\n'
+IGNORE 1 LINES;
+
+LOAD DATA INFILE '/var/lib/mysql-files/fases_etapas.csv' INTO TABLE fases_etapas
+FIELDS TERMINATED by ';' ENCLOSED BY '"' LINES TERMINATED BY '\r\n'
+IGNORE 1 LINES;
+
+LOAD DATA INFILE '/var/lib/mysql-files/transiciones.csv' INTO TABLE transiciones
+FIELDS TERMINATED by ';' ENCLOSED BY '"' LINES TERMINATED BY '\r\n'
+IGNORE 1 LINES;
+
+LOAD DATA INFILE '/var/lib/mysql-files/condiciones.csv' INTO TABLE condiciones
+FIELDS TERMINATED by ';' ENCLOSED BY '"' LINES TERMINATED BY '\r\n'
+IGNORE 1 LINES;
+
+SELECT 'MASTER RECIPES LOADED' as 'INFO';

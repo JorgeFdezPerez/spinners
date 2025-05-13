@@ -97,8 +97,10 @@ CREATE TABLE variables_me (
     id_modulo_equipamiento INT NOT NULL,
     codigo_variable_me VARCHAR(255) NOT NULL,
     node_id_variable_me VARCHAR(255) NOT NULL,
+    tipo VARCHAR(255),
+    permiso VARCHAR(1),
+    descripcion VARCHAR(255),
     PRIMARY KEY (id_variable_me),
-    UNIQUE KEY (codigo_variable_me),
     UNIQUE KEY (node_id_variable_me),
     FOREIGN KEY (id_modulo_equipamiento) REFERENCES modulos_equipamiento (id_modulo_equipamiento) ON UPDATE CASCADE ON DELETE RESTRICT
 );
@@ -106,9 +108,9 @@ CREATE TABLE variables_me (
 CREATE TABLE fases_equipamiento (
     id_fase_equipamiento INT NOT NULL AUTO_INCREMENT,
     id_modulo_equipamiento INT NOT NULL,
-    codigo_fase_equipamiento VARCHAR(255) NOT NULL,
+    num_srv INT NOT NULL,
+    descripcion VARCHAR(255),
     PRIMARY KEY (id_fase_equipamiento),
-    UNIQUE KEY (codigo_fase_equipamiento),
     FOREIGN KEY (id_modulo_equipamiento) REFERENCES modulos_equipamiento (id_modulo_equipamiento) ON UPDATE CASCADE ON DELETE RESTRICT
 );
 
@@ -117,8 +119,8 @@ CREATE TABLE etapas (
     id_receta_maestra INT NOT NULL,
     id_parametro INT,
     nombre VARCHAR(255) NOT NULL,
-    es_inicial BIT NOT NULL,
-    es_final BIT NOT NULL,
+    es_inicial BOOL NOT NULL,
+    es_final BOOL NOT NULL,
     PRIMARY KEY (id_etapa),
     FOREIGN KEY (id_receta_maestra) REFERENCES recetas_maestras (id_receta_maestra) ON UPDATE CASCADE ON DELETE RESTRICT,
     FOREIGN KEY (id_parametro) REFERENCES parametros (id_parametro) ON UPDATE CASCADE ON DELETE RESTRICT
@@ -151,3 +153,5 @@ CREATE TABLE transiciones (
     FOREIGN KEY (id_etapa_final) REFERENCES etapas (id_etapa) ON UPDATE CASCADE ON DELETE RESTRICT,
     FOREIGN KEY (id_condicion) REFERENCES condiciones (id_condicion) ON UPDATE CASCADE ON DELETE RESTRICT
 );
+
+SELECT 'TABLES CREATED' as 'INFO';
