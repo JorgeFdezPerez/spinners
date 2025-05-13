@@ -1,0 +1,62 @@
+id_variable_me;id_modulo_equipamiento;codigo_variable_me;node_id_variable_me;tipo;permiso;descripcion
+1;1;Evento;"ns=1;s=ME_TRANSPORTE_Evento";INT;W;Evento enviado al modulo de transporte. None = 0, Start = 1, Done = 2, Abort = 3, Reset = 4
+2;1;NumSRV;"ns=1;s=ME_TRANSPORTE_NumSRV";INT;W;Numero de servicio pedido al transporte. None = 0, CogerBase = 1, PosarBase = 2, IrAPosicion = 3, IrAEstacion = 4, CogerSpinner = 5, RearmePosicionNeutra = 6, RearmeDejarPieza = 7
+3;1;SP_Estacion;"ns=1;s=ME_TRANSPORTE_SP_Estacion";INT;W;Setpoint de numero de estacion para el transporte
+4;1;SP_Posicion;"ns=1;s=ME_TRANSPORTE_SP_Posicion";DWORD;W;Setpoint de posicion absoluta para el transporte
+5;1;Simulacion;"ns=1;s=ME_TRANSPORTE_Simulacion";BOOL;W;Poner a TRUE para activar simulacion
+6;1;EstadoActual;"ns=1;s=ME_TRANSPORTE_EstadoActual";INT;R;Estado actual del modulo de transporte. None = 0, Running = 1, Complete = 2, Aborted = 3
+7;1;ServicioActual;"ns=1;s=ME_TRANSPORTE_ServicioActual";INT;R;Numero de servicio actual del transporte. None = 0, CogerBase = 1, PosarBase = 2, IrAPosicion = 3, IrAEstacion = 4, CogerSpinner = 5, RearmePosicionNeutra = 6, RearmeDejarPieza = 7
+8;1;B0;"ns=1;s=ME_TRANSPORTE_B0";BOOL;R;Entrada sensor B0
+9;1;B1;"ns=1;s=ME_TRANSPORTE_B1";BOOL;R;Entrada sensor B1
+10;1;C0;"ns=1;s=ME_TRANSPORTE_C0";BOOL;R;Entrada sensor C0
+11;1;C1;"ns=1;s=ME_TRANSPORTE_C1";BOOL;R;Entrada sensor C1
+12;1;BPlus;"ns=1;s=ME_TRANSPORTE_BPlus";BOOL;R;Salida EV avance cilindro B
+13;1;BMinus;"ns=1;s=ME_TRANSPORTE_BMinus";BOOL;R;Salida EV retroceso cilindro B
+14;1;CPlus;"ns=1;s=ME_TRANSPORTE_CPlus";BOOL;R;Salida EV avance cilindro C
+15;1;CMinus;"ns=1;s=ME_TRANSPORTE_CMinus";BOOL;R;Salida EV retroceso cilindro C
+16;1;Busy;"ns=1;s=ME_TRANSPORTE_Busy";BOOL;R;Entrada posicionador realizando movimiento
+17;1;INP;"ns=1;s=ME_TRANSPORTE_INP";BOOL;R;Entrada posicionador quieto
+18;1;Hold;"ns=1;s=ME_TRANSPORTE_Hold";BOOL;R;Salida posicionador parar
+19;1;PreparadoParaRecogerSpinner;"ns=1;s=ME_TRANSPORTE_PreparadoParaRecogerSpinner";BOOL;R;Salida para coordinacion con modulo de spinners por MODBUS
+20;1;PosActual;"ns=1;s=ME_TRANSPORTE_PosActual";DWORD;R;Entrada posicionador posicion absoluta actual
+21;1;PosObj;"ns=1;s=ME_TRANSPORTE_PosObj";DWORD;R;Salida posicionador posicion objetivo
+22;1;ErrorSensoresBSimultaneos;"ns=1;s=ME_TRANSPORTE_ErrorSensoresBSimultaneos";BOOL;R;Alarma - B0 y B1 activos a la vez
+23;1;ErrorSensoresCSimultaneos;"ns=1;s=ME_TRANSPORTE_ErrorSensoresCSimultaneos";BOOL;R;Alarma - C0 y C1 activos a la vez
+24;1;ErrorB0NoActivoTransporte;"ns=1;s=ME_TRANSPORTE_ErrorB0NoActivoTransporte";BOOL;R;Alarma - Se hace BMinus pero B0 no se activa despues de un tiempo
+25;1;ErrorB1NoActivoTransporte;"ns=1;s=ME_TRANSPORTE_ErrorB1NoActivoTransporte";BOOL;R;Alarma - Se hace BPlus pero B1 no se activa despues de un tiempo
+26;1;ErrorC0NoActivoTransporte;"ns=1;s=ME_TRANSPORTE_ErrorC0NoActivoTransporte";BOOL;R;Alarma - Se hace CMinus pero C0 no se activa despues de un tiempo
+27;1;ErrorC1NoActivoTransporte;"ns=1;s=ME_TRANSPORTE_ErrorC1NoActivoTransporte";BOOL;R;Alarma - Se hace CBPlus pero C1 no se activa despues de un tiempo
+28;1;ErrorMoverConPinzaExtendida;"ns=1;s=ME_TRANSPORTE_ErrorMoverConPinzaExtendida";BOOL;R;Alarma - Se intenta mover la pinza cuando esta extendida, o extenderla durante el movimiento
+29;1;ErrorCogerBaseConPinzaOcupada;"ns=1;s=ME_TRANSPORTE_ErrorCogerBaseConPinzaOcupada";BOOL;R;"Alarma - Se ha iniciado el servicio ""Coger Base"" pero C0 esta activo"
+30;1;ErrorDriverNoResponde;"ns=1;s=ME_TRANSPORTE_ErrorDriverNoResponde";BOOL;R;"Alarma - Se ha iniciado el servicio ""Ir a Posicion"" pero no se activa la variable Busy despues de un tiempo"
+31;1;ErrorCogerSpinnerSinBase;"ns=1;s=ME_TRANSPORTE_ErrorCogerSpinnerSinBase";BOOL;R;"Alarma - Se ha iniciado el servicio ""Coger Spinner"" pero C0 no esta activo"
+32;2;Evento;"ns=2;s=ME_BASES_Evento";INT;W;Evento enviado al modulo de bases. None = 0, Start = 1, Done = 2, Abort = 3, Reset = 4
+33;2;NumSRV;"ns=2;s=ME_BASES_NumSRV";INT;W;Numero de servicio. servicioBases_none=0, servicioBases_extenderBase = 1, servicioBases_rearme = 2
+34;2;Simulacion;"ns=2;s=ME_BASES_Simulacion";BOOL;W;Poner a TRUE para activar simulacion
+35;2;EstadoActual;"ns=2;s=ME_BASES_EstadoActual";INT;R;Estados. Estado_idle=0, estado_running=1, estado_complete=2, estado_aborted=3
+36;2;ServicioActual;"ns=2;s=ME_BASES_ServicioActual";INT;R;Numero de servicio. servicioBases_none=0, servicioBases_extenderBase = 1, servicioBases_rearme = 2
+37;2;A0;"ns=2;s=ME_BASES_A0";BOOL;R;Detector cilindro en retroceso
+38;2;A1;"ns=2;s=ME_BASES_A1";BOOL;R;Detector cilindro en avance
+39;2;Empty;"ns=2;s=ME_BASES_Empty";BOOL;R;Detector de bases existentes (1 hay bases, 0 no hay bases)
+40;2;Base;"ns=2;s=ME_BASES_Base";BOOL;R;Detector de bases a recoger
+41;2;Aminus;"ns=2;s=ME_BASES_Aminus";BOOL;R;Cilindro A Retroceso
+42;2;Alarmas_dos_detect;"ns=2;s=ME_BASES_Alarmas_dos_detect";BOOL;R;Alarma si se activan A0 y A1
+43;2;Alarma_base;"ns=2;s=ME_BASES_Alarma_base";BOOL;R;Alarma si no se activa detector de bases
+44;2;Alarma_retroceso;"ns=2;s=ME_BASES_Alarma_retroceso";BOOL;R;Alarma si tarda en retroceder
+45;2;Alarma_avance;"ns=2;s=ME_BASES_Alarma_avance";BOOL;R;Alarma si tarda en avanzar
+46;3;Evento;"ns=3;s=ME_SPINNERS_Evento";INT;W;Evento enviado al modulo de bases. None = 0, Start = 1, Done = 2, Abort = 3, Reset = 4
+47;3;NumSRV;"ns=3;s=ME_SPINNERS_NumSRV";INT;W;Numero de Servicio. servicioSpinners_none=0, servicioSpinners_dispensarSpinner=1, servicioSpinners_rearme=2
+48;3;Simulacion;"ns=3;s=ME_SPINNERS_Simulacion";BOOL;W;Poner a TRUE para activar simulacion
+49;3;EstadoActual;"ns=3;s=ME_SPINNERS_EstadoActual";INT;R;Estados. Estado_idle=0, estado_running=1, estado_complete=2, esatdo_aborted=3
+50;3;ServicioActual;"ns=3;s=ME_SPINNERS_ServicioActual";INT;R;Numero de Servicio. servicioSpinners_none=0, servicioSpinners_dispensarSpinner=1, servicioSpinners_rearme=2
+51;3;A0;"ns=3;s=ME_SPINNERS_A0";BOOL;R;Detector cilindro en retroceso
+52;3;A1;"ns=3;s=ME_SPINNERS_A1";BOOL;R;Detector cilindro en avance
+53;3;Base;"ns=3;s=ME_SPINNERS_Base";BOOL;R;Detector de Base
+54;3;TransportePreparadoParaRecogerSpinner;"ns=3;s=ME_SPINNERS_TransportePreparadoParaRecogerSpinner";BOOL;R;Si el modulo de transporte tiene su cilindro en posicion neutra, para que el de spinners pueda empujarlo para extraer un spinner.
+55;3;Aminus;"ns=3;s=ME_SPINNERS_Aminus";BOOL;R;Cilindro A Retroceso
+56;3;Aplus;"ns=3;s=ME_SPINNERS_Aplus";BOOL;R;Cilndro A Avance
+57;3;SpinnersPreparadoParaDispensar;"ns=3;s=ME_SPINNERS_SpinnersPreparadoParaDispensar";BOOL;R;Si el modulo de spinners tiene su cilindro en posicion neutra, para poder que el de transporte lo empuje e introduzca una base vacia.
+58;3;SpinnersAcabadoDeExpulsarBase;"ns=3;s=ME_SPINNERS_SpinnersAcabadoDeExpulsarBase";BOOL;R;Si el modulo de spinners ha acabado de expulsar la base tras dispensar un spinner.
+59;3;ErrorSensoresASimultaneos;"ns=3;s=ME_SPINNERS_ErrorSensoresASimultaneos";BOOL;R;A0 y A1 activos a la vez
+60;3;ErrorA0NoActivo;"ns=3;s=ME_SPINNERS_ErrorA0NoActivo";BOOL;R;Se hace AMinus pero A0 no se activa despues de un tiempo
+61;3;ErrorA1NoActivo;"ns=3;s=ME_SPINNERS_ErrorA1NoActivo";BOOL;R;Se hace APlus pero A0 no se activa despues de un tiempo

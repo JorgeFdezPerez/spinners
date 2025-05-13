@@ -1,0 +1,4 @@
+id_etapa;id_receta_maestra;id_parametro;nombre;es_inicial;es_final
+1;1;NULL;E0;1;0
+2;1;NULL;E1;0;0
+3;1;NULL;E2;0;1
