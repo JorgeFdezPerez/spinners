@@ -4,6 +4,8 @@ from jsonsocketserver import JsonSocketServer
 from appstatemachine import AppSM
 from eventhandler import EventHandler
 
+from masterrecipefinder import MasterRecipeFinder
+
 PORT = 10000
 
 async def main():
@@ -14,6 +16,10 @@ async def main():
 
     await sm.start(eventHandler=eventHandler)
     await server.start(eventHandler=eventHandler)
+
+    finder = MasterRecipeFinder()
+    recipes = await(finder.updateAndGetMasterRecipes())
+    print(recipes)
 
     mainLoop = asyncio.get_running_loop()
     await eventHandler.loop()
