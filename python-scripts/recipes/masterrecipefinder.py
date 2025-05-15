@@ -7,9 +7,12 @@ class MasterRecipeFinder:
     """Gets information about all master recipes in mysql database.
 
     Recipe data is stored as a dict:
-    self.masterRecipes = {
+    masterRecipes = {
         "RECIPE_1" : {
+            "description" : "aeiou",
             "states" : ['E0', 'E1', 'E2', ...],
+            "initialState" : "E0",
+            "finalState" : "E5"
             "actions" : {
                 "E0" : [{"me" : "ME_CODE_1", "numSrv" : numSrv1}],
                 "E1" : [{"me" : "ME_CODE_2", "numSrv" : numSrv2},
@@ -18,8 +21,8 @@ class MasterRecipeFinder:
             },
             "transitions" : [{"name" : "tran_E0_E1", "initialState" : "E0", "finalState" : E1},
                              {"name" : "tran_E1_E2", "initialState" : "E1", "finalState" : E2}, ...],
-            "initialState" : "E0",
-            "finalState" : "E5"
+            "parameters" : {"PARAM_1_NAME" : "PARAM_1_TYPE",
+                            "PARAM_2_NAME" : "PARAM_2_TYPE", ...}
         },
         "RECIPE_2" : {...},
         ...
@@ -39,12 +42,18 @@ class MasterRecipeFinder:
         for name in recipeNames:
             queriedRecipes[name] = dict()
 
+            # Getting decription
+            queriedRecipes[name]["description"] = await self._queryDescription(masterRecipeName=name)
+
             # Getting state names
-            queriedRecipes[name]["states"] = await self._queryStates(masterRecipeName=name)
+            states, initialState, finalState = await self._queryStates(masterRecipeName=name)
+            queriedRecipes[name]["states"] = states
+            queriedRecipes[name]["initialState"] = initialState
+            queriedRecipes[name]["finalState"] = finalState
 
             # Getting actions (equipment module and service number) for each state in the recipe
             queriedRecipes[name]["actions"] = dict()
-            for state in queriedRecipes[name]["states"]:
+            for state in states:
                 queriedRecipes[name]["actions"][state] = await self._queryActions(
                     masterRecipeName=name,
                     stateName=state
@@ -52,6 +61,9 @@ class MasterRecipeFinder:
 
             # Getting transitions
             queriedRecipes[name]["transitions"] = await self._queryTransitions(masterRecipeName=name)
+
+            # Getting parameters
+            queriedRecipes[name]["parameters"] = await self._queryParameters(masterRecipeName=name)
 
         await self._lock.acquire()
         self._masterRecipes = queriedRecipes
@@ -98,18 +110,39 @@ class MasterRecipeFinder:
         recipeNames = [x[0] for x in recipeNames]
         return recipeNames
 
-    async def _queryStates(self, masterRecipeName: str):
-        """Get states belonging to the specified master recipe. Sql client will raise error on timeout or conection error.
+    async def _queryDescription(self, masterRecipeName: str):
+        """Get description of the specified master recipe. Sql client will raise error on timeout or conection error.
 
         Args:
             masterRecipeName (str): Name of the master recipe (MySQL column "codigo_receta_maestra")
 
         Returns:
-            Tuple[List[str],bool]: States list ["E0", "E1", ...]
+            str: Recipe description.
+        """
+        description = await mysqlQuery(
+            """
+                SELECT descripcion FROM recetas_maestras
+                WHERE recetas_maestras.codigo_receta_maestra = %s;
+            """,
+            (masterRecipeName,)
+        )
+        # Query returns description in tuple inside list - [("desc",)]
+        description = description[0][0]
+        return description
+
+    async def _queryStates(self, masterRecipeName: str):
+        """Get states belonging to the specified master recipe. Find which are the initial and final states of the recipe.
+        Sql client will raise error on timeout or conection error.
+
+        Args:
+            masterRecipeName (str): Name of the master recipe (MySQL column "codigo_receta_maestra")
+
+        Returns:
+            Tuple[List[str],str,str]: States list ["E0", "E1", ...], name of initial state, and name of final state.
         """
         states = await mysqlQuery(
             """
-                SELECT nombre
+                SELECT nombre, es_inicial, es_final
                 FROM etapas
                     INNER JOIN recetas_maestras
                         ON etapas.id_receta_maestra = recetas_maestras.id_receta_maestra
@@ -118,9 +151,17 @@ class MasterRecipeFinder:
             (masterRecipeName,)
         )
 
-        # Query returns names in separate tuples within the states list - [("E0",), ("E1"), ...]
-        states = [x[0] for x in states]
-        return states
+        # Query returns states in separate tuples within the states list - [("E0", "True", "False"), ("E1", "False", "False"), ...]
+        stateNames = []
+        initialStateName = None
+        finalStateName = None
+        for x in states:
+            stateNames.append(x[0])
+            if (x[1]):
+                initialStateName = x[0]
+            if (x[2]):
+                finalStateName = x[0]
+        return stateNames, initialStateName, finalStateName
 
     async def _queryActions(self, masterRecipeName: str, stateName: str):
         """Get all actions belonging to the specified state. Sql client will raise error on timeout or conection error.
@@ -220,3 +261,32 @@ class MasterRecipeFinder:
             )
 
         return transitions
+
+    async def _queryParameters(self, masterRecipeName: str):
+        """Get all parameters for the recipe. Sql client will raise error on timeout or conection error.
+
+        Args:
+            masterRecipeName (str): Name of the master recipe (MySQL column "codigo_receta_maestra")
+
+        Returns:
+            Dict: Dict of parameters.
+                The dict will be:
+                {"NAME_1": "TYPE_1",
+                "NAME_2": "TYPE_2",
+                ...}
+        """
+        parameters = await mysqlQuery(
+            """
+                SELECT nombre, tipo
+                FROM parametros
+                    INNER JOIN recetas_maestras
+                        ON parametros.id_receta_maestra = recetas_maestras.id_receta_maestra
+                WHERE recetas_maestras.codigo_receta_maestra = %s
+            """,
+            (masterRecipeName,)
+        )
+        # Query returns parameters as tuples inside of a list - [('Name_1', 'Type_1'), ('Name_2', 'Type_2'), ...]
+        parametersDict = {}
+        for x in parameters:
+            parametersDict[x[0]] = x[1]
+        return parameters
