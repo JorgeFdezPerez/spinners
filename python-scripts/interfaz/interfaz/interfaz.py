@@ -13,7 +13,7 @@ class OpcClient:
         self.client = None
 
     def connect(self):
-        self.client = Client("opc.tcp://localhost:54840")
+        self.client = Client("opc.tcp://spinners-node-red:54840")
         self.client.connect()
 
     def get_value(self):
