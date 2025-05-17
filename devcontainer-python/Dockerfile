@@ -6,8 +6,10 @@ RUN pip install --upgrade pip
 # Install dependencies
 
 RUN pip install asyncua
+RUN pip install opcua
 RUN pip install transitions
 RUN pip install mysql-connector-python
+RUN pip install reflex
 RUN pip install graphviz
 # For installing graphviz package to generate docs of state machines
 RUN apt-get update

@@ -1,0 +1,3312 @@
+[
+    {
+        "id": "9a7abd174aa378ac",
+        "type": "tab",
+        "label": "COM_MODBUS",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "89f526b9ab8e572f",
+        "type": "tab",
+        "label": "COM_OPC_ON_AIR",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "54b159098a109b45",
+        "type": "group",
+        "z": "89f526b9ab8e572f",
+        "name": "Simulación (SOLO SI NO SE TIENE DATOS MODBUS)",
+        "style": {
+            "label": true,
+            "color": "#ff0000"
+        },
+        "nodes": [
+            "8c16c57c5b32302b",
+            "b4c9edf90424e258",
+            "3cbafd16e464fbfc",
+            "398fb64653fe0919",
+            "1442e9f47c2fc57f"
+        ],
+        "x": 74,
+        "y": 439
+    },
+    {
+        "id": "6053e9beede6a078",
+        "type": "group",
+        "z": "89f526b9ab8e572f",
+        "name": "Entrada de datos MODBUS",
+        "style": {
+            "label": true
+        },
+        "nodes": [
+            "c09310c4ae2bd39c",
+            "9f26800ba762fa22",
+            "f7e49858c348c09d",
+            "c75be28d096934f6",
+            "d7565cfeae9e8229",
+            "4b96cda752f49f14",
+            "8d0e9b59e480ddcf",
+            "206af15e0130ca45",
+            "0e1160acac4f5a72",
+            "c5553c1e094404e6"
+        ],
+        "x": 74,
+        "y": 19
+    },
+    {
+        "id": "70f849332445661c",
+        "type": "group",
+        "z": "89f526b9ab8e572f",
+        "name": "Envio datos a MODBUS",
+        "style": {
+            "label": true
+        },
+        "nodes": [
+            "eae293a7c4bb2100",
+            "6587ba1b29facf7c",
+            "4e2dcdd878850b18",
+            "535c4f379b5f0a30",
+            "584dc70cfe677b05",
+            "bdfa74678f8f17fd",
+            "0c052f29fa6fb739",
+            "ee7f9e734a5dfa4f",
+            "88b5b12752cd24cf",
+            "bd045fc10304343e",
+            "646b6a26865a0b7f",
+            "a6e05a969d04b3f8",
+            "6d0fa8c60ab6313f"
+        ],
+        "x": 74,
+        "y": 839
+    },
+    {
+        "id": "2987507a3c987220",
+        "type": "group",
+        "z": "89f526b9ab8e572f",
+        "name": "Instacia del servidor OPC",
+        "style": {
+            "label": true
+        },
+        "nodes": [
+            "b3cdc4a83254fb23",
+            "786cefdab24edb26"
+        ],
+        "x": 74,
+        "y": 639
+    },
+    {
+        "id": "8b4e396cbe38212b",
+        "type": "group",
+        "z": "9a7abd174aa378ac",
+        "style": {
+            "stroke": "#999999",
+            "stroke-opacity": "1",
+            "fill": "none",
+            "fill-opacity": "1",
+            "label": true,
+            "label-position": "nw",
+            "color": "#a4a4a4"
+        },
+        "nodes": [
+            "15a51638e706cbb2",
+            "d7c00fd5054629cb",
+            "128bdc557abf241b",
+            "f59625559628351a",
+            "df9ce5c97faaa709",
+            "c1e3b4a787555388",
+            "6ba8bf1d38230cd9",
+            "bf82438a060ee711",
+            "3793171351e731e6",
+            "58902de666e091e6",
+            "7bb099acb408e60e",
+            "37e57ba6b8334e83",
+            "c32aa597852cf885",
+            "d685727ff41aa890",
+            "4a3506097748bce6",
+            "f750c85ac64a8d64",
+            "40173fc952769e9a",
+            "a19370f3bb14af3b",
+            "f325bbc3b7ba2a23",
+            "f1eb2fd3f8a66dcc",
+            "69747c1ebd0c3065",
+            "1ab17f82632f2b28",
+            "fa3e73c256bf1ba2",
+            "fe13130b140f10bd",
+            "1611579712d8b13a",
+            "2b69e0fadef62e5d",
+            "e21b317b570e0d74",
+            "e54ce91ffca93077"
+        ],
+        "x": 14,
+        "y": 379,
+        "w": 1302,
+        "h": 602
+    },
+    {
+        "id": "f78645822af657e1",
+        "type": "group",
+        "z": "9a7abd174aa378ac",
+        "style": {
+            "stroke": "#999999",
+            "stroke-opacity": "1",
+            "fill": "none",
+            "fill-opacity": "1",
+            "label": true,
+            "label-position": "nw",
+            "color": "#a4a4a4"
+        },
+        "nodes": [
+            "76e6a001229bba64",
+            "fa628e1b586fdb15",
+            "8d21c497211c80ae",
+            "db775de054760d47",
+            "42fb9a640c2d2bcf",
+            "ab2df84ba43fab4f",
+            "f381da1f2e9a3acd",
+            "4918d366603a4523",
+            "a96babc87b5d4fa9"
+        ],
+        "x": 34,
+        "y": 39,
+        "w": 892,
+        "h": 222
+    },
+    {
+        "id": "da19493a72e261e4",
+        "type": "group",
+        "z": "9a7abd174aa378ac",
+        "style": {
+            "stroke": "#999999",
+            "stroke-opacity": "1",
+            "fill": "none",
+            "fill-opacity": "1",
+            "label": true,
+            "label-position": "nw",
+            "color": "#a4a4a4"
+        },
+        "nodes": [
+            "83f7493d77f1cd9a",
+            "e99a74bba11d3843",
+            "0608ba22107525df",
+            "122aef936750ad3e"
+        ],
+        "x": 8,
+        "y": 1499,
+        "w": 1384,
+        "h": 1728
+    },
+    {
+        "id": "668af8957315f662",
+        "type": "group",
+        "z": "9a7abd174aa378ac",
+        "style": {
+            "stroke": "#999999",
+            "stroke-opacity": "1",
+            "fill": "none",
+            "fill-opacity": "1",
+            "label": true,
+            "label-position": "nw",
+            "color": "#a4a4a4"
+        },
+        "nodes": [
+            "a9d029126e049d21",
+            "db488716c9526a60",
+            "ab976db01649ef75",
+            "bf8653e9b3e24069",
+            "9aa0968f1a41376d",
+            "034d5b973a611014",
+            "ecc1b190fe244e4a",
+            "b2bd6f9b942e944b",
+            "7770847cfaf52368",
+            "f7a10b770dcb0ffe",
+            "b0c173940f13c4f6",
+            "83171cf7eb66ff71",
+            "3ca49d87abcb2bf9",
+            "a2ea5616b037d5ad",
+            "58e031e41eb12ed3",
+            "60954ca8a238bdd9",
+            "f771a87795ccf060"
+        ],
+        "x": 14,
+        "y": 1039,
+        "w": 1232,
+        "h": 402
+    },
+    {
+        "id": "e99a74bba11d3843",
+        "type": "group",
+        "z": "9a7abd174aa378ac",
+        "g": "da19493a72e261e4",
+        "style": {
+            "stroke": "#999999",
+            "stroke-opacity": "1",
+            "fill": "none",
+            "fill-opacity": "1",
+            "label": true,
+            "label-position": "nw",
+            "color": "#a4a4a4"
+        },
+        "nodes": [
+            "7b21586f51984348",
+            "8120c79126c373b6",
+            "4d790662a18a3553",
+            "d186aadd2e6be5bf",
+            "da8b83e44c16decf",
+            "3fdeb2e88c74f04e",
+            "301c3cda566243cd",
+            "8cb3839a01a76d10",
+            "cc7cc41260098297",
+            "9c37352445c27b8d",
+            "07412c7fdcd53954",
+            "6132c5d4e5c060a0"
+        ],
+        "x": 34,
+        "y": 2779,
+        "w": 1292,
+        "h": 422
+    },
+    {
+        "id": "0608ba22107525df",
+        "type": "group",
+        "z": "9a7abd174aa378ac",
+        "g": "da19493a72e261e4",
+        "style": {
+            "stroke": "#999999",
+            "stroke-opacity": "1",
+            "fill": "none",
+            "fill-opacity": "1",
+            "label": true,
+            "label-position": "nw",
+            "color": "#a4a4a4"
+        },
+        "nodes": [
+            "60627b8cbc3feab3",
+            "29a006c20f7ed04f",
+            "98193defde69d4ba",
+            "ef8b4cb322c7b806",
+            "96a227bab7156243",
+            "60b74ea7102c9cec",
+            "e69425aea6490112",
+            "17d9d23c824eb807",
+            "e0af99fde40fd56a",
+            "db08450ecd283bf5",
+            "de234d130d43236c",
+            "1228495bcca2cd38"
+        ],
+        "x": 34,
+        "y": 2319,
+        "w": 1292,
+        "h": 422
+    },
+    {
+        "id": "122aef936750ad3e",
+        "type": "group",
+        "z": "9a7abd174aa378ac",
+        "g": "da19493a72e261e4",
+        "style": {
+            "stroke": "#999999",
+            "stroke-opacity": "1",
+            "fill": "none",
+            "fill-opacity": "1",
+            "label": true,
+            "label-position": "nw",
+            "color": "#a4a4a4"
+        },
+        "nodes": [
+            "877ce8998558dd3e",
+            "89d28f0614a17533",
+            "771a7c51af16d9d2",
+            "8942df7688d00430",
+            "2007b57b5fbc3b67",
+            "52f7b50d421e755e",
+            "c2b56a1fed66e011",
+            "bd0e3a34b03a018c",
+            "7b6e25750f31d38e",
+            "ca2349075b9852f4",
+            "67c04ce2ec427c44",
+            "856140b1c65d1e59",
+            "8e0f179db2a7aeaf",
+            "1388f5bb5c6544e8",
+            "513ab81a4a05304d",
+            "630293eccd970d7b",
+            "0b57455ba5c1f059",
+            "86d16bf08985302e",
+            "0ba77379718cf59e",
+            "c44f449c6f3fa87f"
+        ],
+        "x": 34,
+        "y": 1579,
+        "w": 1332,
+        "h": 702
+    },
+    {
+        "id": "c64a9af9.c0d7d8",
+        "type": "modbus-client",
+        "name": "ESTACION_TRANSPORTE",
+        "clienttype": "tcp",
+        "bufferCommands": false,
+        "stateLogEnabled": true,
+        "queueLogEnabled": false,
+        "failureLogEnabled": false,
+        "tcpHost": "156.35.152.141",
+        "tcpPort": "502",
+        "tcpType": "DEFAULT",
+        "serialPort": "/dev/ttyUSB",
+        "serialType": "RTU-BUFFERD",
+        "serialBaudrate": "9600",
+        "serialDatabits": "8",
+        "serialStopbits": "1",
+        "serialParity": "none",
+        "serialConnectionDelay": "100",
+        "serialAsciiResponseStartDelimiter": "",
+        "unit_id": "1",
+        "commandDelay": "10",
+        "clientTimeout": "1000",
+        "reconnectOnTimeout": false,
+        "reconnectTimeout": "2000",
+        "parallelUnitIdsAllowed": false,
+        "showErrors": false,
+        "showWarnings": true,
+        "showLogs": true
+    },
+    {
+        "id": "777b47d23c5b696e",
+        "type": "modbus-client",
+        "name": "ESTACION_BASES",
+        "clienttype": "tcp",
+        "bufferCommands": true,
+        "stateLogEnabled": false,
+        "queueLogEnabled": false,
+        "failureLogEnabled": true,
+        "tcpHost": "192.168.0.4",
+        "tcpPort": 502,
+        "tcpType": "DEFAULT",
+        "serialPort": "/dev/ttyUSB",
+        "serialType": "RTU-BUFFERD",
+        "serialBaudrate": 9600,
+        "serialDatabits": 8,
+        "serialStopbits": 1,
+        "serialParity": "none",
+        "serialConnectionDelay": 100,
+        "serialAsciiResponseStartDelimiter": "0x3A",
+        "unit_id": 1,
+        "commandDelay": 1,
+        "clientTimeout": 1000,
+        "reconnectOnTimeout": true,
+        "reconnectTimeout": 2000,
+        "parallelUnitIdsAllowed": true,
+        "showErrors": false,
+        "showWarnings": true,
+        "showLogs": true
+    },
+    {
+        "id": "f02a0ae6f1f980bc",
+        "type": "modbus-client",
+        "name": "ESTACION_SPINNERS",
+        "clienttype": "tcp",
+        "bufferCommands": true,
+        "stateLogEnabled": false,
+        "queueLogEnabled": false,
+        "failureLogEnabled": true,
+        "tcpHost": "192.168.0.5",
+        "tcpPort": 502,
+        "tcpType": "DEFAULT",
+        "serialPort": "/dev/ttyUSB",
+        "serialType": "RTU-BUFFERD",
+        "serialBaudrate": 9600,
+        "serialDatabits": 8,
+        "serialStopbits": 1,
+        "serialParity": "none",
+        "serialConnectionDelay": 100,
+        "serialAsciiResponseStartDelimiter": "0x3A",
+        "unit_id": 1,
+        "commandDelay": 1,
+        "clientTimeout": 1000,
+        "reconnectOnTimeout": true,
+        "reconnectTimeout": 2000,
+        "parallelUnitIdsAllowed": true,
+        "showErrors": false,
+        "showWarnings": true,
+        "showLogs": true
+    },
+    {
+        "id": "15a51638e706cbb2",
+        "type": "modbus-read",
+        "z": "9a7abd174aa378ac",
+        "g": "8b4e396cbe38212b",
+        "name": "",
+        "topic": "",
+        "showStatusActivities": true,
+        "logIOActivities": false,
+        "showErrors": true,
+        "showWarnings": true,
+        "unitid": "0",
+        "dataType": "HoldingRegister",
+        "adr": "0",
+        "quantity": "14",
+        "rate": "3000",
+        "rateUnit": "ms",
+        "delayOnStart": false,
+        "startDelayTime": "10",
+        "server": "c64a9af9.c0d7d8",
+        "useIOFile": false,
+        "ioFile": "",
+        "useIOForPayload": false,
+        "emptyMsgOnFail": false,
+        "x": 270,
+        "y": 480,
+        "wires": [
+            [
+                "6ba8bf1d38230cd9"
+            ],
+            [
+                "d7c00fd5054629cb"
+            ]
+        ]
+    },
+    {
+        "id": "d7c00fd5054629cb",
+        "type": "modbus-response",
+        "z": "9a7abd174aa378ac",
+        "g": "8b4e396cbe38212b",
+        "name": "",
+        "registerShowMax": "20",
+        "x": 290,
+        "y": 540,
+        "wires": []
+    },
+    {
+        "id": "128bdc557abf241b",
+        "type": "comment",
+        "z": "9a7abd174aa378ac",
+        "g": "8b4e396cbe38212b",
+        "name": "Lectura holding registers",
+        "info": "Escribe y lee valores sobre un servidor local",
+        "x": 150,
+        "y": 420,
+        "wires": []
+    },
+    {
+        "id": "f59625559628351a",
+        "type": "catch",
+        "z": "9a7abd174aa378ac",
+        "g": "8b4e396cbe38212b",
+        "name": "",
+        "scope": [
+            "15a51638e706cbb2",
+            "7bb099acb408e60e",
+            "f325bbc3b7ba2a23"
+        ],
+        "uncaught": false,
+        "x": 260,
+        "y": 940,
+        "wires": [
+            [
+                "df9ce5c97faaa709"
+            ]
+        ]
+    },
+    {
+        "id": "df9ce5c97faaa709",
+        "type": "debug",
+        "z": "9a7abd174aa378ac",
+        "g": "8b4e396cbe38212b",
+        "name": "Error Modbus read",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 470,
+        "y": 940,
+        "wires": []
+    },
+    {
+        "id": "c1e3b4a787555388",
+        "type": "function",
+        "z": "9a7abd174aa378ac",
+        "g": "8b4e396cbe38212b",
+        "name": "Actualiza datos transporte",
+        "func": "let dataHorno = flow.get(\"ME_TRANSPORTE\")\n\nObject.entries(msg.payload).forEach(([key, value]) => {\n\ndataHorno[key].Value=value;\n\n})\n\n\nmsg.payload = flow.get(\"ME_TRANSPORTE\")\nreturn msg;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 970,
+        "y": 480,
+        "wires": [
+            [
+                "bf82438a060ee711",
+                "e21b317b570e0d74"
+            ]
+        ]
+    },
+    {
+        "id": "76e6a001229bba64",
+        "type": "comment",
+        "z": "9a7abd174aa378ac",
+        "g": "f78645822af657e1",
+        "name": "Objeto para el modelo de datos de los ME",
+        "info": "Escribe y lee valores sobre un servidor local",
+        "x": 220,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "fa628e1b586fdb15",
+        "type": "inject",
+        "z": "9a7abd174aa378ac",
+        "g": "f78645822af657e1",
+        "name": "Insta flow vars",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 160,
+        "y": 140,
+        "wires": [
+            [
+                "db775de054760d47",
+                "42fb9a640c2d2bcf",
+                "8d21c497211c80ae"
+            ]
+        ]
+    },
+    {
+        "id": "8d21c497211c80ae",
+        "type": "function",
+        "z": "9a7abd174aa378ac",
+        "g": "f78645822af657e1",
+        "name": "crear modelo datos transporte",
+        "func": "\n\n\n\n// Objeto con el modelo de los datos.\n\n// Este objeto recoge las variables que se comunican desde el ME.\n// Puede contener descripciones, características de los sensores/actuadores, posiciones en los registros MODBUS, información de uso de los sensores/actuadores\n\n// Podeis crear este obj directamente desde un Excel con la ayuda del chatGPT\n\n\nflow.set(\"ME_TRANSPORTE\", {\n    \"Evento\": {\n        \"Value\": 0,\n        \"type\": \"INT\",\n        \"Reg\": 0,\n        \"Pos\": 0,\n        \"Permisos\": \"W\",\n        \"Descripcion\": \"Evento enviado al modulo de transporte. None = 0, Start = 1, Done = 2, Abort = 3, Reset = 4\"\n    },\n    \"NumSRV\": {\n        \"Value\": 0,\n        \"type\": \"INT\",\n        \"Reg\": 1,\n        \"Pos\": 0,\n        \"Permisos\": \"W\",\n        \"Descripcion\": \"Numero de servicio pedido al transporte. None = 0, CogerBase = 1, PosarBase = 2, IrAPosicion = 3, IrAEstacion = 4, CogerSpinner = 5, RearmePosicionNeutra = 6, RearmeDejarPieza = 7\"\n    },\n    \"SP_Estacion\": {\n        \"Value\": 0,\n        \"type\": \"INT\",\n        \"Reg\": 2,\n        \"Pos\": 0,\n        \"Permisos\": \"W\",\n        \"Descripcion\": \"Setpoint de numero de estacion para el transporte\"\n    },\n    \"SP_Posicion\": {\n        \"Value\": 0,\n        \"type\": \"DWORD\",\n        \"Reg\": 3,\n        \"Pos\": 0,\n        \"Permisos\": \"W\",\n        \"Descripcion\": \"Setpoint de posicion absoluta para el transporte\"\n    },\n    \"Simulacion\": {\n        \"Value\": false,\n        \"type\": \"BOOL\",\n        \"Reg\": 5,\n        \"Pos\": 0,\n        \"Permisos\": \"W\",\n        \"Descripcion\": \"Poner a TRUE para activar simulacion\"\n    },\n    \"EstadoActual\": {\n        \"Value\": 0,\n        \"type\": \"INT\",\n        \"Reg\": 6,\n        \"Pos\": 0,\n        \"Permisos\": \"R\",\n        \"Descripcion\": \"Estado actual del modulo de transporte. None = 0, Running = 1, Complete = 2, Aborted = 3\"\n    },\n    \"ServicioActual\": {\n        \"Value\": 0,\n        \"type\": \"INT\",\n        \"Reg\": 7,\n        \"Pos\": 0,\n        \"Permisos\": \"R\",\n        \"Descripcion\": \"Numero de servicio actual del transporte. None = 0, CogerBase = 1, PosarBase = 2, IrAPosicion = 3, IrAEstacion = 4, CogerSpinner = 5, RearmePosicionNeutra = 6, RearmeDejarPieza = 7\"\n    },\n    \"B0\": {\n        \"Value\": false,\n        \"type\": \"BOOL\",\n        \"Reg\": 8,\n        \"Pos\": 0,\n        \"Permisos\": \"R\",\n        \"Descripcion\": \"Entrada sensor B0\"\n    },\n    \"B1\": {\n        \"Value\": false,\n        \"type\": \"BOOL\",\n        \"Reg\": 8,\n        \"Pos\": 1,\n        \"Permisos\": \"R\",\n        \"Descripcion\": \"Entrada sensor B1\"\n    },\n    \"C0\": {\n        \"Value\": false,\n        \"type\": \"BOOL\",\n        \"Reg\": 8,\n        \"Pos\": 2,\n        \"Permisos\": \"R\",\n        \"Descripcion\": \"Entrada sensor C0\"\n    },\n    \"C1\": {\n        \"Value\": false,\n        \"type\": \"BOOL\",\n        \"Reg\": 8,\n        \"Pos\": 3,\n        \"Permisos\": \"R\",\n        \"Descripcion\": \"Entrada sensor C1\"\n    },\n    \"BPlus\": {\n        \"Value\": false,\n        \"type\": \"BOOL\",\n        \"Reg\": 8,\n        \"Pos\": 4,\n        \"Permisos\": \"R\",\n        \"Descripcion\": \"Salida EV avance cilindro B\"\n    },\n    \"BMinus\": {\n        \"Value\": false,\n        \"type\": \"BOOL\",\n        \"Reg\": 8,\n        \"Pos\": 5,\n        \"Permisos\": \"R\",\n        \"Descripcion\": \"Salida EV retroceso cilindro B\"\n    },\n    \"CPlus\": {\n        \"Value\": false,\n        \"type\": \"BOOL\",\n        \"Reg\": 8,\n        \"Pos\": 6,\n        \"Permisos\": \"R\",\n        \"Descripcion\": \"Salida EV avance cilindro C\"\n    },\n    \"CMinus\": {\n        \"Value\": false,\n        \"type\": \"BOOL\",\n        \"Reg\": 8,\n        \"Pos\": 7,\n        \"Permisos\": \"R\",\n        \"Descripcion\": \"Salida EV retroceso cilindro C\"\n    },\n    \"Busy\": {\n        \"Value\": false,\n        \"type\": \"BOOL\",\n        \"Reg\": 8,\n        \"Pos\": 8,\n        \"Permisos\": \"R\",\n        \"Descripcion\": \"Entrada posicionador realizando movimiento\"\n    },\n    \"INP\": {\n        \"Value\": false,\n        \"type\": \"BOOL\",\n        \"Reg\": 8,\n        \"Pos\": 9,\n        \"Permisos\": \"R\",\n        \"Descripcion\": \"Entrada posicionador quieto\"\n    },\n    \"Hold\": {\n        \"Value\": false,\n        \"type\": \"BOOL\",\n        \"Reg\": 8,\n        \"Pos\": 10,\n        \"Permisos\": \"R\",\n        \"Descripcion\": \"Salida posicionador parar\"\n    },\n    \"PreparadoParaRecogerSpinner\": {\n        \"Value\": false,\n        \"type\": \"BOOL\",\n        \"Reg\": 8,\n        \"Pos\": 11,\n        \"Permisos\": \"R\",\n        \"Descripcion\": \"Salida para coordinacion con modulo de spinners por MODBUS\"\n    },\n    \"PosActual\": {\n        \"Value\": 0,\n        \"type\": \"DWORD\",\n        \"Reg\": 9,\n        \"Pos\": 0,\n        \"Permisos\": \"R\",\n        \"Descripcion\": \"Entrada posicionador posicion absoluta actual\"\n    },\n    \"PosObj\": {\n        \"Value\": 0,\n        \"type\": \"DWORD\",\n        \"Reg\": 11,\n        \"Pos\": 0,\n        \"Permisos\": \"R\",\n        \"Descripcion\": \"Salida posicionador posicion objetivo\"\n    },\n    \"ErrorSensoresBSimultaneos\": {\n        \"Value\": false,\n        \"type\": \"BOOL\",\n        \"Reg\": 13,\n        \"Pos\": 0,\n        \"Permisos\": \"R\",\n        \"Descripcion\": \"Alarma - B0 y B1 activos a la vez\"\n    },\n    \"ErrorSensoresCSimultaneos\": {\n        \"Value\": false,\n        \"type\": \"BOOL\",\n        \"Reg\": 13,\n        \"Pos\": 1,\n        \"Permisos\": \"R\",\n        \"Descripcion\": \"Alarma - C0 y C1 activos a la vez\"\n    },\n    \"ErrorB0NoActivoTransporte\": {\n        \"Value\": false,\n        \"type\": \"BOOL\",\n        \"Reg\": 13,\n        \"Pos\": 2,\n        \"Permisos\": \"R\",\n        \"Descripcion\": \"Alarma - Se hace BMinus pero B0 no se activa despues de un tiempo\"\n    },\n    \"ErrorB1NoActivoTransporte\": {\n        \"Value\": false,\n        \"type\": \"BOOL\",\n        \"Reg\": 13,\n        \"Pos\": 3,\n        \"Permisos\": \"R\",\n        \"Descripcion\": \"Alarma - Se hace BPlus pero B1 no se activa despues de un tiempo\"\n    },\n    \"ErrorC0NoActivoTransporte\": {\n        \"Value\": false,\n        \"type\": \"BOOL\",\n        \"Reg\": 13,\n        \"Pos\": 4,\n        \"Permisos\": \"R\",\n        \"Descripcion\": \"Alarma - Se hace CMinus pero C0 no se activa despues de un tiempo\"\n    },\n    \"ErrorC1NoActivoTransporte\": {\n        \"Value\": false,\n        \"type\": \"BOOL\",\n        \"Reg\": 13,\n        \"Pos\": 5,\n        \"Permisos\": \"R\",\n        \"Descripcion\": \"Alarma - Se hace CBPlus pero C1 no se activa despues de un tiempo\"\n    },\n    \"ErrorMoverConPinzaExtendida\": {\n        \"Value\": false,\n        \"type\": \"BOOL\",\n        \"Reg\": 13,\n        \"Pos\": 6,\n        \"Permisos\": \"R\",\n        \"Descripcion\": \"Alarma - Se intenta mover la pinza cuando esta extendida, o extenderla durante el movimiento\"\n    },\n    \"ErrorCogerBaseConPinzaOcupada\": {\n        \"Value\": false,\n        \"type\": \"BOOL\",\n        \"Reg\": 13,\n        \"Pos\": 7,\n        \"Permisos\": \"R\",\n        \"Descripcion\": \"Alarma - Se ha iniciado el servicio \\\"Coger Base\\\" pero C0 esta activo\"\n    },\n    \"ErrorDriverNoResponde\": {\n        \"Value\": false,\n        \"type\": \"BOOL\",\n        \"Reg\": 13,\n        \"Pos\": 8,\n        \"Permisos\": \"R\",\n        \"Descripcion\": \"Alarma - Se ha iniciado el servicio \\\"Ir a Posicion\\\" pero no se activa la variable Busy despues de un tiempo\"\n    },\n    \"ErrorCogerSpinnerSinBase\": {\n        \"Value\": false,\n        \"type\": \"BOOL\",\n        \"Reg\": 13,\n        \"Pos\": 9,\n        \"Permisos\": \"R\",\n        \"Descripcion\": \"Alarma - Se ha iniciado el servicio \\\"Coger Spinner\\\" pero C0 no esta activo\"\n    }\n});\n\n\nmsg.payload = flow.get(\"ME_TRANSPORTE\");\nreturn msg;\n\n\n",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 530,
+        "y": 140,
+        "wires": [
+            [
+                "ab2df84ba43fab4f"
+            ]
+        ]
+    },
+    {
+        "id": "6ba8bf1d38230cd9",
+        "type": "function",
+        "z": "9a7abd174aa378ac",
+        "g": "8b4e396cbe38212b",
+        "name": "Parseo dinámico",
+        "func": "let msg_={}\n msg_.specification =\n{\n    \"options\": {\n        \"resultType\": \"keyvalue\",\n        \"multipleResult\": false,\n        \"msgProperty\": \"payload\"\n    },\n    \"items\": []\n}\nmsg_.payload = msg.payload\n// Recorrer el modelo de datos\n// Si tiene permisos de lectura, leer\n\n// Indicar las especificaciones pertinentes dependiendo del tipo de variable.\n\nlet dataModel = flow.get(\"ME_TRANSPORTE\");\n\nObject.entries(dataModel).forEach(([key, value])=> {\n    \n    if (value.Permisos == \"R\" || value.Permisos == \"W\" ){\n            let spec = {}\n            spec.name = key;\n            spec.scale = 1;\n            spec.mask =\"\";\n            switch(value.type){\n\n                case \"BOOL\":\n                    spec.type=\"bool\"\n                    spec.offset= value.Reg*2;\n                    spec.length = 1;\n                    spec.offsetbit=value.Pos;\n                    break;\n                case \"INT\":\n                    spec.type = \"int16be\";\n                    spec.length = 1;\n                    spec.offset = value.Reg * 2;\n                    break;\n                case \"REAL\":\n                    spec.type = \"floatbe\";\n                    spec.length = 1;\n                    spec.offset = value.Reg * 2;\n                    break;\n                case \"DWORD\":\n                    spec.type = \"int32be\";\n                    spec.length = 1;\n                    spec.offset = value.Reg * 2;\n\n            }\n            msg_.specification.items.push(spec)\n\n        } });\n\n\nreturn msg_;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 490,
+        "y": 480,
+        "wires": [
+            [
+                "3793171351e731e6"
+            ]
+        ]
+    },
+    {
+        "id": "bf82438a060ee711",
+        "type": "debug",
+        "z": "9a7abd174aa378ac",
+        "g": "8b4e396cbe38212b",
+        "name": "debug parseo",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1180,
+        "y": 520,
+        "wires": []
+    },
+    {
+        "id": "3793171351e731e6",
+        "type": "buffer-parser",
+        "z": "9a7abd174aa378ac",
+        "g": "8b4e396cbe38212b",
+        "name": "PARSING MOD ",
+        "data": "payload",
+        "dataType": "msg",
+        "specification": "specification",
+        "specificationType": "msg",
+        "items": [
+            {
+                "type": "int16be",
+                "name": "bool_vars",
+                "offset": 0,
+                "length": 1,
+                "offsetbit": 0,
+                "scale": "1",
+                "mask": ""
+            },
+            {
+                "type": "floatbe",
+                "name": "TempHorno_deg",
+                "offset": 2,
+                "length": 1,
+                "offsetbit": 0,
+                "scale": "1",
+                "mask": ""
+            },
+            {
+                "type": "int16be",
+                "name": "SP_Temp",
+                "offset": 6,
+                "length": 1,
+                "offsetbit": 0,
+                "scale": "0.1",
+                "mask": ""
+            },
+            {
+                "type": "uint16be",
+                "name": "NSrv",
+                "offset": 8,
+                "length": 1,
+                "offsetbit": 0,
+                "scale": "1",
+                "mask": ""
+            }
+        ],
+        "swap1": "",
+        "swap2": "",
+        "swap3": "",
+        "swap1Type": "swap",
+        "swap2Type": "swap",
+        "swap3Type": "swap",
+        "msgProperty": "payload",
+        "msgPropertyType": "str",
+        "resultType": "keyvalue",
+        "resultTypeType": "return",
+        "multipleResult": false,
+        "fanOutMultipleResult": true,
+        "setTopic": true,
+        "outputs": 1,
+        "x": 720,
+        "y": 480,
+        "wires": [
+            [
+                "c1e3b4a787555388"
+            ]
+        ]
+    },
+    {
+        "id": "877ce8998558dd3e",
+        "type": "modbus-flex-write",
+        "z": "9a7abd174aa378ac",
+        "d": true,
+        "g": "122aef936750ad3e",
+        "name": "Escritura dinámica MODBUS",
+        "showStatusActivities": true,
+        "showErrors": true,
+        "showWarnings": true,
+        "server": "c64a9af9.c0d7d8",
+        "emptyMsgOnFail": false,
+        "keepMsgProperties": false,
+        "delayOnStart": false,
+        "startDelayTime": "",
+        "x": 980,
+        "y": 1720,
+        "wires": [
+            [],
+            [
+                "771a7c51af16d9d2"
+            ]
+        ]
+    },
+    {
+        "id": "89d28f0614a17533",
+        "type": "function",
+        "z": "9a7abd174aa378ac",
+        "d": true,
+        "g": "122aef936750ad3e",
+        "name": "Escritura dinámica transporte",
+        "func": "let varInfo = flow.get(\"ME_TRANSPORTE\")[msg.payload.name];\nlet cacheReg  = flow.get(\"REG_TRANSPORTE\");\nlet new_reg  = null;\nlet spec = { };\nspec.payload = {'unitid': 0}\nswitch (varInfo.type){\n    case \"INT\":\n        spec.payload.value = msg.payload.value;\n        spec.payload.fc = 6;\n        spec.payload.address = varInfo.Reg;\n        spec.payload.quantity = 1;\n    break;\n\n    case \"BOOL\":\n        //new_reg = cacheReg[varInfo.Reg];\n        \n        //spec.payload.value = (msg.payload.value == 1) ? (new_reg | (1 << varInfo.Pos)) : (new_reg & ~ (1 << varInfo.Pos));\n        spec.payload.value = msg.payload.value ? 1 : 0;\n        spec.payload.fc = 6;\n        spec.payload.address = varInfo.Reg;\n        spec.payload.quantity = 1;\n    break;\n\n    case \"DWORD\":\n        var mbbuffer = new Uint16Array(2);\n        var dataView = new DataView(mbbuffer.buffer);\n        dataView.setInt32(0, msg.payload.value, true);\n        var word1 = mbbuffer[1];\n        var word0 = mbbuffer[0];\n        spec.payload.value = [word1, word0];\n        spec.payload.fc = 16;\n        spec.payload.address = varInfo.Reg;\n        spec.payload.quantity = 2;\n    break;\n}\n\nreturn spec;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 600,
+        "y": 1720,
+        "wires": [
+            [
+                "877ce8998558dd3e"
+            ]
+        ]
+    },
+    {
+        "id": "771a7c51af16d9d2",
+        "type": "modbus-response",
+        "z": "9a7abd174aa378ac",
+        "d": true,
+        "g": "122aef936750ad3e",
+        "name": "",
+        "registerShowMax": "20",
+        "x": 1250,
+        "y": 1720,
+        "wires": []
+    },
+    {
+        "id": "83f7493d77f1cd9a",
+        "type": "comment",
+        "z": "9a7abd174aa378ac",
+        "d": true,
+        "g": "da19493a72e261e4",
+        "name": "Escritura manual de holding registers",
+        "info": "Escribe y lee valores sobre un servidor local",
+        "x": 190,
+        "y": 1540,
+        "wires": []
+    },
+    {
+        "id": "58902de666e091e6",
+        "type": "comment",
+        "z": "9a7abd174aa378ac",
+        "g": "8b4e396cbe38212b",
+        "name": "Nota funcion parseo",
+        "info": "Nota: Función modificada para \nleer tipo de datos dword\nEliminado factor de escala\n\nEliminado el \"+1\" en offset de bools.\n(causaba un error de fuera de rango\nal enviar un bool en la ultima direccion de\nmemoria)\n\nPor algún motivo la lectura de bools\nintercambia el primer y segundo byte de\nla palabra (0~7 con 8~15). Se ha solucionado\nenviandolos al revés desde el plc.",
+        "x": 490,
+        "y": 440,
+        "wires": []
+    },
+    {
+        "id": "7bb099acb408e60e",
+        "type": "modbus-read",
+        "z": "9a7abd174aa378ac",
+        "g": "8b4e396cbe38212b",
+        "name": "",
+        "topic": "",
+        "showStatusActivities": true,
+        "logIOActivities": false,
+        "showErrors": true,
+        "showWarnings": true,
+        "unitid": "0",
+        "dataType": "HoldingRegister",
+        "adr": "0",
+        "quantity": "6",
+        "rate": "3000",
+        "rateUnit": "ms",
+        "delayOnStart": false,
+        "startDelayTime": "10",
+        "server": "777b47d23c5b696e",
+        "useIOFile": false,
+        "ioFile": "",
+        "useIOForPayload": false,
+        "emptyMsgOnFail": false,
+        "x": 270,
+        "y": 620,
+        "wires": [
+            [
+                "37e57ba6b8334e83"
+            ],
+            [
+                "c32aa597852cf885"
+            ]
+        ]
+    },
+    {
+        "id": "37e57ba6b8334e83",
+        "type": "function",
+        "z": "9a7abd174aa378ac",
+        "g": "8b4e396cbe38212b",
+        "name": "Parseo dinámico",
+        "func": "let msg_={}\n msg_.specification =\n{\n    \"options\": {\n        \"resultType\": \"keyvalue\",\n        \"multipleResult\": false,\n        \"msgProperty\": \"payload\"\n    },\n    \"items\": []\n}\nmsg_.payload = msg.payload\n// Recorrer el modelo de datos\n// Si tiene permisos de lectura, leer\n\n// Indicar las especificaciones pertinentes dependiendo del tipo de variable.\n\nlet dataModel = flow.get(\"ME_BASES\");\n\nObject.entries(dataModel).forEach(([key, value])=> {\n    \n    if (value.Permisos == \"R\" || value.Permisos == \"W\" ){\n            let spec = {}\n            spec.name = key;\n            spec.scale = 1;\n            spec.mask =\"\";\n            switch(value.type){\n\n                case \"BOOL\":\n                    spec.type=\"bool\"\n                    spec.offset= value.Reg*2;\n                    spec.length = 1;\n                    spec.offsetbit=value.Pos;\n                    break;\n                case \"INT\":\n                    spec.type = \"int16be\";\n                    spec.length = 1;\n                    spec.offset = value.Reg * 2;\n                    break;\n                case \"REAL\":\n                    spec.type = \"floatbe\";\n                    spec.length = 1;\n                    spec.offset = value.Reg * 2;\n                    break;\n                case \"DWORD\":\n                    spec.type = \"int32be\";\n                    spec.length = 1;\n                    spec.offset = value.Reg * 2;\n\n            }\n            msg_.specification.items.push(spec)\n\n        } });\n\n\nreturn msg_;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 490,
+        "y": 620,
+        "wires": [
+            [
+                "d685727ff41aa890"
+            ]
+        ]
+    },
+    {
+        "id": "c32aa597852cf885",
+        "type": "modbus-response",
+        "z": "9a7abd174aa378ac",
+        "g": "8b4e396cbe38212b",
+        "name": "",
+        "registerShowMax": "20",
+        "x": 330,
+        "y": 700,
+        "wires": []
+    },
+    {
+        "id": "d685727ff41aa890",
+        "type": "buffer-parser",
+        "z": "9a7abd174aa378ac",
+        "g": "8b4e396cbe38212b",
+        "name": "PARSING MOD ",
+        "data": "payload",
+        "dataType": "msg",
+        "specification": "specification",
+        "specificationType": "msg",
+        "items": [
+            {
+                "type": "int16be",
+                "name": "bool_vars",
+                "offset": 0,
+                "length": 1,
+                "offsetbit": 0,
+                "scale": "1",
+                "mask": ""
+            },
+            {
+                "type": "floatbe",
+                "name": "TempHorno_deg",
+                "offset": 2,
+                "length": 1,
+                "offsetbit": 0,
+                "scale": "1",
+                "mask": ""
+            },
+            {
+                "type": "int16be",
+                "name": "SP_Temp",
+                "offset": 6,
+                "length": 1,
+                "offsetbit": 0,
+                "scale": "0.1",
+                "mask": ""
+            },
+            {
+                "type": "uint16be",
+                "name": "NSrv",
+                "offset": 8,
+                "length": 1,
+                "offsetbit": 0,
+                "scale": "1",
+                "mask": ""
+            }
+        ],
+        "swap1": "",
+        "swap2": "",
+        "swap3": "",
+        "swap1Type": "swap",
+        "swap2Type": "swap",
+        "swap3Type": "swap",
+        "msgProperty": "payload",
+        "msgPropertyType": "str",
+        "resultType": "keyvalue",
+        "resultTypeType": "return",
+        "multipleResult": false,
+        "fanOutMultipleResult": true,
+        "setTopic": true,
+        "outputs": 1,
+        "x": 720,
+        "y": 620,
+        "wires": [
+            [
+                "4a3506097748bce6"
+            ]
+        ]
+    },
+    {
+        "id": "4a3506097748bce6",
+        "type": "function",
+        "z": "9a7abd174aa378ac",
+        "g": "8b4e396cbe38212b",
+        "name": "Actualiza datos bases",
+        "func": "let dataHorno = flow.get(\"ME_BASES\")\n\nObject.entries(msg.payload).forEach(([key, value]) => {\n\ndataHorno[key].Value=value;\n\n})\n\n\nmsg.payload = flow.get(\"ME_BASES\")\nreturn msg;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 960,
+        "y": 620,
+        "wires": [
+            [
+                "f750c85ac64a8d64",
+                "2b69e0fadef62e5d"
+            ]
+        ]
+    },
+    {
+        "id": "f750c85ac64a8d64",
+        "type": "debug",
+        "z": "9a7abd174aa378ac",
+        "g": "8b4e396cbe38212b",
+        "name": "debug parseo",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1180,
+        "y": 660,
+        "wires": []
+    },
+    {
+        "id": "40173fc952769e9a",
+        "type": "comment",
+        "z": "9a7abd174aa378ac",
+        "g": "8b4e396cbe38212b",
+        "name": "Transporte",
+        "info": "",
+        "x": 100,
+        "y": 480,
+        "wires": []
+    },
+    {
+        "id": "a19370f3bb14af3b",
+        "type": "comment",
+        "z": "9a7abd174aa378ac",
+        "g": "8b4e396cbe38212b",
+        "name": "Bases",
+        "info": "",
+        "x": 90,
+        "y": 620,
+        "wires": []
+    },
+    {
+        "id": "db775de054760d47",
+        "type": "function",
+        "z": "9a7abd174aa378ac",
+        "g": "f78645822af657e1",
+        "name": "crear modelo datos bases",
+        "func": "\n\n\n\n// Objeto con el modelo de los datos.\n\n// Este objeto recoge las variables que se comunican desde el ME.\n// Puede contener descripciones, características de los sensores/actuadores, posiciones en los registros MODBUS, información de uso de los sensores/actuadores\n\n// Podeis crear este obj directamente desde un Excel con la ayuda del chatGPT\n\n\nflow.set(\"ME_BASES\", {\n   \"Evento\": {\n      \"Value\": 0,\n      \"type\": \"INT\",\n      \"Reg\": 0,\n      \"Pos\": 0,\n      \"Permisos\": \"W\",\n      \"Descripcion\": \"Evento enviado al modulo de bases. None = 0, Start = 1, Done = 2, Abort = 3, Reset = 4\"\n   },\n   \"NumSRV\": {\n      \"Value\": 0,\n      \"type\": \"INT\",\n      \"Reg\": 1,\n      \"Pos\": 0,\n      \"Permisos\": \"W\",\n      \"Descripcion\": \"Numero de servicio. servicioBases_none=0, servicioBases_extenderBase = 1, servicioBases_rearme = 2\"\n   },\n   \"Simulacion\": {\n      \"Value\": false,\n      \"type\": \"BOOL\",\n      \"Reg\": 2,\n      \"Pos\": 0,\n      \"Permisos\": \"W\",\n      \"Descripcion\": \"Poner a TRUE para activar simulacion\"\n   },\n   \"EstadoActual\": {\n      \"Value\": 0,\n      \"type\": \"INT\",\n      \"Reg\": 3,\n      \"Pos\": 0,\n      \"Permisos\": \"R\",\n      \"Descripcion\": \"Estados. Estado_idle=0, estado_running=1, estado_complete=2, estado_aborted=3\"\n   },\n   \"ServicioActual\": {\n      \"Value\": 0,\n      \"type\": \"INT\",\n      \"Reg\": 4,\n      \"Pos\": 0,\n      \"Permisos\": \"R\",\n      \"Descripcion\": \"Numero de servicio. servicioBases_none=0, servicioBases_extenderBase = 1, servicioBases_rearme = 2\"\n   },\n   \"A0\": {\n      \"Value\": false,\n      \"type\": \"BOOL\",\n      \"Reg\": 5,\n      \"Pos\": 0,\n      \"Permisos\": \"R\",\n      \"Descripcion\": \"Detector cilindro en retroceso\"\n   },\n   \"A1\": {\n      \"Value\": false,\n      \"type\": \"BOOL\",\n      \"Reg\": 5,\n      \"Pos\": 1,\n      \"Permisos\": \"R\",\n      \"Descripcion\": \"Detector cilindro en avance\"\n   },\n   \"Empty\": {\n      \"Value\": false,\n      \"type\": \"BOOL\",\n      \"Reg\": 5,\n      \"Pos\": 2,\n      \"Permisos\": \"R\",\n      \"Descripcion\": \"Detector de bases existentes (1 hay bases, 0 no hay bases)\"\n   },\n   \"Base\": {\n      \"Value\": false,\n      \"type\": \"BOOL\",\n      \"Reg\": 5,\n      \"Pos\": 3,\n      \"Permisos\": \"R\",\n      \"Descripcion\": \"Detector de bases a recoger\"\n   },\n   \"Aminus\": {\n      \"Value\": false,\n      \"type\": \"BOOL\",\n      \"Reg\": 5,\n      \"Pos\": 4,\n      \"Permisos\": \"R\",\n      \"Descripcion\": \"Cilindro A Retroceso\"\n   },\n   \"Alarmas_dos_detect\": {\n      \"Value\": false,\n      \"type\": \"BOOL\",\n      \"Reg\": 5,\n      \"Pos\": 5,\n      \"Permisos\": \"R\",\n      \"Descripcion\": \"Alarma si se activan A0 y A1\"\n   },\n   \"Alarma_base\": {\n      \"Value\": false,\n      \"type\": \"BOOL\",\n      \"Reg\": 5,\n      \"Pos\": 6,\n      \"Permisos\": \"R\",\n      \"Descripcion\": \"Alarma si no se activa detector de bases\"\n   },\n   \"Alarma_retroceso\": {\n      \"Value\": false,\n      \"type\": \"BOOL\",\n      \"Reg\": 5,\n      \"Pos\": 7,\n      \"Permisos\": \"R\",\n      \"Descripcion\": \"Alarma si tarda en retroceder\"\n   },\n   \"Alarma_avance\": {\n      \"Value\": false,\n      \"type\": \"BOOL\",\n      \"Reg\": 5,\n      \"Pos\": 8,\n      \"Permisos\": \"R\",\n      \"Descripcion\": \"Alarma si tarda en avanzar\"\n   }\n});\n\nmsg.payload = flow.get(\"ME_BASES\");\nreturn msg;\n\n\n",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 510,
+        "y": 180,
+        "wires": [
+            [
+                "f381da1f2e9a3acd"
+            ]
+        ]
+    },
+    {
+        "id": "42fb9a640c2d2bcf",
+        "type": "function",
+        "z": "9a7abd174aa378ac",
+        "g": "f78645822af657e1",
+        "name": "crear modelo datos spinners",
+        "func": "\n\n\n\n// Objeto con el modelo de los datos.\n\n// Este objeto recoge las variables que se comunican desde el ME.\n// Puede contener descripciones, características de los sensores/actuadores, posiciones en los registros MODBUS, información de uso de los sensores/actuadores\n\n// Podeis crear este obj directamente desde un Excel con la ayuda del chatGPT\n\n\nflow.set(\"ME_SPINNERS\", {\n   \"Evento\": {\n      \"Value\": 0,\n      \"type\": \"INT\",\n      \"Reg\": 0,\n      \"Pos\": 0,\n      \"Permisos\": \"W\",\n      \"Descripcion\": \"Evento enviado al modulo de bases. None = 0, Start = 1, Done = 2, Abort = 3, Reset = 4\"\n   },\n   \"NumSRV\": {\n      \"Value\": 0,\n      \"type\": \"INT\",\n      \"Reg\": 1,\n      \"Pos\": 0,\n      \"Permisos\": \"W\",\n      \"Descripcion\": \"Numero de Servicio. servicioSpinners_none=0, servicioSpinners_dispensarSpinner=1, servicioSpinners_rearme=2\"\n   },\n   \"Simulacion\": {\n      \"Value\": false,\n      \"type\": \"BOOL\",\n      \"Reg\": 2,\n      \"Pos\": 0,\n      \"Permisos\": \"W\",\n      \"Descripcion\": \"Poner a TRUE para activar simulacion\"\n   },\n   \"EstadoActual\": {\n      \"Value\": 0,\n      \"type\": \"INT\",\n      \"Reg\": 3,\n      \"Pos\": 0,\n      \"Permisos\": \"R\",\n      \"Descripcion\": \"Estados. Estado_idle=0, estado_running=1, estado_complete=2, estado_aborted=3\"\n   },\n   \"ServicioActual\": {\n      \"Value\": 0,\n      \"type\": \"INT\",\n      \"Reg\": 4,\n      \"Pos\": 0,\n      \"Permisos\": \"R\",\n      \"Descripcion\": \"Numero de Servicio. servicioSpinners_none=0, servicioSpinners_dispensarSpinner=1, servicioSpinners_rearme=2\"\n   },\n   \"A0\": {\n      \"Value\": false,\n      \"type\": \"BOOL\",\n      \"Reg\": 5,\n      \"Pos\": 0,\n      \"Permisos\": \"R\",\n      \"Descripcion\": \"Detector cilindro en retroceso\"\n   },\n   \"A1\": {\n      \"Value\": false,\n      \"type\": \"BOOL\",\n      \"Reg\": 5,\n      \"Pos\": 1,\n      \"Permisos\": \"R\",\n      \"Descripcion\": \"Detector cilindro en avance\"\n   },\n   \"Base\": {\n      \"Value\": false,\n      \"type\": \"BOOL\",\n      \"Reg\": 5,\n      \"Pos\": 2,\n      \"Permisos\": \"R\",\n      \"Descripcion\": \"Detector de bases\"\n   },\n   \"TransportePreparadoParaRecogerSpinner\": {\n      \"Value\": false,\n      \"type\": \"BOOL\",\n      \"Reg\": 5,\n      \"Pos\": 3,\n      \"Permisos\": \"R\",\n      \"Descripcion\": \"Si el modulo de transporte tiene su cilindro en posicion neutra, para que el de spinners pueda empujarlo para extraer un spinner.\"\n   },\n   \"Aminus\": {\n      \"Value\": false,\n      \"type\": \"BOOL\",\n      \"Reg\": 5,\n      \"Pos\": 4,\n      \"Permisos\": \"R\",\n      \"Descripcion\": \"Cilindro A Retroceso\"\n   },\n   \"Aplus\": {\n      \"Value\": false,\n      \"type\": \"BOOL\",\n      \"Reg\": 5,\n      \"Pos\": 5,\n      \"Permisos\": \"R\",\n      \"Descripcion\": \"Cilndro A Avance\"\n   },\n   \"SpinnersPreparadoParaDispensar\": {\n      \"Value\": false,\n      \"type\": \"BOOL\",\n      \"Reg\": 5,\n      \"Pos\": 6,\n      \"Permisos\": \"R\",\n      \"Descripcion\": \"Si el modulo de spinners tiene su cilindro en posicion neutra, para poder que el de transporte lo empuje e introduzca una base vacia.\"\n   },\n   \"SpinnersAcabadoDeExpulsarBase\": {\n      \"Value\": false,\n      \"type\": \"BOOL\",\n      \"Reg\": 5,\n      \"Pos\": 7,\n      \"Permisos\": \"R\",\n      \"Descripcion\": \"Si el modulo de spinners ha acabado de expulsar la base tras dispensar un spinner.\"\n   },\n   \"ErrorSensoresASimultaneos\": {\n      \"Value\": false,\n      \"type\": \"BOOL\",\n      \"Reg\": 5,\n      \"Pos\": 8,\n      \"Permisos\": \"R\",\n      \"Descripcion\": \"A0 y A1 activos a la vez\"\n   },\n   \"ErrorA0NoActivo\": {\n      \"Value\": false,\n      \"type\": \"BOOL\",\n      \"Reg\": 5,\n      \"Pos\": 9,\n      \"Permisos\": \"R\",\n      \"Descripcion\": \"Se hace AMinus pero A0 no se activa despues de un tiempo\"\n   },\n   \"ErrorA1NoActivo\": {\n   \"Value\": false,\n   \"type\": \"BOOL\",\n   \"Reg\": 5,\n   \"Pos\": 10,\n   \"Permisos\": \"R\",\n   \"Descripcion\": \"Se hace APlus pero A0 no se activa despues de un tiempo\"\n   }\n});\n\nmsg.payload = flow.get(\"ME_SPINNERS\");\nreturn msg;\n\n\n",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 520,
+        "y": 220,
+        "wires": [
+            [
+                "4918d366603a4523"
+            ]
+        ]
+    },
+    {
+        "id": "f325bbc3b7ba2a23",
+        "type": "modbus-read",
+        "z": "9a7abd174aa378ac",
+        "g": "8b4e396cbe38212b",
+        "name": "",
+        "topic": "",
+        "showStatusActivities": true,
+        "logIOActivities": false,
+        "showErrors": true,
+        "showWarnings": true,
+        "unitid": "0",
+        "dataType": "HoldingRegister",
+        "adr": "0",
+        "quantity": "6",
+        "rate": "3000",
+        "rateUnit": "ms",
+        "delayOnStart": false,
+        "startDelayTime": "10",
+        "server": "f02a0ae6f1f980bc",
+        "useIOFile": false,
+        "ioFile": "",
+        "useIOForPayload": false,
+        "emptyMsgOnFail": false,
+        "x": 270,
+        "y": 760,
+        "wires": [
+            [
+                "f1eb2fd3f8a66dcc"
+            ],
+            [
+                "69747c1ebd0c3065"
+            ]
+        ]
+    },
+    {
+        "id": "f1eb2fd3f8a66dcc",
+        "type": "function",
+        "z": "9a7abd174aa378ac",
+        "g": "8b4e396cbe38212b",
+        "name": "Parseo dinámico",
+        "func": "let msg_={}\n msg_.specification =\n{\n    \"options\": {\n        \"resultType\": \"keyvalue\",\n        \"multipleResult\": false,\n        \"msgProperty\": \"payload\"\n    },\n    \"items\": []\n}\nmsg_.payload = msg.payload\n// Recorrer el modelo de datos\n// Si tiene permisos de lectura, leer\n\n// Indicar las especificaciones pertinentes dependiendo del tipo de variable.\n\nlet dataModel = flow.get(\"ME_SPINNERS\");\n\nObject.entries(dataModel).forEach(([key, value])=> {\n    \n    if (value.Permisos == \"R\" || value.Permisos == \"W\" ){\n            let spec = {}\n            spec.name = key;\n            spec.scale = 1;\n            spec.mask =\"\";\n            switch(value.type){\n\n                case \"BOOL\":\n                    spec.type=\"bool\"\n                    spec.offset= value.Reg*2;\n                    spec.length = 1;\n                    spec.offsetbit=value.Pos;\n                    break;\n                case \"INT\":\n                    spec.type = \"int16be\";\n                    spec.length = 1;\n                    spec.offset = value.Reg * 2;\n                    break;\n                case \"REAL\":\n                    spec.type = \"floatbe\";\n                    spec.length = 1;\n                    spec.offset = value.Reg * 2;\n                    break;\n                case \"DWORD\":\n                    spec.type = \"int32be\";\n                    spec.length = 1;\n                    spec.offset = value.Reg * 2;\n\n            }\n            msg_.specification.items.push(spec)\n\n        } });\n\n\nreturn msg_;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 490,
+        "y": 760,
+        "wires": [
+            [
+                "1ab17f82632f2b28"
+            ]
+        ]
+    },
+    {
+        "id": "69747c1ebd0c3065",
+        "type": "modbus-response",
+        "z": "9a7abd174aa378ac",
+        "g": "8b4e396cbe38212b",
+        "name": "",
+        "registerShowMax": "20",
+        "x": 330,
+        "y": 840,
+        "wires": []
+    },
+    {
+        "id": "1ab17f82632f2b28",
+        "type": "buffer-parser",
+        "z": "9a7abd174aa378ac",
+        "g": "8b4e396cbe38212b",
+        "name": "PARSING MOD ",
+        "data": "payload",
+        "dataType": "msg",
+        "specification": "specification",
+        "specificationType": "msg",
+        "items": [
+            {
+                "type": "int16be",
+                "name": "bool_vars",
+                "offset": 0,
+                "length": 1,
+                "offsetbit": 0,
+                "scale": "1",
+                "mask": ""
+            },
+            {
+                "type": "floatbe",
+                "name": "TempHorno_deg",
+                "offset": 2,
+                "length": 1,
+                "offsetbit": 0,
+                "scale": "1",
+                "mask": ""
+            },
+            {
+                "type": "int16be",
+                "name": "SP_Temp",
+                "offset": 6,
+                "length": 1,
+                "offsetbit": 0,
+                "scale": "0.1",
+                "mask": ""
+            },
+            {
+                "type": "uint16be",
+                "name": "NSrv",
+                "offset": 8,
+                "length": 1,
+                "offsetbit": 0,
+                "scale": "1",
+                "mask": ""
+            }
+        ],
+        "swap1": "",
+        "swap2": "",
+        "swap3": "",
+        "swap1Type": "swap",
+        "swap2Type": "swap",
+        "swap3Type": "swap",
+        "msgProperty": "payload",
+        "msgPropertyType": "str",
+        "resultType": "keyvalue",
+        "resultTypeType": "return",
+        "multipleResult": false,
+        "fanOutMultipleResult": true,
+        "setTopic": true,
+        "outputs": 1,
+        "x": 720,
+        "y": 760,
+        "wires": [
+            [
+                "fa3e73c256bf1ba2"
+            ]
+        ]
+    },
+    {
+        "id": "fa3e73c256bf1ba2",
+        "type": "function",
+        "z": "9a7abd174aa378ac",
+        "g": "8b4e396cbe38212b",
+        "name": "Actualiza datos spinners",
+        "func": "let dataHorno = flow.get(\"ME_SPINNERS\")\n\nObject.entries(msg.payload).forEach(([key, value]) => {\n\ndataHorno[key].Value=value;\n\n})\n\n\nmsg.payload = flow.get(\"ME_SPINNERS\")\nreturn msg;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 970,
+        "y": 760,
+        "wires": [
+            [
+                "fe13130b140f10bd",
+                "e54ce91ffca93077"
+            ]
+        ]
+    },
+    {
+        "id": "fe13130b140f10bd",
+        "type": "debug",
+        "z": "9a7abd174aa378ac",
+        "g": "8b4e396cbe38212b",
+        "name": "debug parseo",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1180,
+        "y": 800,
+        "wires": []
+    },
+    {
+        "id": "1611579712d8b13a",
+        "type": "comment",
+        "z": "9a7abd174aa378ac",
+        "g": "8b4e396cbe38212b",
+        "name": "Spinners",
+        "info": "",
+        "x": 100,
+        "y": 760,
+        "wires": []
+    },
+    {
+        "id": "8942df7688d00430",
+        "type": "comment",
+        "z": "9a7abd174aa378ac",
+        "d": true,
+        "g": "122aef936750ad3e",
+        "name": "Nota función escritura",
+        "info": "Eliminado factor de escala de int\n\nCambiado escritura de bools\nEn nuestro caso solo es necesario escribir\nun unico bool en un registro - se cambia \npara hacer esto porque el código anterior\ndaba errores.",
+        "x": 580,
+        "y": 1680,
+        "wires": []
+    },
+    {
+        "id": "2007b57b5fbc3b67",
+        "type": "comment",
+        "z": "9a7abd174aa378ac",
+        "d": true,
+        "g": "122aef936750ad3e",
+        "name": "Transporte",
+        "info": "",
+        "x": 140,
+        "y": 1620,
+        "wires": []
+    },
+    {
+        "id": "60627b8cbc3feab3",
+        "type": "comment",
+        "z": "9a7abd174aa378ac",
+        "d": true,
+        "g": "0608ba22107525df",
+        "name": "Bases",
+        "info": "",
+        "x": 130,
+        "y": 2360,
+        "wires": []
+    },
+    {
+        "id": "29a006c20f7ed04f",
+        "type": "function",
+        "z": "9a7abd174aa378ac",
+        "d": true,
+        "g": "0608ba22107525df",
+        "name": "Escritura dinámica bases",
+        "func": "let varInfo = flow.get(\"ME_BASES\")[msg.payload.name];\nlet cacheReg  = flow.get(\"REG_BASES\");\nlet new_reg  = null;\nlet spec = { };\nspec.payload = {'unitid': 0}\nswitch (varInfo.type){\n    case \"INT\":\n        spec.payload.value = msg.payload.value;\n        spec.payload.fc = 6;\n        spec.payload.address = varInfo.Reg;\n        spec.payload.quantity = 1;\n    break;\n\n    case \"BOOL\":\n        //new_reg = cacheReg[varInfo.Reg];\n        \n        //spec.payload.value = (msg.payload.value == 1) ? (new_reg | (1 << varInfo.Pos)) : (new_reg & ~ (1 << varInfo.Pos));\n        spec.payload.value = msg.payload.value ? 1 : 0;\n        spec.payload.fc = 6;\n        spec.payload.address = varInfo.Reg;\n        spec.payload.quantity = 1;\n    break;\n\n    case \"DWORD\":\n        var mbbuffer = new Uint16Array(2);\n        var dataView = new DataView(mbbuffer.buffer);\n        dataView.setInt32(0, msg.payload.value, true);\n        var word1 = mbbuffer[1];\n        var word0 = mbbuffer[0];\n        spec.payload.value = [word1, word0];\n        spec.payload.fc = 16;\n        spec.payload.address = varInfo.Reg;\n        spec.payload.quantity = 2;\n    break;\n}\n\nreturn spec;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 570,
+        "y": 2420,
+        "wires": [
+            [
+                "98193defde69d4ba"
+            ]
+        ]
+    },
+    {
+        "id": "98193defde69d4ba",
+        "type": "modbus-flex-write",
+        "z": "9a7abd174aa378ac",
+        "d": true,
+        "g": "0608ba22107525df",
+        "name": "Escritura dinámica MODBUS",
+        "showStatusActivities": true,
+        "showErrors": true,
+        "showWarnings": true,
+        "server": "777b47d23c5b696e",
+        "emptyMsgOnFail": false,
+        "keepMsgProperties": false,
+        "delayOnStart": false,
+        "startDelayTime": "",
+        "x": 940,
+        "y": 2420,
+        "wires": [
+            [],
+            [
+                "ef8b4cb322c7b806"
+            ]
+        ]
+    },
+    {
+        "id": "ef8b4cb322c7b806",
+        "type": "modbus-response",
+        "z": "9a7abd174aa378ac",
+        "d": true,
+        "g": "0608ba22107525df",
+        "name": "",
+        "registerShowMax": "20",
+        "x": 1210,
+        "y": 2420,
+        "wires": []
+    },
+    {
+        "id": "96a227bab7156243",
+        "type": "inject",
+        "z": "9a7abd174aa378ac",
+        "d": true,
+        "g": "0608ba22107525df",
+        "name": "EVENTO ABORT",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{\"name\":\"Evento\",\"value\":3}",
+        "payloadType": "json",
+        "x": 160,
+        "y": 2500,
+        "wires": [
+            [
+                "29a006c20f7ed04f"
+            ]
+        ]
+    },
+    {
+        "id": "60b74ea7102c9cec",
+        "type": "inject",
+        "z": "9a7abd174aa378ac",
+        "d": true,
+        "g": "0608ba22107525df",
+        "name": "EVENTO RESET",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{\"name\":\"Evento\",\"value\":4}",
+        "payloadType": "json",
+        "x": 160,
+        "y": 2540,
+        "wires": [
+            [
+                "29a006c20f7ed04f"
+            ]
+        ]
+    },
+    {
+        "id": "e69425aea6490112",
+        "type": "inject",
+        "z": "9a7abd174aa378ac",
+        "d": true,
+        "g": "0608ba22107525df",
+        "name": "EVENTO START",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{\"name\":\"Evento\",\"value\":1}",
+        "payloadType": "json",
+        "x": 160,
+        "y": 2460,
+        "wires": [
+            [
+                "29a006c20f7ed04f"
+            ]
+        ]
+    },
+    {
+        "id": "17d9d23c824eb807",
+        "type": "inject",
+        "z": "9a7abd174aa378ac",
+        "d": true,
+        "g": "0608ba22107525df",
+        "name": "EVENTO NONE",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{\"name\":\"Evento\",\"value\":0}",
+        "payloadType": "json",
+        "x": 160,
+        "y": 2420,
+        "wires": [
+            [
+                "29a006c20f7ed04f"
+            ]
+        ]
+    },
+    {
+        "id": "e0af99fde40fd56a",
+        "type": "inject",
+        "z": "9a7abd174aa378ac",
+        "d": true,
+        "g": "0608ba22107525df",
+        "name": "SERVICIO DISPENSAR BASE",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{\"name\":\"NumSRV\",\"value\":1}",
+        "payloadType": "json",
+        "x": 210,
+        "y": 2580,
+        "wires": [
+            [
+                "29a006c20f7ed04f"
+            ]
+        ]
+    },
+    {
+        "id": "7b21586f51984348",
+        "type": "comment",
+        "z": "9a7abd174aa378ac",
+        "d": true,
+        "g": "e99a74bba11d3843",
+        "name": "Spinners",
+        "info": "",
+        "x": 120,
+        "y": 2820,
+        "wires": []
+    },
+    {
+        "id": "db08450ecd283bf5",
+        "type": "inject",
+        "z": "9a7abd174aa378ac",
+        "d": true,
+        "g": "0608ba22107525df",
+        "name": "SERVICIO REARME BASE",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{\"name\":\"NumSRV\",\"value\":2}",
+        "payloadType": "json",
+        "x": 200,
+        "y": 2620,
+        "wires": [
+            [
+                "29a006c20f7ed04f"
+            ]
+        ]
+    },
+    {
+        "id": "8120c79126c373b6",
+        "type": "function",
+        "z": "9a7abd174aa378ac",
+        "d": true,
+        "g": "e99a74bba11d3843",
+        "name": "Escritura dinámica spinners",
+        "func": "let varInfo = flow.get(\"ME_SPINNERS\")[msg.payload.name];\nlet cacheReg  = flow.get(\"REG_SPINNERS\");\nlet new_reg  = null;\nlet spec = { };\nspec.payload = {'unitid': 0}\nswitch (varInfo.type){\n    case \"INT\":\n        spec.payload.value = msg.payload.value;\n        spec.payload.fc = 6;\n        spec.payload.address = varInfo.Reg;\n        spec.payload.quantity = 1;\n    break;\n\n    case \"BOOL\":\n        //new_reg = cacheReg[varInfo.Reg];\n        \n        //spec.payload.value = (msg.payload.value == 1) ? (new_reg | (1 << varInfo.Pos)) : (new_reg & ~ (1 << varInfo.Pos));\n        spec.payload.value = msg.payload.value ? 1 : 0;\n        spec.payload.fc = 6;\n        spec.payload.address = varInfo.Reg;\n        spec.payload.quantity = 1;\n    break;\n\n    case \"DWORD\":\n        var mbbuffer = new Uint16Array(2);\n        var dataView = new DataView(mbbuffer.buffer);\n        dataView.setInt32(0, msg.payload.value, true);\n        var word1 = mbbuffer[1];\n        var word0 = mbbuffer[0];\n        spec.payload.value = [word1, word0];\n        spec.payload.fc = 16;\n        spec.payload.address = varInfo.Reg;\n        spec.payload.quantity = 2;\n    break;\n}\n\nreturn spec;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 580,
+        "y": 2880,
+        "wires": [
+            [
+                "4d790662a18a3553"
+            ]
+        ]
+    },
+    {
+        "id": "4d790662a18a3553",
+        "type": "modbus-flex-write",
+        "z": "9a7abd174aa378ac",
+        "d": true,
+        "g": "e99a74bba11d3843",
+        "name": "Escritura dinámica MODBUS",
+        "showStatusActivities": true,
+        "showErrors": true,
+        "showWarnings": true,
+        "server": "f02a0ae6f1f980bc",
+        "emptyMsgOnFail": false,
+        "keepMsgProperties": false,
+        "delayOnStart": false,
+        "startDelayTime": "",
+        "x": 940,
+        "y": 2880,
+        "wires": [
+            [],
+            [
+                "d186aadd2e6be5bf"
+            ]
+        ]
+    },
+    {
+        "id": "d186aadd2e6be5bf",
+        "type": "modbus-response",
+        "z": "9a7abd174aa378ac",
+        "d": true,
+        "g": "e99a74bba11d3843",
+        "name": "",
+        "registerShowMax": "20",
+        "x": 1210,
+        "y": 2880,
+        "wires": []
+    },
+    {
+        "id": "da8b83e44c16decf",
+        "type": "inject",
+        "z": "9a7abd174aa378ac",
+        "d": true,
+        "g": "e99a74bba11d3843",
+        "name": "EVENTO ABORT",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{\"name\":\"Evento\",\"value\":3}",
+        "payloadType": "json",
+        "x": 160,
+        "y": 2960,
+        "wires": [
+            [
+                "8120c79126c373b6"
+            ]
+        ]
+    },
+    {
+        "id": "3fdeb2e88c74f04e",
+        "type": "inject",
+        "z": "9a7abd174aa378ac",
+        "d": true,
+        "g": "e99a74bba11d3843",
+        "name": "EVENTO RESET",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{\"name\":\"Evento\",\"value\":4}",
+        "payloadType": "json",
+        "x": 160,
+        "y": 3000,
+        "wires": [
+            [
+                "8120c79126c373b6"
+            ]
+        ]
+    },
+    {
+        "id": "301c3cda566243cd",
+        "type": "inject",
+        "z": "9a7abd174aa378ac",
+        "d": true,
+        "g": "e99a74bba11d3843",
+        "name": "EVENTO START",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{\"name\":\"Evento\",\"value\":1}",
+        "payloadType": "json",
+        "x": 160,
+        "y": 2920,
+        "wires": [
+            [
+                "8120c79126c373b6"
+            ]
+        ]
+    },
+    {
+        "id": "8cb3839a01a76d10",
+        "type": "inject",
+        "z": "9a7abd174aa378ac",
+        "d": true,
+        "g": "e99a74bba11d3843",
+        "name": "EVENTO NONE",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{\"name\":\"Evento\",\"value\":0}",
+        "payloadType": "json",
+        "x": 160,
+        "y": 2880,
+        "wires": [
+            [
+                "8120c79126c373b6"
+            ]
+        ]
+    },
+    {
+        "id": "cc7cc41260098297",
+        "type": "inject",
+        "z": "9a7abd174aa378ac",
+        "d": true,
+        "g": "e99a74bba11d3843",
+        "name": "SERVICIO DISPENSAR SPINNER",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{\"name\":\"NumSRV\",\"value\":1}",
+        "payloadType": "json",
+        "x": 220,
+        "y": 3040,
+        "wires": [
+            [
+                "8120c79126c373b6"
+            ]
+        ]
+    },
+    {
+        "id": "9c37352445c27b8d",
+        "type": "inject",
+        "z": "9a7abd174aa378ac",
+        "d": true,
+        "g": "e99a74bba11d3843",
+        "name": "SERVICIO REARME SPINNER",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{\"name\":\"NumSRV\",\"value\":2}",
+        "payloadType": "json",
+        "x": 210,
+        "y": 3080,
+        "wires": [
+            [
+                "8120c79126c373b6"
+            ]
+        ]
+    },
+    {
+        "id": "52f7b50d421e755e",
+        "type": "inject",
+        "z": "9a7abd174aa378ac",
+        "d": true,
+        "g": "122aef936750ad3e",
+        "name": "EVENTO ABORT",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{\"name\":\"Evento\",\"value\":3}",
+        "payloadType": "json",
+        "x": 160,
+        "y": 1760,
+        "wires": [
+            [
+                "89d28f0614a17533"
+            ]
+        ]
+    },
+    {
+        "id": "c2b56a1fed66e011",
+        "type": "inject",
+        "z": "9a7abd174aa378ac",
+        "d": true,
+        "g": "122aef936750ad3e",
+        "name": "EVENTO RESET",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{\"name\":\"Evento\",\"value\":4}",
+        "payloadType": "json",
+        "x": 160,
+        "y": 1800,
+        "wires": [
+            [
+                "89d28f0614a17533"
+            ]
+        ]
+    },
+    {
+        "id": "bd0e3a34b03a018c",
+        "type": "inject",
+        "z": "9a7abd174aa378ac",
+        "d": true,
+        "g": "122aef936750ad3e",
+        "name": "EVENTO START",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{\"name\":\"Evento\",\"value\":1}",
+        "payloadType": "json",
+        "x": 160,
+        "y": 1720,
+        "wires": [
+            [
+                "89d28f0614a17533"
+            ]
+        ]
+    },
+    {
+        "id": "7b6e25750f31d38e",
+        "type": "inject",
+        "z": "9a7abd174aa378ac",
+        "d": true,
+        "g": "122aef936750ad3e",
+        "name": "EVENTO NONE",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{\"name\":\"Evento\",\"value\":0}",
+        "payloadType": "json",
+        "x": 160,
+        "y": 1680,
+        "wires": [
+            [
+                "89d28f0614a17533"
+            ]
+        ]
+    },
+    {
+        "id": "ca2349075b9852f4",
+        "type": "inject",
+        "z": "9a7abd174aa378ac",
+        "d": true,
+        "g": "122aef936750ad3e",
+        "name": "SERVICIO COGER BASE",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{\"name\":\"NumSRV\",\"value\":1}",
+        "payloadType": "json",
+        "x": 190,
+        "y": 1840,
+        "wires": [
+            [
+                "89d28f0614a17533"
+            ]
+        ]
+    },
+    {
+        "id": "67c04ce2ec427c44",
+        "type": "inject",
+        "z": "9a7abd174aa378ac",
+        "d": true,
+        "g": "122aef936750ad3e",
+        "name": "SERVICIO POSAR BASE",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{\"name\":\"NumSRV\",\"value\":2}",
+        "payloadType": "json",
+        "x": 190,
+        "y": 1880,
+        "wires": [
+            [
+                "89d28f0614a17533"
+            ]
+        ]
+    },
+    {
+        "id": "856140b1c65d1e59",
+        "type": "inject",
+        "z": "9a7abd174aa378ac",
+        "d": true,
+        "g": "122aef936750ad3e",
+        "name": "SERVICIO IR A POSICION",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{\"name\":\"NumSRV\",\"value\":3}",
+        "payloadType": "json",
+        "x": 190,
+        "y": 1920,
+        "wires": [
+            [
+                "89d28f0614a17533"
+            ]
+        ]
+    },
+    {
+        "id": "8e0f179db2a7aeaf",
+        "type": "inject",
+        "z": "9a7abd174aa378ac",
+        "d": true,
+        "g": "122aef936750ad3e",
+        "name": "SERVICIO IR A ESTACION",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{\"name\":\"NumSRV\",\"value\":4}",
+        "payloadType": "json",
+        "x": 200,
+        "y": 1960,
+        "wires": [
+            [
+                "89d28f0614a17533"
+            ]
+        ]
+    },
+    {
+        "id": "1388f5bb5c6544e8",
+        "type": "inject",
+        "z": "9a7abd174aa378ac",
+        "d": true,
+        "g": "122aef936750ad3e",
+        "name": "SERVICIO COGER SPINNER",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{\"name\":\"NumSRV\",\"value\":5}",
+        "payloadType": "json",
+        "x": 200,
+        "y": 2000,
+        "wires": [
+            [
+                "89d28f0614a17533"
+            ]
+        ]
+    },
+    {
+        "id": "513ab81a4a05304d",
+        "type": "inject",
+        "z": "9a7abd174aa378ac",
+        "d": true,
+        "g": "122aef936750ad3e",
+        "name": "SERVICIO REARME POSICION NEUTRA",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{\"name\":\"NumSRV\",\"value\":6}",
+        "payloadType": "json",
+        "x": 240,
+        "y": 2040,
+        "wires": [
+            [
+                "89d28f0614a17533"
+            ]
+        ]
+    },
+    {
+        "id": "630293eccd970d7b",
+        "type": "inject",
+        "z": "9a7abd174aa378ac",
+        "d": true,
+        "g": "122aef936750ad3e",
+        "name": "SERVICIO REARME DEJAR PIEZA",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{\"name\":\"NumSRV\",\"value\":7}",
+        "payloadType": "json",
+        "x": 220,
+        "y": 2080,
+        "wires": [
+            [
+                "89d28f0614a17533"
+            ]
+        ]
+    },
+    {
+        "id": "0b57455ba5c1f059",
+        "type": "inject",
+        "z": "9a7abd174aa378ac",
+        "d": true,
+        "g": "122aef936750ad3e",
+        "name": "SP ESTACION",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{\"name\":\"SP_Estacion\",\"value\":1}",
+        "payloadType": "json",
+        "x": 160,
+        "y": 2120,
+        "wires": [
+            [
+                "89d28f0614a17533"
+            ]
+        ]
+    },
+    {
+        "id": "86d16bf08985302e",
+        "type": "inject",
+        "z": "9a7abd174aa378ac",
+        "d": true,
+        "g": "122aef936750ad3e",
+        "name": "SP POSICION",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{\"name\":\"SP_Posicion\",\"value\":0}",
+        "payloadType": "json",
+        "x": 160,
+        "y": 2160,
+        "wires": [
+            [
+                "89d28f0614a17533"
+            ]
+        ]
+    },
+    {
+        "id": "0ba77379718cf59e",
+        "type": "inject",
+        "z": "9a7abd174aa378ac",
+        "d": true,
+        "g": "122aef936750ad3e",
+        "name": "SIMULACION ON",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{\"name\":\"Simulacion\",\"value\":true}",
+        "payloadType": "json",
+        "x": 170,
+        "y": 2200,
+        "wires": [
+            [
+                "89d28f0614a17533"
+            ]
+        ]
+    },
+    {
+        "id": "c44f449c6f3fa87f",
+        "type": "inject",
+        "z": "9a7abd174aa378ac",
+        "d": true,
+        "g": "122aef936750ad3e",
+        "name": "SIMULACION OFF",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{\"name\":\"Simulacion\",\"value\":false}",
+        "payloadType": "json",
+        "x": 170,
+        "y": 2240,
+        "wires": [
+            [
+                "89d28f0614a17533"
+            ]
+        ]
+    },
+    {
+        "id": "de234d130d43236c",
+        "type": "inject",
+        "z": "9a7abd174aa378ac",
+        "d": true,
+        "g": "0608ba22107525df",
+        "name": "SIMULACION ON",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{\"name\":\"Simulacion\",\"value\":true}",
+        "payloadType": "json",
+        "x": 170,
+        "y": 2660,
+        "wires": [
+            [
+                "29a006c20f7ed04f"
+            ]
+        ]
+    },
+    {
+        "id": "1228495bcca2cd38",
+        "type": "inject",
+        "z": "9a7abd174aa378ac",
+        "d": true,
+        "g": "0608ba22107525df",
+        "name": "SIMULACION OFF",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{\"name\":\"Simulacion\",\"value\":false}",
+        "payloadType": "json",
+        "x": 170,
+        "y": 2700,
+        "wires": [
+            [
+                "29a006c20f7ed04f"
+            ]
+        ]
+    },
+    {
+        "id": "07412c7fdcd53954",
+        "type": "inject",
+        "z": "9a7abd174aa378ac",
+        "d": true,
+        "g": "e99a74bba11d3843",
+        "name": "SIMULACION ON",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{\"name\":\"Simulacion\",\"value\":true}",
+        "payloadType": "json",
+        "x": 170,
+        "y": 3120,
+        "wires": [
+            [
+                "8120c79126c373b6"
+            ]
+        ]
+    },
+    {
+        "id": "6132c5d4e5c060a0",
+        "type": "inject",
+        "z": "9a7abd174aa378ac",
+        "d": true,
+        "g": "e99a74bba11d3843",
+        "name": "SIMULACION OFF",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{\"name\":\"Simulacion\",\"value\":false}",
+        "payloadType": "json",
+        "x": 170,
+        "y": 3160,
+        "wires": [
+            [
+                "8120c79126c373b6"
+            ]
+        ]
+    },
+    {
+        "id": "2b69e0fadef62e5d",
+        "type": "link out",
+        "z": "9a7abd174aa378ac",
+        "g": "8b4e396cbe38212b",
+        "name": "OUT_MOD_ME_BASES",
+        "mode": "link",
+        "links": [
+            "9f26800ba762fa22"
+        ],
+        "x": 1275,
+        "y": 620,
+        "wires": []
+    },
+    {
+        "id": "e21b317b570e0d74",
+        "type": "link out",
+        "z": "9a7abd174aa378ac",
+        "g": "8b4e396cbe38212b",
+        "name": "OUT_MOD_ME_TRANSPORTE",
+        "mode": "link",
+        "links": [
+            "d7565cfeae9e8229"
+        ],
+        "x": 1275,
+        "y": 480,
+        "wires": []
+    },
+    {
+        "id": "e54ce91ffca93077",
+        "type": "link out",
+        "z": "9a7abd174aa378ac",
+        "g": "8b4e396cbe38212b",
+        "name": "OUT_MOD_ME_SPINNERS",
+        "mode": "link",
+        "links": [
+            "206af15e0130ca45"
+        ],
+        "x": 1275,
+        "y": 760,
+        "wires": []
+    },
+    {
+        "id": "ab2df84ba43fab4f",
+        "type": "link out",
+        "z": "9a7abd174aa378ac",
+        "g": "f78645822af657e1",
+        "name": "OUT_INICIAL_MOD_ME_TRANSPORTE",
+        "mode": "link",
+        "links": [
+            "d7565cfeae9e8229"
+        ],
+        "x": 765,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "f381da1f2e9a3acd",
+        "type": "link out",
+        "z": "9a7abd174aa378ac",
+        "g": "f78645822af657e1",
+        "name": "OUT_INICIAL_MOD_ME_BASES",
+        "mode": "link",
+        "links": [
+            "9f26800ba762fa22"
+        ],
+        "x": 765,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "4918d366603a4523",
+        "type": "link out",
+        "z": "9a7abd174aa378ac",
+        "g": "f78645822af657e1",
+        "name": "OUT_INICIAL_MOD_ME_SPINNERS",
+        "mode": "link",
+        "links": [
+            "206af15e0130ca45"
+        ],
+        "x": 765,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "a96babc87b5d4fa9",
+        "type": "comment",
+        "z": "9a7abd174aa378ac",
+        "g": "f78645822af657e1",
+        "name": "Envío de valores iniciales",
+        "info": "Se envían valores por defecto\npara poder tener datos con los que arrancar\nel servidor OPC",
+        "x": 790,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "a9d029126e049d21",
+        "type": "comment",
+        "z": "9a7abd174aa378ac",
+        "g": "668af8957315f662",
+        "name": "Escritura de holding registers",
+        "info": "",
+        "x": 160,
+        "y": 1080,
+        "wires": []
+    },
+    {
+        "id": "db488716c9526a60",
+        "type": "comment",
+        "z": "9a7abd174aa378ac",
+        "g": "668af8957315f662",
+        "name": "Transporte",
+        "info": "",
+        "x": 100,
+        "y": 1140,
+        "wires": []
+    },
+    {
+        "id": "ab976db01649ef75",
+        "type": "link in",
+        "z": "9a7abd174aa378ac",
+        "g": "668af8957315f662",
+        "name": "IN_MOD_ME_TRANSPORTE",
+        "links": [
+            "ee7f9e734a5dfa4f"
+        ],
+        "x": 235,
+        "y": 1180,
+        "wires": [
+            [
+                "ecc1b190fe244e4a",
+                "f771a87795ccf060"
+            ]
+        ]
+    },
+    {
+        "id": "bf8653e9b3e24069",
+        "type": "link in",
+        "z": "9a7abd174aa378ac",
+        "g": "668af8957315f662",
+        "name": "IN_MOD_ME_BASES",
+        "links": [
+            "88b5b12752cd24cf"
+        ],
+        "x": 235,
+        "y": 1240,
+        "wires": [
+            [
+                "f7a10b770dcb0ffe",
+                "f771a87795ccf060"
+            ]
+        ]
+    },
+    {
+        "id": "9aa0968f1a41376d",
+        "type": "link in",
+        "z": "9a7abd174aa378ac",
+        "g": "668af8957315f662",
+        "name": "IN_MOD_ME_SPINNERS",
+        "links": [
+            "bd045fc10304343e"
+        ],
+        "x": 235,
+        "y": 1300,
+        "wires": [
+            [
+                "3ca49d87abcb2bf9",
+                "f771a87795ccf060"
+            ]
+        ]
+    },
+    {
+        "id": "034d5b973a611014",
+        "type": "comment",
+        "z": "9a7abd174aa378ac",
+        "g": "668af8957315f662",
+        "name": "Nota función escritura",
+        "info": "Eliminado factor de escala de int\n\nCambiado escritura de bools\nEn nuestro caso solo es necesario escribir\nun unico bool en un registro - se cambia \npara hacer esto porque el código anterior\ndaba errores.",
+        "x": 480,
+        "y": 1140,
+        "wires": []
+    },
+    {
+        "id": "ecc1b190fe244e4a",
+        "type": "function",
+        "z": "9a7abd174aa378ac",
+        "g": "668af8957315f662",
+        "name": "Escritura dinámica transporte",
+        "func": "let varInfo = flow.get(\"ME_TRANSPORTE\")[msg.payload.name];\nlet cacheReg  = flow.get(\"REG_TRANSPORTE\");\nlet new_reg  = null;\nlet spec = { };\nspec.payload = {'unitid': 0}\nswitch (varInfo.type){\n    case \"INT\":\n        spec.payload.value = msg.payload.value;\n        spec.payload.fc = 6;\n        spec.payload.address = varInfo.Reg;\n        spec.payload.quantity = 1;\n    break;\n\n    case \"BOOL\":\n        //new_reg = cacheReg[varInfo.Reg];\n        \n        //spec.payload.value = (msg.payload.value == 1) ? (new_reg | (1 << varInfo.Pos)) : (new_reg & ~ (1 << varInfo.Pos));\n        spec.payload.value = msg.payload.value ? 1 : 0;\n        spec.payload.fc = 6;\n        spec.payload.address = varInfo.Reg;\n        spec.payload.quantity = 1;\n    break;\n\n    case \"DWORD\":\n        var mbbuffer = new Uint16Array(2);\n        var dataView = new DataView(mbbuffer.buffer);\n        dataView.setInt32(0, msg.payload.value, true);\n        var word1 = mbbuffer[1];\n        var word0 = mbbuffer[0];\n        spec.payload.value = [word1, word0];\n        spec.payload.fc = 16;\n        spec.payload.address = varInfo.Reg;\n        spec.payload.quantity = 2;\n    break;\n}\n\nreturn spec;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 500,
+        "y": 1180,
+        "wires": [
+            [
+                "b2bd6f9b942e944b",
+                "60954ca8a238bdd9"
+            ]
+        ]
+    },
+    {
+        "id": "b2bd6f9b942e944b",
+        "type": "modbus-flex-write",
+        "z": "9a7abd174aa378ac",
+        "g": "668af8957315f662",
+        "name": "Escritura dinámica MODBUS",
+        "showStatusActivities": true,
+        "showErrors": true,
+        "showWarnings": true,
+        "server": "c64a9af9.c0d7d8",
+        "emptyMsgOnFail": false,
+        "keepMsgProperties": false,
+        "delayOnStart": false,
+        "startDelayTime": "",
+        "x": 860,
+        "y": 1180,
+        "wires": [
+            [],
+            [
+                "7770847cfaf52368"
+            ]
+        ]
+    },
+    {
+        "id": "7770847cfaf52368",
+        "type": "modbus-response",
+        "z": "9a7abd174aa378ac",
+        "g": "668af8957315f662",
+        "name": "",
+        "registerShowMax": "20",
+        "x": 1130,
+        "y": 1180,
+        "wires": []
+    },
+    {
+        "id": "f7a10b770dcb0ffe",
+        "type": "function",
+        "z": "9a7abd174aa378ac",
+        "g": "668af8957315f662",
+        "name": "Escritura dinámica bases",
+        "func": "let varInfo = flow.get(\"ME_BASES\")[msg.payload.name];\nlet cacheReg  = flow.get(\"REG_BASES\");\nlet new_reg  = null;\nlet spec = { };\nspec.payload = {'unitid': 0}\nswitch (varInfo.type){\n    case \"INT\":\n        spec.payload.value = msg.payload.value;\n        spec.payload.fc = 6;\n        spec.payload.address = varInfo.Reg;\n        spec.payload.quantity = 1;\n    break;\n\n    case \"BOOL\":\n        //new_reg = cacheReg[varInfo.Reg];\n        \n        //spec.payload.value = (msg.payload.value == 1) ? (new_reg | (1 << varInfo.Pos)) : (new_reg & ~ (1 << varInfo.Pos));\n        spec.payload.value = msg.payload.value ? 1 : 0;\n        spec.payload.fc = 6;\n        spec.payload.address = varInfo.Reg;\n        spec.payload.quantity = 1;\n    break;\n\n    case \"DWORD\":\n        var mbbuffer = new Uint16Array(2);\n        var dataView = new DataView(mbbuffer.buffer);\n        dataView.setInt32(0, msg.payload.value, true);\n        var word1 = mbbuffer[1];\n        var word0 = mbbuffer[0];\n        spec.payload.value = [word1, word0];\n        spec.payload.fc = 16;\n        spec.payload.address = varInfo.Reg;\n        spec.payload.quantity = 2;\n    break;\n}\n\nreturn spec;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 490,
+        "y": 1240,
+        "wires": [
+            [
+                "b0c173940f13c4f6",
+                "60954ca8a238bdd9"
+            ]
+        ]
+    },
+    {
+        "id": "b0c173940f13c4f6",
+        "type": "modbus-flex-write",
+        "z": "9a7abd174aa378ac",
+        "g": "668af8957315f662",
+        "name": "Escritura dinámica MODBUS",
+        "showStatusActivities": true,
+        "showErrors": true,
+        "showWarnings": true,
+        "server": "777b47d23c5b696e",
+        "emptyMsgOnFail": false,
+        "keepMsgProperties": false,
+        "delayOnStart": false,
+        "startDelayTime": "",
+        "x": 860,
+        "y": 1240,
+        "wires": [
+            [],
+            [
+                "83171cf7eb66ff71"
+            ]
+        ]
+    },
+    {
+        "id": "83171cf7eb66ff71",
+        "type": "modbus-response",
+        "z": "9a7abd174aa378ac",
+        "g": "668af8957315f662",
+        "name": "",
+        "registerShowMax": "20",
+        "x": 1130,
+        "y": 1240,
+        "wires": []
+    },
+    {
+        "id": "3ca49d87abcb2bf9",
+        "type": "function",
+        "z": "9a7abd174aa378ac",
+        "g": "668af8957315f662",
+        "name": "Escritura dinámica spinners",
+        "func": "let varInfo = flow.get(\"ME_SPINNERS\")[msg.payload.name];\nlet cacheReg  = flow.get(\"REG_SPINNERS\");\nlet new_reg  = null;\nlet spec = { };\nspec.payload = {'unitid': 0}\nswitch (varInfo.type){\n    case \"INT\":\n        spec.payload.value = msg.payload.value;\n        spec.payload.fc = 6;\n        spec.payload.address = varInfo.Reg;\n        spec.payload.quantity = 1;\n    break;\n\n    case \"BOOL\":\n        //new_reg = cacheReg[varInfo.Reg];\n        \n        //spec.payload.value = (msg.payload.value == 1) ? (new_reg | (1 << varInfo.Pos)) : (new_reg & ~ (1 << varInfo.Pos));\n        spec.payload.value = msg.payload.value ? 1 : 0;\n        spec.payload.fc = 6;\n        spec.payload.address = varInfo.Reg;\n        spec.payload.quantity = 1;\n    break;\n\n    case \"DWORD\":\n        var mbbuffer = new Uint16Array(2);\n        var dataView = new DataView(mbbuffer.buffer);\n        dataView.setInt32(0, msg.payload.value, true);\n        var word1 = mbbuffer[1];\n        var word0 = mbbuffer[0];\n        spec.payload.value = [word1, word0];\n        spec.payload.fc = 16;\n        spec.payload.address = varInfo.Reg;\n        spec.payload.quantity = 2;\n    break;\n}\n\nreturn spec;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 500,
+        "y": 1300,
+        "wires": [
+            [
+                "a2ea5616b037d5ad",
+                "60954ca8a238bdd9"
+            ]
+        ]
+    },
+    {
+        "id": "a2ea5616b037d5ad",
+        "type": "modbus-flex-write",
+        "z": "9a7abd174aa378ac",
+        "g": "668af8957315f662",
+        "name": "Escritura dinámica MODBUS",
+        "showStatusActivities": true,
+        "showErrors": true,
+        "showWarnings": true,
+        "server": "f02a0ae6f1f980bc",
+        "emptyMsgOnFail": false,
+        "keepMsgProperties": false,
+        "delayOnStart": false,
+        "startDelayTime": "",
+        "x": 860,
+        "y": 1300,
+        "wires": [
+            [],
+            [
+                "58e031e41eb12ed3"
+            ]
+        ]
+    },
+    {
+        "id": "58e031e41eb12ed3",
+        "type": "modbus-response",
+        "z": "9a7abd174aa378ac",
+        "g": "668af8957315f662",
+        "name": "",
+        "registerShowMax": "20",
+        "x": 1130,
+        "y": 1300,
+        "wires": []
+    },
+    {
+        "id": "60954ca8a238bdd9",
+        "type": "debug",
+        "z": "9a7abd174aa378ac",
+        "g": "668af8957315f662",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 800,
+        "y": 1400,
+        "wires": []
+    },
+    {
+        "id": "f771a87795ccf060",
+        "type": "debug",
+        "z": "9a7abd174aa378ac",
+        "g": "668af8957315f662",
+        "name": "debug 2",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 440,
+        "y": 1400,
+        "wires": []
+    },
+    {
+        "id": "c09310c4ae2bd39c",
+        "type": "comment",
+        "z": "89f526b9ab8e572f",
+        "g": "6053e9beede6a078",
+        "name": "Entrada de la info. de los ME procedente de la comunicación MODBUS TCP",
+        "info": "",
+        "x": 370,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "9f26800ba762fa22",
+        "type": "link in",
+        "z": "89f526b9ab8e572f",
+        "g": "6053e9beede6a078",
+        "name": "IN_OPC_ME_BASES",
+        "links": [
+            "f381da1f2e9a3acd",
+            "2b69e0fadef62e5d"
+        ],
+        "x": 320,
+        "y": 140,
+        "wires": [
+            [
+                "f7e49858c348c09d",
+                "c75be28d096934f6"
+            ]
+        ],
+        "l": true
+    },
+    {
+        "id": "b3cdc4a83254fb23",
+        "type": "opcua-compact-server",
+        "z": "89f526b9ab8e572f",
+        "g": "2987507a3c987220",
+        "port": 54840,
+        "endpoint": "",
+        "productUri": "",
+        "acceptExternalCommands": true,
+        "maxAllowedSessionNumber": 10,
+        "maxConnectionsPerEndpoint": 10,
+        "maxAllowedSubscriptionNumber": 100,
+        "alternateHostname": "",
+        "name": "",
+        "showStatusActivities": true,
+        "showErrors": true,
+        "allowAnonymous": true,
+        "individualCerts": false,
+        "isAuditing": false,
+        "serverDiscovery": true,
+        "users": [],
+        "xmlsetsOPCUA": [],
+        "publicCertificateFile": "",
+        "privateCertificateFile": "",
+        "registerServerMethod": 1,
+        "discoveryServerEndpointUrl": "",
+        "capabilitiesForMDNS": "",
+        "maxNodesPerRead": 1000,
+        "maxNodesPerWrite": 1000,
+        "maxNodesPerHistoryReadData": 100,
+        "maxNodesPerBrowse": 3000,
+        "maxBrowseContinuationPoints": 10,
+        "maxHistoryContinuationPoints": 10,
+        "delayToInit": 1000,
+        "delayToClose": 200,
+        "serverShutdownTimeout": 100,
+        "addressSpaceScript": "\n\n//////////////////////////////////////////////////////////////////\n\n// Instancia de un servidor OPC \n\n//////////////////////////////////////////////////////////////////\n\nfunction constructAlarmAddressSpace(server, addressSpace, eventObjects, done) {\n  // server = the created node-opcua server\n  // addressSpace = address space of the node-opcua server\n  // eventObjects = add event variables here to hold them in memory from this script\n\n  // internal sandbox objects are:\n  // node = the compact server node,\n  // coreServer = core compact server object for debug and access to NodeOPCUA\n  // this.sandboxNodeContext = node context node-red\n  // this.sandboxFlowContext = flow context node-red\n  // this.sandboxGlobalContext = global context node-red\n  // this.sandboxEnv = env variables\n  // timeout and interval functions as expected from nodejs\n\n\n\n  //Dada una etiqueta (string) que indica un tipo de datos,\n  //devuelve un string con el mismo tipo, escrito de forma que lo entiendan las funciones de OPC\n  //Por ejemplo, \"BOOL\" devuelve \"Boolean\"\n  function convertirEtiquetaDeTipo(etiqueta) {\n    switch (etiqueta) {\n      case \"BOOL\":\n        return \"Boolean\";\n      case \"DWORD\":\n        return \"Int32\";\n      case \"INT\":\n        return \"Int16\";\n      case \"REAL\":\n        return \"Double\";\n      default:\n        return null;\n    }\n  }\n\n\n\n  //////////////////////////////////////////////////////////////////\n\n  // CONFIGURACIONES INICIALES (no modificar)\n\n  //////////////////////////////////////////////////////////////////\n\n  const opcua = coreServer.choreCompact.opcua;\n  // Se accede al nodo raíz del espacio de nombres\n  // De este nodo raíz se \"colgarán\" todos los nodos de nuestro servidor\n  const rootFolder = addressSpace.findNode(\"RootFolder\");\n  const namespace = addressSpace.getOwnNamespace();\n  const LocalizedText = opcua.LocalizedText\n\n\n  // Las variables del flow las obtendremos a partir de this.sandboxFlowContext.\n  // En la variable FlowVars se encontrará ME_HORNO, nuestra variable de flow con toda la info del horno\n  // Ayuda sobre los tipos de scopes en nodered: https://nodered.org/docs/user-guide/context \n  let FlowVars = this.sandboxFlowContext;\n\n\n  //////////////////////////////////////////////////////////////////\n\n  // CREACIÓN DEL DISPOSITIVO\n\n  //////////////////////////////////////////////////////////////////\n\n\n  // Creamos un nuevo nodo tipo objeto que hará las veces de dispositivo\n  // Pasarela IIoT\n  const device = namespace.addObject({\n    organizedBy: addressSpace.rootFolder.objects, //organizedBy: objeto del que depende en la jerarquia de opcua\n    browseName: \"PasarelaModbusOPCUA\"\n  });\n\n  //////////////////////////////////////////////////////////////////\n\n  // AÑADIR CARPETAS\n\n  //////////////////////////////////////////////////////////////////\n\n  //const NOMBRES_MODULOS = [\"ME_HORNO\"];\n  const NOMBRES_MODULOS = [\"ME_TRANSPORTE\", \"ME_BASES\", \"ME_SPINNERS\"];\n  const objetosOPC = {};//En este objeto se guardaran todas las carpetas y variables creadas\n  for (const i of NOMBRES_MODULOS) {\n    objetosOPC[i] = {\n      nombre: i,\n      carpeta: namespace.addObject({\n        organizedBy: device,\n        browseName: i\n      }),\n      variables: {} //Objeto para guardar las variables del modulo\n    }\n  }\n\n  //////////////////////////////////////////////////////////////////\n\n  // CREACIÓN DE NODOS EN EL ADDRESS SPACE PARA LAS VARIABLES DE MEs\n\n  //////////////////////////////////////////////////////////////////\n\n  //Funcion get - lee el valor de una variable cualquiera del entorno\n  function variableGetter(nombre_modulo, nombre_variable, tipo) {\n    return new opcua.Variant({\n      dataType: opcua.DataType[tipo],\n      value: FlowVars.get(nombre_modulo)[nombre_variable].Value\n    })\n  }\n\n  //Funcion set - escribe una variable cualquiera en un buffer de escritura en el entorno\n  function variableSetter(nombre_modulo, nombre_variable, variant) {\n    FlowVars.get(\"bufferEnvio\").push({ [nombre_modulo]: { \"name\": nombre_variable, \"value\": variant.value } });\n    return opcua.StatusCodes.Good;//Devuelve ack al cliente\n  }\n\n  for (const nombre_modulo of NOMBRES_MODULOS) {\n    const modulo = FlowVars.get(nombre_modulo)\n    for (const nombre_variable in modulo) {\n      const tipo_variable = convertirEtiquetaDeTipo(modulo[nombre_variable].type)\n      const descripcionVariable = modulo[nombre_variable].Descripcion\n      objetosOPC[nombre_modulo][\"variables\"][nombre_variable] = {\n        nombre: nombre_variable,\n        tipo: tipo_variable\n      }\n\n      let valor = {\n        get: variableGetter.bind(\n          null,\n          objetosOPC[nombre_modulo][\"nombre\"],\n          objetosOPC[nombre_modulo][\"variables\"][nombre_variable][\"nombre\"],\n          objetosOPC[nombre_modulo][\"variables\"][nombre_variable][\"tipo\"])\n      }\n      const permisos = modulo[nombre_variable].Permisos;\n      if (permisos == \"W\") {\n        valor.set = variableSetter.bind(\n          null,\n          objetosOPC[nombre_modulo][\"nombre\"],\n          objetosOPC[nombre_modulo][\"variables\"][nombre_variable][\"nombre\"]\n        )\n      }\n\n      objetosOPC[nombre_modulo][\"variables\"][nombre_variable][\"nodo\"] = namespace.addVariable({\n        componentOf: objetosOPC[nombre_modulo][\"carpeta\"],\n        browseName: nombre_variable,\n        displayName: nombre_variable,\n        description: descripcionVariable,\n        dataType: tipo_variable,\n        nodeId: \"ns=1;s=\" + nombre_modulo + \"_\" + nombre_variable,\n        value: valor,\n        eventSourceOf: objetosOPC[nombre_modulo][\"carpeta\"]\n      })\n    }\n  }\n\n\n  //Ejemplo historico\n  //addressSpace.installHistoricalDataNode(objetosOPC[\"ME_HORNO\"][\"variables\"][\"Temp\"][\"nodo\"]);\n  addressSpace.installHistoricalDataNode(objetosOPC[\"ME_BASES\"][\"variables\"][\"A1\"][\"nodo\"]);\n\n\n  //Alarmas booleanas\n  const alarmaErrorNormalState = namespace.addVariable({\n    browseName: \"alarmaErrorEstadoNormal\",\n    propertyOf: device,\n    dataType: \"Boolean\"\n  });\n  alarmaErrorNormalState.setValueFromSource({ dataType: \"Boolean\", value: false });\n\n  for (const nombre_modulo in objetosOPC) {\n    const modulo = objetosOPC[nombre_modulo]\n    for (const nombre_variable in modulo.variables) {\n      const variable = modulo.variables[nombre_variable]\n      if (nombre_variable.startsWith(\"Error\") || nombre_variable.startsWith(\"Alarma\")) {\n        const descripcionVariable = FlowVars.get(modulo.nombre)[nombre_variable].Descripcion\n        const alarma = namespace.instantiateOffNormalAlarm(\n          {\n            componentOf: modulo.carpeta,\n            conditionSource: variable.nodo,\n            browseName: \"alarma\" + nombre_variable,\n            displayName: \"alarma\" + nombre_variable,\n            message: descripcionVariable,\n            description: descripcionVariable,\n            optionals: [\n              'ConfirmedState', 'Confirm'\n            ],\n            inputNode: variable.nodo,\n            normalState: alarmaErrorNormalState\n          })\n        eventObjects[nombre_variable] = variable.nodo\n        eventObjects[\"alarma\" + nombre_variable] = alarma\n      }\n    }\n  }\n\n  // Metodos para usar fases\n\n  const metodoIniciarFase = namespace.addMethod(\n    device,\n    {\n      browseName: \"IniciarFase\",\n      inputArguments: [\n        { name: \"modulo\", description: \"ME_TRANSPORTE, ME_BASES o ME_SPINNERS\", dataType: opcua.DataType.String },\n        { name: \"numSRV\", description: \"Enumeracion segun modulo\", dataType: opcua.DataType.UInt16 },\n        { name: \"setpoint\", description: \"SP de posicion o estacion si se usan las fases del transporte\", dataType: opcua.DataType.UInt32 }\n      ],\n      outputArguments: [\n        { name: \"resultado\", description: \"True si la fase se inicio\", dataType: opcua.DataType.Boolean }\n      ]\n    }\n  )\n\n  metodoIniciarFase.bindMethod(\n    (inputArguments, context, callback) => {\n      const nombre_modulo = inputArguments[0].value;\n      const numSRV = inputArguments[1].value;\n      const setpoint = inputArguments[2].value;\n      console.log(\"Metodo IniciarFase en modulo \" + nombre_modulo + \" y servicio \" + numSRV);\n\n      const callMethodResult = {\n        statusCode: opcua.StatusCodes.Good,\n        outputArguments: [{\n          dataType: opcua.DataType.Boolean,\n          value: false\n        }]\n      };\n\n      const modulo = FlowVars.get(nombre_modulo);\n      if (modulo == null) {\n        console.log(\"Modulo \" + nombre_modulo + \" no se encontro en FlowVars\");\n        callback(null, callMethodResult);\n      }\n      // Si estado != 0, el modulo no esta en idle\n      else if (modulo.EstadoActual.Value != 0) {\n        console.log(\"Modulo \" + nombre_modulo + \" no esta en estado 0 (idle)\");\n        callback(null, callMethodResult);\n      }\n      else {\n        if (nombre_modulo == \"ME_TRANSPORTE\") {\n          // Servicio ir a posicion\n          if (numSRV == 3) { FlowVars.get(\"bufferEnvio\").push({ [nombre_modulo]: { \"name\": \"SP_Posicion\", \"value\": setpoint } }); }\n          // Servicio ir a estacion\n          if (numSRV == 4) { FlowVars.get(\"bufferEnvio\").push({ [nombre_modulo]: { \"name\": \"SP_Estacion\", \"value\": setpoint } }); }\n        }\n        FlowVars.get(\"bufferEnvio\").push({ [nombre_modulo]: { \"name\": \"NumSRV\", \"value\": numSRV } });\n        FlowVars.get(\"bufferEnvio\").push({ [nombre_modulo]: { \"name\": \"Evento\", \"value\": 1 } }); // Evento start\n        callMethodResult.outputArguments[0].value = true;\n        callback(null, callMethodResult);\n      }\n    }\n  )\n\n  //Metodo para comprobar si una fase se ha acabado y enviar el evento reset para devolverla a idle\n  metodoCompletarFase = namespace.addMethod(\n    device,\n    {\n      browseName: \"CompletarFase\",\n      inputArguments: [\n        { name: \"modulo\", description: \"ME_TRANSPORTE, ME_BASES o ME_SPINNERS\", dataType: opcua.DataType.String }\n      ],\n      outputArguments: [\n        { name: \"resultado\", description: \"True si la fase se ha completado\", dataType: opcua.DataType.Boolean }\n      ]\n    }\n  )\n\n  metodoCompletarFase.bindMethod(\n    (inputArguments, context, callback) => {\n      const nombre_modulo = inputArguments[0].value;\n      console.log(\"Metodo CompletarFase en modulo \" + nombre_modulo);\n\n      const callMethodResult = {\n        statusCode: opcua.StatusCodes.Good,\n        outputArguments: [{\n          dataType: opcua.DataType.Boolean,\n          value: false\n        }]\n      };\n\n      const modulo = FlowVars.get(nombre_modulo);\n      if (modulo == null) {\n        console.log(\"Modulo \" + nombre_modulo + \" no se encontro en FlowVars\");\n        callback(null, callMethodResult);\n      }\n      // Si estado == 3, el modulo no esta en aborted\n      else if (modulo.EstadoActual.Value == 3) {\n        console.log(\"Modulo \" + nombre_modulo + \" esta en aborted\");\n        callback(null, callMethodResult);\n      }\n      // Si estado == 2, el modulo esta en complete\n      else if (modulo.EstadoActual.Value == 2) {\n        FlowVars.get(\"bufferEnvio\").push({ [nombre_modulo]: { \"name\": \"Evento\", \"value\": 4 } }); // Evento reset\n        callMethodResult.outputArguments[0].value = true;\n        callback(null, callMethodResult);\n      }\n    }\n  )\n\n  //Metodo para enviar evento reset (por ejemplo si ha ocurrido un abort)\n  metodoResetModulo = namespace.addMethod(\n    device,\n    {\n      browseName: \"ResetModulo\",\n      inputArguments: [\n        { name: \"modulo\", description: \"ME_TRANSPORTE, ME_BASES o ME_SPINNERS\", dataType: opcua.DataType.String }\n      ],\n      outputArguments: [\n        { name: \"resultado\", description: \"True si el modulo se ha reseteado\", dataType: opcua.DataType.Boolean }\n      ]\n    }\n  )\n\n  metodoResetModulo.bindMethod(\n    (inputArguments, context, callback) => {\n      const nombre_modulo = inputArguments[0].value;\n      console.log(\"Metodo ResetModulo en modulo \" + nombre_modulo);\n\n      const callMethodResult = {\n        statusCode: opcua.StatusCodes.Good,\n        outputArguments: [{\n          dataType: opcua.DataType.Boolean,\n          value: false\n        }]\n      };\n\n      const modulo = FlowVars.get(nombre_modulo);\n      if (modulo == null) {\n        console.log(\"Modulo \" + nombre_modulo + \" no se encontro en FlowVars\");\n        callback(null, callMethodResult);\n      }\n      else {\n        FlowVars.get(\"bufferEnvio\").push({ [nombre_modulo]: { \"name\": \"Evento\", \"value\": 4 } }); // Evento reset\n        callMethodResult.outputArguments[0].value = true;\n        callback(null, callMethodResult);\n      }\n    }\n  )\n\n  //Metodo para abortar todos los modulos\n  metodoAbortarModulos = namespace.addMethod(\n    device,\n    {\n      browseName: \"AbortarModulos\",\n      inputArguments: [],\n      outputArguments: [\n        { name: \"resultado\", description: \"True si el modulo se ha reseteado\", dataType: opcua.DataType.Boolean }\n      ]\n    }\n  )\n\n  metodoAbortarModulos.bindMethod(\n    (inputArguments, context, callback) => {\n      console.log(\"Metodo AbortarModulos\");\n      const callMethodResult = {\n        statusCode: opcua.StatusCodes.Good,\n        outputArguments: [{\n          dataType: opcua.DataType.Boolean,\n          value: false\n        }]\n      };\n\n      for (const nombre_modulo of NOMBRES_MODULOS) {\n        const modulo = FlowVars.get(nombre_modulo);\n        if (modulo == null) {\n          console.log(\"Modulo \" + nombre_modulo + \" no se encontro en FlowVars\");\n          callback(null, callMethodResult);\n        }\n        // Si estado == 1, el modulo esta en running\n        else if (modulo.EstadoActual.Value == 1) {\n          FlowVars.get(\"bufferEnvio\").push({ [nombre_modulo]: { \"name\": \"Evento\", \"value\": 3 } }); // Evento abort\n          callMethodResult.outputArguments[0].value = true;\n          callback(null, callMethodResult);\n        }\n      }\n    }\n  )\n\n  /*\n  //Metodo para seleccionar la posicion de destino en el modulo de transporte\n  metodoSeleccionarPosObj = namespace.addMethod(\n    device,\n    {\n      browseName: \"seleccionarPosObj\",\n      inputArguments: [\n        { name: \"variable\", description: \"SP_Posicion o SP_Estacion\", dataType: opcua.DataType.String },\n        { name: \"valor\", description: \"Valor de posicion o estacion\", dataType: opcua.DataType.UInt32 }\n      ],\n      outputArguments: [\n        { name: \"resultado\", description: \"True si el modulo se ha reseteado\", dataType: opcua.DataType.Boolean }\n      ]\n    }\n  )\n\n  metodoSetpointTransporte.bindMethod(\n    (inputArguments, context, callback) => {\n      const posObj = inputArguments[0].value;\n      const nombre_modulo = \"ME_TRANSPORTE\";\n      console.log(\"Metodo SeleccionarPosObj \" + posObj);\n\n      const callMethodResult = {\n        statusCode: opcua.StatusCodes.Good,\n        outputArguments: [{\n          dataType: opcua.DataType.Boolean,\n          value: false\n        }]\n      };\n\n      const modulo = FlowVars.get(nombre_modulo);\n      if (modulo == null) {\n        console.log(\"Modulo \" + nombre_modulo + \" no se encontro en FlowVars\");\n        callback(null, callMethodResult);\n      }\n      else {\n        FlowVars.get(\"bufferEnvio\").push({ [nombre_modulo]: { \"name\": \"SP_Posicion\", \"value\": posObj } });\n        FlowVars.get(\"bufferEnvio\").push({ [nombre_modulo]: { \"name\": \"Evento\", \"value\": 1 } }); // Evento start\n        callMethodResult.outputArguments[0].value = true;\n        callback(null, callMethodResult);\n      }\n    }\n  )*/\n\n  // //----------------------------------------------------------------------\n  // // Una vez terminado el script, hay que llamar a done() para instalarlo\n  // //----------------------------------------------------------------------\n\n  done();\n}\n",
+        "x": 180,
+        "y": 720,
+        "wires": []
+    },
+    {
+        "id": "786cefdab24edb26",
+        "type": "comment",
+        "z": "89f526b9ab8e572f",
+        "g": "2987507a3c987220",
+        "name": "Instancia del servidor OPC UA. En la configuración de este nodo se define el espacio de nombres!",
+        "info": "",
+        "x": 440,
+        "y": 680,
+        "wires": []
+    },
+    {
+        "id": "f7e49858c348c09d",
+        "type": "function",
+        "z": "89f526b9ab8e572f",
+        "g": "6053e9beede6a078",
+        "name": "function 4",
+        "func": "flow.set(\"ME_BASES\",msg.payload)\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 620,
+        "y": 140,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "c75be28d096934f6",
+        "type": "debug",
+        "z": "89f526b9ab8e572f",
+        "g": "6053e9beede6a078",
+        "name": "debug 3",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 600,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "eae293a7c4bb2100",
+        "type": "inject",
+        "z": "89f526b9ab8e572f",
+        "g": "70f849332445661c",
+        "name": "Inject para crear un buffer de datos",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 280,
+        "y": 880,
+        "wires": [
+            [
+                "6587ba1b29facf7c"
+            ]
+        ]
+    },
+    {
+        "id": "6587ba1b29facf7c",
+        "type": "function",
+        "z": "89f526b9ab8e572f",
+        "g": "70f849332445661c",
+        "name": "CreaBufferEnvio",
+        "func": "flow.set(\"bufferEnvio\",Array());",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 560,
+        "y": 880,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "4e2dcdd878850b18",
+        "type": "comment",
+        "z": "89f526b9ab8e572f",
+        "g": "70f849332445661c",
+        "name": "Los datos que se escriben por OPC se envian al FLOW  de MODBUS vaciando el buffer de envio",
+        "info": "",
+        "x": 430,
+        "y": 960,
+        "wires": []
+    },
+    {
+        "id": "535c4f379b5f0a30",
+        "type": "inject",
+        "z": "89f526b9ab8e572f",
+        "g": "70f849332445661c",
+        "name": "PeriodoEnvioOPC_MOD",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "0.3",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 250,
+        "y": 1020,
+        "wires": [
+            [
+                "584dc70cfe677b05"
+            ]
+        ]
+    },
+    {
+        "id": "584dc70cfe677b05",
+        "type": "function",
+        "z": "89f526b9ab8e572f",
+        "g": "70f849332445661c",
+        "name": "LecturaBuffer",
+        "func": "msg.payload = flow.get(\"bufferEnvio\").shift()\nreturn msg;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 520,
+        "y": 1020,
+        "wires": [
+            [
+                "bdfa74678f8f17fd"
+            ]
+        ]
+    },
+    {
+        "id": "bdfa74678f8f17fd",
+        "type": "switch",
+        "z": "89f526b9ab8e572f",
+        "g": "70f849332445661c",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "hask",
+                "v": "ME_TRANSPORTE",
+                "vt": "str"
+            },
+            {
+                "t": "hask",
+                "v": "ME_BASES",
+                "vt": "str"
+            },
+            {
+                "t": "hask",
+                "v": "ME_SPINNERS",
+                "vt": "str"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 4,
+        "x": 750,
+        "y": 1020,
+        "wires": [
+            [
+                "0c052f29fa6fb739",
+                "646b6a26865a0b7f"
+            ],
+            [
+                "0c052f29fa6fb739",
+                "a6e05a969d04b3f8"
+            ],
+            [
+                "0c052f29fa6fb739",
+                "6d0fa8c60ab6313f"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "0c052f29fa6fb739",
+        "type": "debug",
+        "z": "89f526b9ab8e572f",
+        "g": "70f849332445661c",
+        "name": "debug datos recibidos OPC",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1020,
+        "y": 940,
+        "wires": []
+    },
+    {
+        "id": "ee7f9e734a5dfa4f",
+        "type": "link out",
+        "z": "89f526b9ab8e572f",
+        "g": "70f849332445661c",
+        "name": "OUT_OPC_ME_TRANSPORTE",
+        "mode": "link",
+        "links": [
+            "ab976db01649ef75"
+        ],
+        "x": 1350,
+        "y": 1000,
+        "wires": [],
+        "l": true
+    },
+    {
+        "id": "8c16c57c5b32302b",
+        "type": "comment",
+        "z": "89f526b9ab8e572f",
+        "g": "54b159098a109b45",
+        "name": "(SUSTITUIR POR LA INFORMACIÓN LEÍDA POR MODBUS) Simulación cambios en las variables",
+        "info": "",
+        "x": 440,
+        "y": 480,
+        "wires": []
+    },
+    {
+        "id": "b4c9edf90424e258",
+        "type": "inject",
+        "z": "89f526b9ab8e572f",
+        "d": true,
+        "g": "54b159098a109b45",
+        "name": "Tm",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "0.1",
+        "crontab": "",
+        "once": true,
+        "onceDelay": "0.01",
+        "topic": "",
+        "payload": "{\"EN_escritura\":{\"Value\":null,\"type\":\"BOOL\",\"Reg\":0,\"Pos\":0,\"Permisos\":\"R\",\"Descripcion\":\"Bit de escritura por MODBUS\"},\"KC\":{\"Value\":null,\"type\":\"BOOL\",\"Reg\":0,\"Pos\":1,\"Permisos\":\"R\",\"Descripcion\":\"Resistencias de calentamiento\"},\"KE\":{\"Value\":null,\"type\":\"BOOL\",\"Reg\":0,\"Pos\":2,\"Permisos\":\"R\",\"Descripcion\":\"Bit encendido de la refrigeración\"},\"TR\":{\"Value\":null,\"type\":\"BOOL\",\"Reg\":0,\"Pos\":3,\"Permisos\":\"R\",\"Descripcion\":\"Termostato\"},\"Error_KC\":{\"Value\":null,\"type\":\"BOOL\",\"Reg\":0,\"Pos\":4,\"Permisos\":\"R\",\"Descripcion\":\"Error en las resistencias\"},\"Temp\":{\"Value\":null,\"type\":\"REAL\",\"Reg\":1,\"Pos\":0,\"Permisos\":\"R\",\"Descripcion\":\"TEMPERATURA DEL HORNO\"},\"SP_Temp\":{\"Value\":null,\"type\":\"INT\",\"Reg\":3,\"Pos\":0,\"Scale\":10,\"Permisos\":\"R\",\"Descripcion\":\"Set point de temperatura convertido a INT (/10)\"},\"NumSrv\":{\"Value\":null,\"type\":\"INT\",\"Reg\":4,\"Pos\":0,\"Permisos\":\"R\",\"Descripcion\":\"Servicio activo en el ME\"},\"MOD_NSrv\":{\"Value\":null,\"type\":\"INT\",\"Reg\":5,\"Pos\":0,\"Scale\":1,\"Permisos\":\"W\",\"Descripcion\":\"INT para la selección de la fase de equipamiento a ejecutar\"},\"MOD_START_MAN\":{\"Value\":null,\"type\":\"BOOL\",\"Reg\":6,\"Pos\":0,\"Permisos\":\"W\",\"Descripcion\":\"Bit para arrancar una fase de equipamiento\"},\"MOD_STOP_MAN\":{\"Value\":null,\"type\":\"BOOL\",\"Reg\":6,\"Pos\":1,\"Permisos\":\"W\",\"Descripcion\":\"Bit de parada de la fase de equipamiento\"},\"MOD_REARME_MAN\":{\"Value\":null,\"type\":\"BOOL\",\"Reg\":6,\"Pos\":2,\"Permisos\":\"W\",\"Descripcion\":\"Bit de reinicio de la fase de equipamiento\"},\"MOD_SP_TEnf\":{\"Value\":null,\"type\":\"INT\",\"Reg\":7,\"Pos\":0,\"Scale\":10,\"Permisos\":\"R\",\"Descripcion\":\"Set point de temperatura convertido a INT (/10)\"}}",
+        "payloadType": "json",
+        "x": 180,
+        "y": 560,
+        "wires": [
+            [
+                "3cbafd16e464fbfc"
+            ]
+        ]
+    },
+    {
+        "id": "3cbafd16e464fbfc",
+        "type": "function",
+        "z": "89f526b9ab8e572f",
+        "d": true,
+        "g": "54b159098a109b45",
+        "name": "simula cambio en KC y temperatura",
+        "func": "// Se obtiene la variable t del contexto flow\nlet t = flow.get(\"t\");\n// Se obtienen los datos del flow\nlet ME_HORNO = flow.get(\"ME_HORNO\");\nlet f = 1/10;\n\n\nlet KC = Math.sin(f*t*2*Math.PI) > 0\nlet KC_1 = Math.sin(f*t*2*Math.PI-0.1) > 0\nME_HORNO.Temp.Value  =  (1/11)*+KC + (1/11)*+KC_1+ (9/11)*ME_HORNO.Temp.Value  \n\nME_HORNO.KC.Value = KC;\n\nmsg = {\"payload\":ME_HORNO.Temp.Value };\n\n\n\n\n// Se actualiza el tiempo t \nflow.set(\"t\",t+0.1);\nflow.set(\"ME_HORNO\",ME_HORNO);\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 480,
+        "y": 560,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "398fb64653fe0919",
+        "type": "inject",
+        "z": "89f526b9ab8e572f",
+        "d": true,
+        "g": "54b159098a109b45",
+        "name": "t0",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "data",
+                "v": "{\"EN_escritura\":{\"Value\":true,\"type\":\"BOOL\",\"Reg\":0,\"Pos\":0,\"Permisos\":\"R\",\"Descripcion\":\"Bit de escritura por MODBUS\"},\"KC\":{\"Value\":false,\"type\":\"BOOL\",\"Reg\":0,\"Pos\":1,\"Permisos\":\"R\",\"Descripcion\":\"Resistencias de calentamiento\"},\"KE\":{\"Value\":false,\"type\":\"BOOL\",\"Reg\":0,\"Pos\":2,\"Permisos\":\"R\",\"Descripcion\":\"Bit encendido de la refrigeración\"},\"TR\":{\"Value\":false,\"type\":\"BOOL\",\"Reg\":0,\"Pos\":3,\"Permisos\":\"R\",\"Descripcion\":\"Termostato\"},\"Error_KC\":{\"Value\":false,\"type\":\"BOOL\",\"Reg\":0,\"Pos\":4,\"Permisos\":\"R\",\"Descripcion\":\"Error en las resistencias\"},\"Temp\":{\"Value\":20,\"type\":\"REAL\",\"Reg\":1,\"Pos\":0,\"Permisos\":\"R\",\"Descripcion\":\"TEMPERATURA DEL HORNO\"},\"SP_Temp\":{\"Value\":80,\"type\":\"INT\",\"Reg\":3,\"Pos\":0,\"Scale\":10,\"Permisos\":\"R\",\"Descripcion\":\"Set point de temperatura convertido a INT (/10)\"},\"NumSrv\":{\"Value\":1,\"type\":\"INT\",\"Reg\":4,\"Pos\":0,\"Permisos\":\"R\",\"Descripcion\":\"Servicio activo en el ME\"},\"MOD_NSrv\":{\"Value\":0,\"type\":\"INT\",\"Reg\":5,\"Pos\":0,\"Scale\":1,\"Permisos\":\"W\",\"Descripcion\":\"INT para la selección de la fase de equipamiento a ejecutar\"},\"MOD_START_MAN\":{\"Value\":false,\"type\":\"BOOL\",\"Reg\":6,\"Pos\":0,\"Permisos\":\"W\",\"Descripcion\":\"Bit para arrancar una fase de equipamiento\"},\"MOD_STOP_MAN\":{\"Value\":false,\"type\":\"BOOL\",\"Reg\":6,\"Pos\":1,\"Permisos\":\"W\",\"Descripcion\":\"Bit de parada de la fase de equipamiento\"},\"MOD_REARME_MAN\":{\"Value\":false,\"type\":\"BOOL\",\"Reg\":6,\"Pos\":2,\"Permisos\":\"W\",\"Descripcion\":\"Bit de reinicio de la fase de equipamiento\"},\"MOD_SP_TEnf\":{\"Value\":false,\"type\":\"INT\",\"Reg\":7,\"Pos\":0,\"Scale\":10,\"Permisos\":\"R\",\"Descripcion\":\"Set point de temperatura convertido a INT (/10)\"}}",
+                "vt": "json"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": "0.001",
+        "topic": "",
+        "payload": "0",
+        "payloadType": "num",
+        "x": 180,
+        "y": 520,
+        "wires": [
+            [
+                "1442e9f47c2fc57f"
+            ]
+        ]
+    },
+    {
+        "id": "1442e9f47c2fc57f",
+        "type": "change",
+        "z": "89f526b9ab8e572f",
+        "d": true,
+        "g": "54b159098a109b45",
+        "name": "Creat t0 y modelo datos en flow",
+        "rules": [
+            {
+                "t": "move",
+                "p": "payload",
+                "pt": "msg",
+                "to": "t",
+                "tot": "flow"
+            },
+            {
+                "t": "move",
+                "p": "data",
+                "pt": "msg",
+                "to": "ME_HORNO",
+                "tot": "flow"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 460,
+        "y": 520,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "d7565cfeae9e8229",
+        "type": "link in",
+        "z": "89f526b9ab8e572f",
+        "g": "6053e9beede6a078",
+        "name": "IN_OPC_ME_TRANSPORTE",
+        "links": [
+            "ab2df84ba43fab4f",
+            "e21b317b570e0d74"
+        ],
+        "x": 340,
+        "y": 220,
+        "wires": [
+            [
+                "8d0e9b59e480ddcf",
+                "4b96cda752f49f14"
+            ]
+        ],
+        "l": true
+    },
+    {
+        "id": "8d0e9b59e480ddcf",
+        "type": "function",
+        "z": "89f526b9ab8e572f",
+        "g": "6053e9beede6a078",
+        "name": "function 1",
+        "func": "flow.set(\"ME_TRANSPORTE\",msg.payload)\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 620,
+        "y": 220,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "4b96cda752f49f14",
+        "type": "debug",
+        "z": "89f526b9ab8e572f",
+        "g": "6053e9beede6a078",
+        "name": "debug 4",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 600,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "206af15e0130ca45",
+        "type": "link in",
+        "z": "89f526b9ab8e572f",
+        "g": "6053e9beede6a078",
+        "name": "IN_OPC_ME_SPINNERS",
+        "links": [
+            "e54ce91ffca93077",
+            "4918d366603a4523"
+        ],
+        "x": 330,
+        "y": 300,
+        "wires": [
+            [
+                "0e1160acac4f5a72",
+                "c5553c1e094404e6"
+            ]
+        ],
+        "l": true
+    },
+    {
+        "id": "0e1160acac4f5a72",
+        "type": "function",
+        "z": "89f526b9ab8e572f",
+        "g": "6053e9beede6a078",
+        "name": "function 2",
+        "func": "flow.set(\"ME_SPINNERS\",msg.payload)\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 620,
+        "y": 300,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "c5553c1e094404e6",
+        "type": "debug",
+        "z": "89f526b9ab8e572f",
+        "g": "6053e9beede6a078",
+        "name": "debug 5",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 600,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "d189625b368fb855",
+        "type": "opcua-compact-server",
+        "z": "89f526b9ab8e572f",
+        "d": true,
+        "port": 54840,
+        "endpoint": "",
+        "productUri": "",
+        "acceptExternalCommands": true,
+        "maxAllowedSessionNumber": 10,
+        "maxConnectionsPerEndpoint": 10,
+        "maxAllowedSubscriptionNumber": 100,
+        "alternateHostname": "",
+        "name": "",
+        "showStatusActivities": true,
+        "showErrors": true,
+        "allowAnonymous": true,
+        "individualCerts": false,
+        "isAuditing": false,
+        "serverDiscovery": true,
+        "users": [],
+        "xmlsetsOPCUA": [],
+        "publicCertificateFile": "",
+        "privateCertificateFile": "",
+        "registerServerMethod": 1,
+        "discoveryServerEndpointUrl": "",
+        "capabilitiesForMDNS": "",
+        "maxNodesPerRead": 1000,
+        "maxNodesPerWrite": 1000,
+        "maxNodesPerHistoryReadData": 100,
+        "maxNodesPerBrowse": 3000,
+        "maxBrowseContinuationPoints": 10,
+        "maxHistoryContinuationPoints": 10,
+        "delayToInit": 1000,
+        "delayToClose": 200,
+        "serverShutdownTimeout": 100,
+        "addressSpaceScript": "\n\n//////////////////////////////////////////////////////////////////\n\n// Instancia de un servidor OPC \n\n// La documentación para entender las clases y métodos que vamos a utilizar la tenéis en:\n//          Documentación general: https://node-opcua.github.io/api_doc/2.32.0/index.html\n//          Documentación namespace: https://node-opcua.github.io/api_doc/2.32.0/interfaces/node_opcua.namespace.html\n\n\n\n//////////////////////////////////////////////////////////////////\n\n\n\nfunction constructAlarmAddressSpace(server, addressSpace, eventObjects, done) {\n  // server = the created node-opcua server\n  // addressSpace = address space of the node-opcua server\n  // eventObjects = add event variables here to hold them in memory from this script\n\n  // internal sandbox objects are:\n  // node = the compact server node,\n  // coreServer = core compact server object for debug and access to NodeOPCUA\n  // this.sandboxNodeContext = node context node-red\n  // this.sandboxFlowContext = flow context node-red\n  // this.sandboxGlobalContext = global context node-red\n  // this.sandboxEnv = env variables\n  // timeout and interval functions as expected from nodejs\n\n  //Dada una etiqueta (string) que indica un tipo de datos,\n  //devuelve un string con el mismo tipo, escrito de forma que lo entiendan las funciones de OPC\n  //Por ejemplo, \"BOOL\" devuelve \"Boolean\"\n  function convertirEtiquetaDeTipo(etiqueta) {\n    switch (etiqueta) {\n      case \"BOOL\":\n        return \"Boolean\";\n      case \"DWORD\":\n        return \"Int32\";\n      case \"INT\":\n        return \"Int16\";\n      case \"REAL\":\n        return \"Double\";\n      default:\n        return null;\n    }\n  }\n\n\n\n  //////////////////////////////////////////////////////////////////\n\n  // CONFIGURACIONES INICIALES (no modificar)\n\n  //////////////////////////////////////////////////////////////////\n\n  const opcua = coreServer.choreCompact.opcua;\n  // Se accede al nodo raíz del espacio de nombres\n  // De este nodo raíz se \"colgarán\" todos los nodos de nuestro servidor\n  const rootFolder = addressSpace.findNode(\"RootFolder\");\n  const namespace = addressSpace.getOwnNamespace();\n  const LocalizedText = opcua.LocalizedText\n\n\n  // Las variables del flow las obtendremos a partir de this.sandboxFlowContext.\n  // En la variable FlowVars se encontrará ME_HORNO, nuestra variable de flow con toda la info del horno\n  // Ayuda sobre los tipos de scopes en nodered: https://nodered.org/docs/user-guide/context \n  let FlowVars = this.sandboxFlowContext;\n\n\n  //////////////////////////////////////////////////////////////////\n\n  // CREACIÓN DEL DISPOSITIVO\n\n  //////////////////////////////////////////////////////////////////\n\n\n  // Creamos un nuevo nodo tipo objeto que hará las veces de dispositivo\n  // Pasarela IIoT\n  const device = namespace.addObject({\n    organizedBy: addressSpace.rootFolder.objects,\n    browseName: \"PasarelaModbusOPCUA\"\n  });\n\n  //////////////////////////////////////////////////////////////////\n\n  // AÑADIR CARPETAS\n\n  //////////////////////////////////////////////////////////////////\n\n  //const ME_BASES = namespace.addObject({\n  //  organizedBy: device,\n  //  browseName: \"ME_BASES\"\n  //});\n\n  //const NOMBRES_MODULOS = [\"ME_HORNO\"];\n  const NOMBRES_MODULOS = [\"ME_TRANSPORTE\", \"ME_BASES\", \"ME_SPINNERS\"];\n  const objetosOPC = {};//En este objeto se guardaran todas las carpetas y variables creadas\n  for (const i of NOMBRES_MODULOS) {\n    objetosOPC[i] = {\n      nombre: i,\n      carpeta: namespace.addObject({\n        organizedBy: device,\n        browseName: NOMBRES_MODULOS[i]\n      }),\n      variables: {} //Objeto para guardar las variables del modulo\n    }\n  }\n\n  //////////////////////////////////////////////////////////////////\n\n  // CREACIÓN DE NODOS EN EL ADDRESS SPACE PARA LAS VARIABLES DE MEs\n\n  //////////////////////////////////////////////////////////////////\n\n  //Funcion get - lee el valor de una variable cualquiera del entorno\n  function variableGetter(nombre_modulo, nombre_variable, tipo) {\n    return new opcua.Variant({\n      dataType: opcua.DataType[tipo],\n      value: FlowVars.get(nombre_modulo)[nombre_variable].Value\n    })\n  }\n\n  //Funcion set - escribe una variable cualquiera en un buffer de escritura en el entorno\n  function variableSetter(nombre_modulo, nombre_variable, variant) {\n    FlowVars.get(\"bufferEnvio\").push({ [nombre_modulo]: { \"name\": nombre_variable, \"value\": variant.value } });\n    return opcua.StatusCodes.Good;//Devuelve ack al cliente\n  }\n\n  for (const nombre_modulo of NOMBRES_MODULOS) {\n    const modulo = FlowVars.get(nombre_modulo);\n    for (const nombre_variable in modulo) {\n      const tipo_variable = convertirEtiquetaDeTipo(modulo[nombre_variable].type);\n      objetosOPC[nombre_modulo][\"variables\"][nombre_variable] = {\n        nombre: nombre_variable,\n        tipo: tipo_variable\n      }\n\n      let valor = {\n        get: variableGetter.bind(\n          null,\n          objetosOPC[nombre_modulo][\"nombre\"],\n          objetosOPC[nombre_modulo][\"variables\"][nombre_variable][\"nombre\"],\n          objetosOPC[nombre_modulo][\"variables\"][nombre_variable][\"tipo\"])\n      }\n      const permisos = modulo[nombre_variable].Permisos;\n      if (permisos == \"W\") {\n        valor.set = variableSetter.bind(\n          null,\n          objetosOPC[nombre_modulo][\"nombre\"],\n          objetosOPC[nombre_modulo][\"variables\"][nombre_variable][\"nombre\"]\n        )\n      }\n\n      objetosOPC[nombre_modulo][\"variables\"][nombre_variable][\"variable\"] = namespace.addVariable({\n        componentOf: objetosOPC[nombre_modulo][\"carpeta\"],\n        browseName: nombre_variable,\n        dataType: tipo_variable,\n        nodeId: \"ns=1;s=\" + nombre_variable,\n        value: valor\n      })\n    }\n  }\n\n\n  // VARIABLE BOOL SOLO LECTURA\n  // La variable se define como un objeto json ({}). Los atributos de este objetos son los atributos del nodo variable que añadimos al namespace\n  // El browseName y el nodeID sirve para identificar la variable por su nombre o identificador, respectivamente\n  // dataType indica el tipo de dato de la variable. \n  // Value es un objeto con dos métodos: get y set. El método get es una función que devuelve el valor de la variable cuando un cliente realiza una petición.\n\n  // Documentación addVariable: https://node-opcua.github.io/api_doc/2.32.0/interfaces/node_opcua.namespace.html#addvariable \n\n  //const Bases_A1 = namespace.addVariable({\n  //  componentOf: ME_BASES,\n  //  browseName: \"A1\",\n  //  displayName: \"A1\",\n  //  nodeId: \"ns=1;s=A1\",\n  //  dataType: \"Boolean\",\n  //  value: {\n  //    get: () => new opcua.Variant({\n  //      dataType: opcua.DataType.Boolean,\n  //      value: FlowVars.get(\"ME_BASES\")[\"A1\"][\"Value\"]\n  //    })\n  //  }\n  //});\n\n\n  // VARIABLE DOUBLE (REAL en el PLC) SOLO LECTURA\n  // En esta ocasión podemos poner unidades a la variable.\n  // Con el método addAnalogDataItem También es posible incluir un rango [low, high] de valores\n  // documentación addAnalogDataItem: https://node-opcua.github.io/api_doc/2.32.0/interfaces/node_opcua.namespace.html#addanalogdataitem \n\n\n  // Las unidades que soporta el servidor OPC-UA son: ampere, bar, becquerel, byte, centimetre, cubic_centimetre, cubic_centimetre_per_second, cubic_metre, cubic_metre_per_hour, cubic_meter_per_minute,\n  //  curie, curie_per_kilogram, degree, degree_celsius, degree_fahrenheit, dots_per_inch, electron_volt, farad, gigabecquerel, gigabyte, gram, hectopascal, hertz, joule, kelvin, kilo_electron_volt, kilobecquerel,\n  //  kilobyte, kilohertz, kilogram, kilogram_force, kilogram_per_second, kilogram_per_squared_centimeter, kilometre_per_hour, kilopascal, kilowatt, mega_electron_volt, megabyte, megahertz, megapascal, megawatt,\n  //  megawatt_per_minute, metre, metre_per_second, metre_per_second_squared, microsecond, mile_per_hour, millibar, millimetre, millipascal, millisecond, minute, minute_angle, newton, pascal, part_per_million,\n  //  percent, pixel, revolutions_per_minute, revolutions_per_second, second, terabyte, volt, watt\n\n\n // const Horno_Temp = namespace.addAnalogDataItem({\n //   componentOf: ME_HORNO,\n //   browseName: \"Temp\",\n //   displayName: \"Temp\",\n //   nodeId: \"ns=1;s=Temp\",\n //   description: FlowVars.get(\"ME_HORNO\")[\"Temp\"][\"Descripcion\"],\n //   dataType: 'Double',\n //   eventSourceOf: ME_HORNO, // Para poder poner una alarma\n //   engineeringUnitsRange: {\n //     low: 0,\n //     high: 400\n //   },\n\n //   engineeringUnits: opcua.standardUnits.degree_celsius,\n\n //   value: {\n //     get: () => new opcua.Variant({\n //       dataType: opcua.DataType.Double,\n //       value: FlowVars.get(\"ME_HORNO\")[\"Temp\"][\"Value\"]\n //     })\n //   }\n // });\n\n\n\n  // VARIABLE CON ESCRITURA \n  // El valor que escribe el cliente se recoge en el método set del atributo Value. Este método es una función que recibe y procesa el valor indicado por el cliente.\n  // En nuestro caso el valor leído se guarda en un buffer alojado en el contexto flow (variables de flujo). Posteriormente, los valores de este buffer serán procesados y enviados\n  //  al flujo de comunicaciones de modbus para enviarlos al PLC mediante los nodos write de modbus.\n\n  //const Horno_MOD_SP_TEnf = namespace.addVariable({\n  //  componentOf: ME_HORNO,\n  //  browseName: \"MOD_SP_TEnf\",\n  //  nodeId: \"ns=1;s=MOD_SP_Temp\",\n  //  displayName: \"MOD_SP_TEnf\",\n  //  description:\n  //    new LocalizedText({ text: FlowVars.get(\"ME_HORNO\")[\"MOD_SP_TEnf\"][\"Descripcion\"], locale: 'es-ES' }),\n\n  //  dataType: \"Double\",\n  //  value: {\n  //    get: () => new opcua.Variant({\n  //      dataType: opcua.DataType.Double,\n  //      value: FlowVars.get(\"ME_HORNO\")[\"MOD_SP_TEnf\"][\"Value\"]\n  //    }),\n\n  //    set: function (variant) {\n   \n  //      vari = FlowVars.get(\"bufferEnvio\").push({ \"ME_HORNO\": { \"name\": \"MOD_SP_TEnf\", \"value\": variant.value } });\n  //      return opcua.StatusCodes.Good;\n  //    }\n  //  }\n  //});\n\n\n\n\n  //////////////////////////////////////////////////////////////////\n\n  // VARIABLES CON HISTÓRICOS\n\n  //////////////////////////////////////////////////////////////////\n\n  // OPC permite guardar datos históricos de las diferentes variables. \n  // Para habilitar esta opción se hará uso del método installHistoricalDataNode\n  // installHistoricalDataNode: \n  //addressSpace.installHistoricalDataNode(Horno_Temp);\n  //addressSpace.installHistoricalDataNode(Bases_A1);\n\n\n\n\n  //////////////////////////////////////////////////////////////////\n\n  // MÉTODOS\n\n  //////////////////////////////////////////////////////////////////\n\n  // OPC-UA permite servir métodos a los clientes. Estos son un nodo más del namespace que actuan como funciones del servidor que ejecutan acciones específicas: consulta de datos, cálculos, configuraciones, etc.\n  // Tienen parámetros de entrada y devuelven un valor de salida. Son útiles para automatizar operaciones en el servidor, evitando las operaciones manuales con variables e impidiendo el acceso a variables sensibles. \n  // En nuestro caso serán útiles para servir las fases de equipamiento en el servidor OPC-UA\n\n  // A la hora de crear un método utilizaremos el método addMethod del namespace para crear el nódo método. Este nodo se tiene que asociar a un objeto ya existente en el namespace.\n  // Una vez creado el nodo método, éste se asociará a una función javascript con el método bindMethod. Esta función ejecutará las acciones específicas del método. \n  // \n  //        Documentación addMethod: https://node-opcua.github.io/api_doc/2.32.0/interfaces/node_opcua.namespace.html#addmethod\n  //        Documentación bindMethod: https://node-opcua.github.io/api_doc/2.32.0/classes/node_opcua.uamethod.html#bindmethod\n  //                                  https://node-opcua.github.io/api_doc/2.32.0/modules/node_opcua.html#methodfunctor\n\n  // Creación de un método asociado a un objeto del namespace. En este caso al objeto device (PasarelaModbusOPCUA). El método tiene los mismos atributos que un nodo, pero, a mayores, es necesario indicar los parámetros de entrada y los valores de salida.\n  const method = namespace.addMethod(device, {\n\n    browseName: \"Bark\",\n    nodeId: \"ns=1;s=bark\",\n    componentOf: device,\n    inputArguments: [\n      {\n        name: \"nbBarks\",\n        description: { text: \"specifies the number of time I should bark\" },\n        dataType: opcua.DataType.UInt32\n      }, {\n        name: \"volume\",\n       description: { text: \"specifies the sound volume [0 = quiet ,100 = loud]\" },\n        dataType: opcua.DataType.UInt32\n      }\n    ],\n\n    outputArguments: [{\n      name: \"Barks\",\n      description: { text: \"the generated barks\" },\n      dataType: opcua.DataType.String,\n      valueRank: 1\n    }]\n  });\n\n  // Permisos del método\n  method.outputArguments.userAccessLevel = opcua.makeAccessLevelFlag(\"CurrentRead\");\n  method.inputArguments.userAccessLevel = opcua.makeAccessLevelFlag(\"CurrentRead\");\n\n  // Callback del método. Para añadir la función a ejecutar necesitamos asociar una callback al nodo del método\n\n  // Modelo callback: https://node-opcua.github.io/api_doc/2.32.0/modules/node_opcua.html#methodfunctorcallback\n  // Modelo parámetro de salida: https://node-opcua.github.io/api_doc/2.32.0/interfaces/node_opcua.callmethodresultoptions.html \n  method.bindMethod((inputArguments, context, callback) => {\n\n    // Se lee los argumentos de entrada\n    const nbBarks = inputArguments[0].value;\n    const volume = inputArguments[1].value;\n\n\n    // Operaciones a realizar por el método\n    console.log(\"Hello World ! I will bark \", nbBarks, \" times\");\n    console.log(\"the requested volume is \", volume, \"\");\n    const sound_volume = Array(volume).join(\"!\");\n\n\n    if (nbBarks < 100) {\n      const barks = [];\n      for (let i = 0; i < nbBarks; i++) {\n        barks.push(\"Whaff\" + sound_volume);\n      }\n\n\n\n      // Se devuelve el valor de salida\n      const callMethodResult = {\n        statusCode: opcua.StatusCodes.Good,\n        outputArguments: [{\n          dataType: opcua.DataType.String,\n          arrayType: opcua.VariantArrayType.Array,\n          value: barks\n        }]\n      };\n      callback(null, callMethodResult);\n    }\n    else {\n      const callMethodResult = {\n        statusCode: opcua.StatusCodes.Bad,\n        outputArguments: [{\n          dataType: opcua.DataType.String,\n          arrayType: opcua.VariantArrayType.Array,\n          value: \"\"\n        }]\n      };\n      callback(null, callMethodResult);\n    }\n\n\n\n\n  });\n\n\n\n  //////////////////////////////////////////////////////////////////\n\n  // CREACIÓN DE ALARMAS\n\n  //////////////////////////////////////////////////////////////////\n\n  // OPC permite la creación de eventos tipo alarma. Estos eventos los emite el servidor y los clientes se pueden subscibir a ellos.\n  // Generalmente los eventos alarma se asocian a variables y se emiten cuando estas exceden un límte establecido por el desarrollador. \n  // Las alarmas son un nodo objeto dentro del namespace. \n  // Para generar una alarma instanciaremos una NonExclusiveLimitAlarm.\n  //          Documentación: https://node-opcua.github.io/api_doc/2.32.0/interfaces/node_opcua.namespace.html#instantiatenonexclusivelimitalarm  \n\n  let nonExclusiveLimitAlarmType = addressSpace.findEventType('NonExclusiveLimitAlarmType')\n\n  let alarmaTempHorno = namespace.instantiateNonExclusiveLimitAlarm(nonExclusiveLimitAlarmType, {\n    componentOf: ME_HORNO,\n    conditionSource: Horno_Temp,\n    browseName: 'Fallo al calentar el horno',\n    message: 'ATENCIÓN DEMASIADA TEMPERATURA EN EL HORNO',\n    displayName: [\n      new LocalizedText({ text: 'PELIGRO TEMPERATURA HORNO', locale: 'es-ES' }),\n      new LocalizedText({ text: 'DANGER TEMPERATURE FURNANCE', locale: 'en-US' })\n    ],\n    description: 'Blah, blah, blah...',\n    optionals: [\n      'ConfirmedState', 'Confirm'\n    ],\n    inputNode: Horno_Temp,\n    highLimit: 0.5,\n    highHighLimit: 130,\n    lowLimit: 0\n  })\n\n  eventObjects.Horno_Temp = Horno_Temp\n  eventObjects.alarmaTempHorno = alarmaTempHorno\n\n\n  //////////////////////////////////////////////////////////////////\n\n  // CREACIÓN DE VISTAS\n\n  //////////////////////////////////////////////////////////////////\n\n\n  // Gracias al sistema de referencias, OPC-UA permite crear vistas donde poder organizar la información (los nodos) de acuerdo a diferentes criterios de organización: alarmas, magnitudes físicas, pantallas de operador, etc.\n\n\n  // VISTA DE LAS TEMPERATURAS (PODEMOS PONER AQUÍ TODAS LAS TEMPS DEL PROYECTO)\n  // Para crear una vista tenemos que crear un nuevo nodo en la carpeta views del namespace. Para ellos se emplea el método addView del namespace.\n  //      Documentación: https://node-opcua.github.io/api_doc/2.32.0/interfaces/node_opcua.namespace.html#addview \n  //                      https://node-opcua.github.io/api_doc/2.32.0/interfaces/node_opcua.addviewoptions.html \n\n  const viewEx = namespace.addView({\n    \"organizedBy\": addressSpace.rootFolder.views,\n    \"browseName\": \"Temperaturas\"\n  });\n\n\n  // Una vez creada el nodo vista a este se le añaden las referencias que queramos con el método addReference\n  //       Documentación: https://node-opcua.github.io/api_doc/2.32.0/classes/node_opcua.uaview.html#addreference\n  viewEx.addReference({\n    \"referenceType\": \"Organizes\",\n    \"nodeId\": Horno_Temp.nodeId\n  });\n\n  viewEx.addReference({\n    \"referenceType\": \"Organizes\",\n    \"nodeId\": Horno_MOD_SP_TEnf.nodeId\n  });\n\n  // Añadimos una vista con las alarmas\n  const viewAl = namespace.addView({\n    \"organizedBy\": addressSpace.rootFolder.views,\n    \"browseName\": \"Alarmas\"\n  });\n\n  viewAl.addReference({\n    \"referenceType\": \"Organizes\",\n    \"nodeId\": alarmaTempHorno.nodeId\n  });\n\n\n\n\n  // //----------------------------------------------------------------------\n  // // Una vez terminado el script, hay que llamar a done() para instalarlo\n  // //----------------------------------------------------------------------\n\n\n\n  done();\n}\n",
+        "x": 960,
+        "y": 720,
+        "wires": []
+    },
+    {
+        "id": "db3b0702d85f1e8e",
+        "type": "comment",
+        "z": "89f526b9ab8e572f",
+        "name": "Codigo Diego",
+        "info": "",
+        "x": 950,
+        "y": 680,
+        "wires": []
+    },
+    {
+        "id": "88b5b12752cd24cf",
+        "type": "link out",
+        "z": "89f526b9ab8e572f",
+        "g": "70f849332445661c",
+        "name": "OUT_OPC_ME_BASES",
+        "mode": "link",
+        "links": [
+            "bf8653e9b3e24069"
+        ],
+        "x": 1330,
+        "y": 1040,
+        "wires": [],
+        "l": true
+    },
+    {
+        "id": "bd045fc10304343e",
+        "type": "link out",
+        "z": "89f526b9ab8e572f",
+        "g": "70f849332445661c",
+        "name": "OUT_OPC_ME_SPINNERS",
+        "mode": "link",
+        "links": [
+            "9aa0968f1a41376d"
+        ],
+        "x": 1340,
+        "y": 1080,
+        "wires": [],
+        "l": true
+    },
+    {
+        "id": "a6e05a969d04b3f8",
+        "type": "function",
+        "z": "89f526b9ab8e572f",
+        "g": "70f849332445661c",
+        "name": "obtenerNombreyValorBases",
+        "func": "msg.payload = msg.payload[\"ME_BASES\"]\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1040,
+        "y": 1040,
+        "wires": [
+            [
+                "88b5b12752cd24cf"
+            ]
+        ]
+    },
+    {
+        "id": "646b6a26865a0b7f",
+        "type": "function",
+        "z": "89f526b9ab8e572f",
+        "g": "70f849332445661c",
+        "name": "obtenerNombreyValorTransporte",
+        "func": "msg.payload = msg.payload[\"ME_TRANSPORTE\"]\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1050,
+        "y": 1000,
+        "wires": [
+            [
+                "ee7f9e734a5dfa4f"
+            ]
+        ]
+    },
+    {
+        "id": "6d0fa8c60ab6313f",
+        "type": "function",
+        "z": "89f526b9ab8e572f",
+        "g": "70f849332445661c",
+        "name": "obtenerNombreyValorSpinners",
+        "func": "msg.payload = msg.payload[\"ME_SPINNERS\"]\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1050,
+        "y": 1080,
+        "wires": [
+            [
+                "bd045fc10304343e"
+            ]
+        ]
+    }
+]

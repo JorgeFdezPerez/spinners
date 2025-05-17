@@ -33,10 +33,22 @@ services:
     networks:
       - spinners_network
     command: sleep infinity
+  gateway:
+    build:
+      context: ./node-red
+    container_name: spinners-node-red
+    networks:
+      - spinners_network
+    ports:
+      - 1880:1880
+      - 54840:54840
 
 volumes:
   mysql_data:
-    name: mysql_data
+    name: mysql_data    
+  node_red_data:
+    name: node_red_data
+    driver: local
     
 networks:
   spinners_network:
