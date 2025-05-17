@@ -14,9 +14,9 @@ class MasterRecipeFinder:
             "initialState" : "E0",
             "finalState" : "E5"
             "actions" : {
-                "E0" : [{"me" : "ME_CODE_1", "numSrv" : numSrv1}],
-                "E1" : [{"me" : "ME_CODE_2", "numSrv" : numSrv2},
-                        {"me" : "ME_CODE_3", "numSrv" : numSrv3}, ...]
+                "E0" : [{"me" : "ME_CODE_1", "numSrv" : numSrv1, "setpoint": None}],
+                "E1" : [{"me" : "ME_CODE_2", "numSrv" : numSrv2, "setpoint": 5},
+                        {"me" : "ME_CODE_3", "numSrv" : numSrv3, "setpoint": -3.1}, ...]
                 ...
             },
             "transitions" : [{"name" : "tran_E0_E1", "initialState" : "E0", "finalState" : E1},

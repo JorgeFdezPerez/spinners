@@ -8,6 +8,9 @@ class JsonSocketServer:
 
     Dictionaries are serialized as json and encoded.
 
+    Received data is sent to an event handler. On client connection,
+    the event {"socketServerEvent": "connected"} is sent.
+
     Attributes:
         sendQueue (asyncio.Queue): Put messages here to send them.
     """
@@ -58,6 +61,8 @@ class JsonSocketServer:
         """
         self._reader = reader
         self._writer = writer
+        # Notify event handler
+        asyncio.create_task(self._eventHandler.handleEvent({"socketServerEvent": "connected"}))
         # Launch read and write loops
         asyncio.gather(self._readLoop(), self._writeLoop())
 

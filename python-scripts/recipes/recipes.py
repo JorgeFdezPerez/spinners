@@ -1,26 +1,53 @@
 import asyncio
+import logging
 
 from jsonsocketserver import JsonSocketServer
 from appstatemachine import AppSM
 from eventhandler import EventHandler
-
-from masterrecipefinder import MasterRecipeFinder
+from recipehandler import RecipeHandler
+from opcuaclient import MockOpcuaClient
 
 PORT = 10000
 
+
 async def main():
 
-    sm = AppSM(makeGraph=True)
+    # Set up logging
+    logging.basicConfig(level=logging.WARNING)
+    #logging.getLogger('transitions').setLevel(logging.INFO)
+    logging.getLogger('EventHandler').setLevel(logging.DEBUG)
+    logging.getLogger('RecipeHandler').setLevel(logging.DEBUG)
+    logging.getLogger('ControlRecipeSM').setLevel(logging.DEBUG)
+
+    sm = AppSM(makeGraph=False)
     server = JsonSocketServer(port=PORT)
-    eventHandler = EventHandler(appSM=sm)
+    opcuaClient = MockOpcuaClient()
+    recipeHandler = RecipeHandler()
+    eventHandler = EventHandler(
+        appSM=sm, opcuaClient=opcuaClient, recipeHandler=recipeHandler)
 
-    await sm.start(eventHandler=eventHandler)
     await server.start(eventHandler=eventHandler)
+    await recipeHandler.setEventHandler(eventHandler=eventHandler)
 
-    finder = MasterRecipeFinder()
-    recipes = await(finder.updateAndGetMasterRecipes())
-    print(recipes)
+    asyncio.create_task(eventHandler.loop())
 
-    mainLoop = asyncio.get_running_loop()
-    await eventHandler.loop()
+    # MOCK EVENTS FOR TESTING
+    # mock client connection
+    await eventHandler.handleEvent({"socketServerEvent": "connected"})
+    await asyncio.sleep(2)
+    # mock hmi order to reset plant
+    # (would come after client is notified that app is waiting to reset)
+    await eventHandler.handleEvent({"hmiEvent": "resetPlant"})
+    await asyncio.sleep(2)
+    # mock opcua phases being completed
+    # (would come as reset recipe is being executed)
+    """ await eventHandler.handleEvent({"opcuaEvent": "completedPhases"})
+    await asyncio.sleep(1)
+    await eventHandler.handleEvent({"opcuaEvent": "completedPhases"})
+    await asyncio.sleep(1)
+    await eventHandler.handleEvent({"opcuaEvent": "completedPhases"})
+    await asyncio.sleep(1) """
+
+    while True:
+        await asyncio.sleep(5)
 asyncio.run(main())
