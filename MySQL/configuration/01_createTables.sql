@@ -117,22 +117,22 @@ CREATE TABLE fases_equipamiento (
 CREATE TABLE etapas (
     id_etapa INT NOT NULL AUTO_INCREMENT,
     id_receta_maestra INT NOT NULL,
-    id_parametro INT,
     nombre VARCHAR(255) NOT NULL,
     es_inicial BOOL NOT NULL,
     es_final BOOL NOT NULL,
     PRIMARY KEY (id_etapa),
-    FOREIGN KEY (id_receta_maestra) REFERENCES recetas_maestras (id_receta_maestra) ON UPDATE CASCADE ON DELETE RESTRICT,
-    FOREIGN KEY (id_parametro) REFERENCES parametros (id_parametro) ON UPDATE CASCADE ON DELETE RESTRICT
+    FOREIGN KEY (id_receta_maestra) REFERENCES recetas_maestras (id_receta_maestra) ON UPDATE CASCADE ON DELETE RESTRICT
 );
 
 CREATE TABLE fases_etapas (
     id_fases_etapas INT NOT NULL AUTO_INCREMENT,
     id_fase_equipamiento INT NOT NULL,
     id_etapa INT NOT NULL,
+    id_parametro_setpoint INT,
     PRIMARY KEY (id_fases_etapas),
     FOREIGN KEY (id_fase_equipamiento) REFERENCES fases_equipamiento (id_fase_equipamiento) ON UPDATE CASCADE ON DELETE RESTRICT,
-    FOREIGN KEY (id_etapa) REFERENCES etapas (id_etapa) ON UPDATE CASCADE ON DELETE RESTRICT
+    FOREIGN KEY (id_etapa) REFERENCES etapas (id_etapa) ON UPDATE CASCADE ON DELETE RESTRICT,
+    FOREIGN KEY (id_parametro_setpoint) REFERENCES parametros (id_parametro) ON UPDATE CASCADE ON DELETE RESTRICT
 );
 
 CREATE TABLE condiciones (
