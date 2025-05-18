@@ -45,7 +45,7 @@ class RecipeHandler:
             recipeInfo[recipeName]["parameters"] = self._masterRecipes[recipeName]["parameters"]
         return recipeInfo
 
-    async def startControlRecipe(self, masterRecipeName: str, logInDatabase: bool = True, params: dict = {}):
+    async def startControlRecipe(self, masterRecipeName: str, logInDatabase: bool = True, paramValues: dict = {}):
         """Start execution of a control recipe based off a master recipe.
 
         Send special parameter "REPETICIONES" to specify number of loops (defaults to 1).
@@ -54,7 +54,7 @@ class RecipeHandler:
             masterRecipeName (str): Recipe to execute
             logInDatabase (bool, optional): Store control recipe in database. Defaults to True.
                 Set to false for things like resets.
-            params (dict, optional): Parameters to use. Defaults to {}. Format:
+            paramValues (dict, optional): Parameters to use. Defaults to {}. Format:
                 {
                     "PARAM_1_NAME" : Value
                     "PARAM_2_NAME" : Value
@@ -77,8 +77,8 @@ class RecipeHandler:
         self._completedCycles = 0
 
         # Number of cycles to do, based off param named "REPETICIONES"
-        if ("REPETICIONES" in params):
-            self._maxCycles = params["REPETICIONES"]
+        if ("REPETICIONES" in paramValues):
+            self._maxCycles = paramValues["REPETICIONES"]
         else:
             self._maxCycles = 1
         
@@ -88,7 +88,7 @@ class RecipeHandler:
         self._controlRecipeSM.buildControlRecipe(
             masterRecipe=masterRecipe,
             makeGraph=False,
-            params=params
+            paramValues=paramValues
         )
 
         if (self._logInDatabase):

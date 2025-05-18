@@ -1,4 +1,5 @@
 import logging
+import copy
 
 from transitions.extensions import AsyncGraphMachine
 from functools import partial
@@ -10,7 +11,7 @@ class ControlRecipeSM:
     """State machine for executing individual cycles of a control recipe
     """
 
-    def buildControlRecipe(self, masterRecipe: dict, makeGraph: bool = False, params: dict = {}):
+    def buildControlRecipe(self, masterRecipe: dict, makeGraph: bool = False, paramValues: dict = {}):
         """Sets up a state machine for a control recipe based off a master recipe.
 
         Args:
@@ -21,9 +22,9 @@ class ControlRecipeSM:
                     "initialState" : "E0",
                     "finalState" : "E5"
                     "actions" : {
-                                "E0" : [{"me" : "ME_CODE_1", "numSrv" : numSrv1}],
-                                "E1" : [{"me" : "ME_CODE_2", "numSrv" : numSrv2},
-                                        {"me" : "ME_CODE_3", "numSrv" : numSrv3}, ...]
+                                "E0" : [{"me" : "ME_CODE_1", "numSrv" : numSrv1, "setpoint_param": None, "default_setpoint": None}],
+                                "E1" : [{"me" : "ME_CODE_2", "numSrv" : numSrv2, "setpoint_param": None, "default_setpoint": 30},
+                                        {"me" : "ME_CODE_3", "numSrv" : numSrv3, "setpoint_param": "PARAM_6_NAME", "default_setpoint": -9.5}, ...]
                                 ...
                                 },
                     "transitions" : [{"name" : "tran_E0_E1", "initialState" : "E0", "finalState" : E1},
@@ -33,7 +34,7 @@ class ControlRecipeSM:
                 }
 
             makeGraph (bool, optional): Save a graph of the state machine. Defaults to False.
-            params (dict, optional): Parameter values dict. Defaults to {}. Format is:
+            paramValues (dict, optional): Parameter values dict. Defaults to {}. Format is:
                 {
                     "PARAM_1_NAME" : Value
                     "PARAM_2_NAME" : Value
@@ -65,9 +66,13 @@ class ControlRecipeSM:
         # Associate actions to states
         for stateName in masterRecipe["actions"]:
             state = self._machine.get_state(stateName)
-            phases = masterRecipe["actions"][stateName]
-            debugCallback = partial(self._logger.debug, msg="Triggered on_enter callback of %s"% stateName)
-            state.add_callback("enter",debugCallback)
+
+            # Get actions (equipment phases to call) from master recipe
+            phases = self._getPhasesWithSetpointValues(masterRecipe["actions"][stateName], paramValues)
+
+            debugCallback = partial(
+                self._logger.debug, msg="Triggered on_enter callback of %s" % stateName)
+            state.add_callback("enter", debugCallback)
             callback = partial(self._fnStartPhases, phases=phases)
             state.add_callback("enter", callback)
 
@@ -109,8 +114,10 @@ class ControlRecipeSM:
             # The state machine generates with a lot of transitions.
             # Need to select only the ones that are actually specified in the recipe
             # (they are named tran_E0_E1, tran_E1_E2, ...)
-            validTransitions = [x for x in validTransitions if x.startswith("tran_")]
-            self._logger.debug("Valid transitions after filtering are %s"% validTransitions)
+            validTransitions = [
+                x for x in validTransitions if x.startswith("tran_")]
+            self._logger.debug(
+                "Valid transitions after filtering are %s" % validTransitions)
             # Do transition (if there are multiple transitions, they should have been defined
             # with a condition associated so that only one actually executes)
             for transition in validTransitions:
@@ -139,3 +146,49 @@ class ControlRecipeSM:
         self._fnStartPhases = fnStartPhases
         self._fnNotifyFinished = fnNotifyFinished
         self._logger = logging.getLogger("ControlRecipeSM")
+
+    def _getPhasesWithSetpointValues(self, phasesNoSetpoint: list[dict], paramValues: dict = {}):
+        """From a list of equipment phases with optional fields "setpoint_param", "default_setpoint"
+        return a list specifying the setpoint value.
+
+        If a param has been specified, prioritises its value.
+        If it isn't specified or its value is None, uses the default setpoint.
+        If a default setpoint isn't specified, the value is set to None
+        (this should be the case for phases that don't use setpoints).
+
+        Args:
+            phasesNoSetpoint (list[dict]): List of phases:
+                [{"me" : "ME_CODE_2", "numSrv" : numSrv2, "setpoint_param": None, "default_setpoint": 30},
+                 {"me" : "ME_CODE_3", "numSrv" : numSrv3, "setpoint_param": "PARAM_2_NAME", "default_setpoint": -9.5}, ...]
+            paramValues (dict, optional): Parameter values. Defaults to {}.
+                Structured as:
+                    {
+                    "PARAM_1_NAME" : 40
+                    "PARAM_2_NAME" : 50
+                    }
+
+        """        
+        phases = copy.deepcopy(phasesNoSetpoint)
+        # Setpoints for equipment phases, based off master recipe defaults and control recipe parameters:
+        for equipmentPhase in phases:
+            setpoint = None
+            # Check if setpoint can be set from a control recipe parameter
+            paramName = equipmentPhase["setpoint_param"]
+            if (paramName != None):
+                setpoint = paramValues[paramName]
+
+            # If setpoint does not have a value yet,
+            # set the default value if it exists
+            if (setpoint == None):
+                setpoint = equipmentPhase["default_setpoint"]
+
+            # (Setpoint may still have None value if the phase doesn't use a setpoint at all)
+
+            # Store setpoint in phases
+            equipmentPhase["setpoint"] = setpoint
+
+            # Remove data that isn't needed to launch the phase
+            del equipmentPhase["setpoint_param"]
+            del equipmentPhase["default_setpoint"]
+
+        return phases

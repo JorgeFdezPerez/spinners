@@ -7,16 +7,17 @@ class MasterRecipeFinder:
     """Gets information about all master recipes in mysql database.
 
     Recipe data is stored as a dict:
-    masterRecipes = {
+
+        masterRecipes = {
         "RECIPE_1" : {
             "description" : "aeiou",
             "states" : ['E0', 'E1', 'E2', ...],
             "initialState" : "E0",
             "finalState" : "E5"
             "actions" : {
-                "E0" : [{"me" : "ME_CODE_1", "numSrv" : numSrv1, "setpoint": None}],
-                "E1" : [{"me" : "ME_CODE_2", "numSrv" : numSrv2, "setpoint": 5},
-                        {"me" : "ME_CODE_3", "numSrv" : numSrv3, "setpoint": -3.1}, ...]
+                "E0" : [{"me" : "ME_CODE_1", "numSrv" : numSrv1, "setpoint_param": None, "default_setpoint": None}],
+                "E1" : [{"me" : "ME_CODE_2", "numSrv" : numSrv2, "setpoint_param": None, "default_setpoint": 30},
+                        {"me" : "ME_CODE_3", "numSrv" : numSrv3, "setpoint_param": "PARAM_6_NAME", "default_setpoint": -9.5}, ...]
                 ...
             },
             "transitions" : [{"name" : "tran_E0_E1", "initialState" : "E0", "finalState" : E1},
@@ -26,7 +27,7 @@ class MasterRecipeFinder:
         },
         "RECIPE_2" : {...},
         ...
-    }
+        }
     """
 
     async def updateMasterRecipes(self):
@@ -175,13 +176,15 @@ class MasterRecipeFinder:
         Returns:
             List[Dict]: List of actions belonging to the specified state.
                 The list will have one dict for each action:
-                [{"me" : "ME_CODE_1", "numSrv" : "numSrv_1"},
-                {"me" : "ME_CODE_2", "numSrv" : "numSrv_2"},
+                [{"me" : "ME_CODE_1", "numSrv" : "numSrv_1", "setpoint_param" : None, "default_setpoint" : None},
+                {"me" : "ME_CODE_2", "numSrv" : "numSrv_2", "setpoint_param" : "PARAMETER_1_NAME", "default_setpoint" : 3},
                 ... ]
         """
         actions = await mysqlQuery(
             """
-            SELECT modulos_equipamiento.codigo_modulo_equipamiento, fases_equipamiento.num_srv
+            SELECT modulos_equipamiento.codigo_modulo_equipamiento,
+                fases_equipamiento.num_srv, parametros.nombre,
+                fases_etapas.tipo_setpoint, fases_etapas.valor_por_defecto_setpoint
             FROM recetas_maestras
                 INNER JOIN etapas
                     ON  recetas_maestras.id_receta_maestra = etapas.id_receta_maestra
@@ -191,15 +194,36 @@ class MasterRecipeFinder:
                     ON fases_etapas.id_fase_equipamiento = fases_equipamiento.id_fase_equipamiento
                 INNER JOIN modulos_equipamiento
                     ON fases_equipamiento.id_modulo_equipamiento = modulos_equipamiento.id_modulo_equipamiento
+                LEFT JOIN parametros
+                    ON fases_etapas.id_parametro_setpoint = parametros.id_parametro
             WHERE recetas_maestras.codigo_receta_maestra = %s
                 AND etapas.nombre = %s
             """,
             (masterRecipeName, stateName)
         )
 
-        # Query returns actions as tuples inside of a list - [('ME_CODE_ACTION_1', numSRVaction1), ("ME_CODE", numSRVaction2)]
-        actions = [dict(zip(("me", "numSrv"), x)) for x in actions]
-        return actions
+        # Query returns actions as tuples inside of a list:
+        # [('ME_CODE_ACTION_1', numSRVaction1, "PARAM_NAME_1", "SETPOINT_TYPE_1", "DEFAULT_SETPOINT_VALUE_1"), (...), ...]
+        actionsList = [dict(zip(("me", "numSrv", "setpoint_param"), x)) for x in actions]
+
+        # Decoding the setpoint values according to type
+        n = 0
+        for i in actions:
+            match(i[4]):
+                case "INT":
+                    setpoint_value = int(i[5])
+                case "REAL":
+                    setpoint_value = float(i[5])
+                case None:
+                    setpoint_value = None
+                case _ :
+                    raise TypeError("Invalid setpoint type %s"% i[4])
+
+            actionsList[n]["default_setpoint"] = setpoint_value
+
+            n = n + 1
+
+        return actionsList
 
     async def _queryTransitions(self, masterRecipeName: str):
         """Get transitions of the specified recipe. Sql client will raise error on timeout or conection error.

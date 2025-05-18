@@ -39,14 +39,7 @@ async def main():
     # (would come after client is notified that app is waiting to reset)
     await eventHandler.handleEvent({"hmiEvent": "resetPlant"})
     await asyncio.sleep(2)
-    # mock opcua phases being completed
-    # (would come as reset recipe is being executed)
-    """ await eventHandler.handleEvent({"opcuaEvent": "completedPhases"})
-    await asyncio.sleep(1)
-    await eventHandler.handleEvent({"opcuaEvent": "completedPhases"})
-    await asyncio.sleep(1)
-    await eventHandler.handleEvent({"opcuaEvent": "completedPhases"})
-    await asyncio.sleep(1) """
+    # MockOpcuaClient launches fake events for phases being completed automatically
 
     while True:
         await asyncio.sleep(5)
