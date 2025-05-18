@@ -1,5 +1,5 @@
-id_fases_etapas;id_fase_equipamiento;id_etapa;id_parametro_setpoint
-1;7;1;NULL
-2;11;2;NULL
-3;14;2;NULL
-4;8;3;NULL
+id_fases_etapas;id_fase_equipamiento;id_etapa;id_parametro_setpoint;tipo_setpoint;valor_por_defecto_setpoint
+1;7;1;NULL;NULL;NULL
+2;11;2;NULL;NULL;NULL
+3;14;2;NULL;NULL;NULL
+4;8;3;NULL;NULL;NULL

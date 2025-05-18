@@ -129,6 +129,8 @@ CREATE TABLE fases_etapas (
     id_fase_equipamiento INT NOT NULL,
     id_etapa INT NOT NULL,
     id_parametro_setpoint INT,
+    tipo_setpoint VARCHAR(255),
+    valor_por_defecto_setpoint VARCHAR(255),
     PRIMARY KEY (id_fases_etapas),
     FOREIGN KEY (id_fase_equipamiento) REFERENCES fases_equipamiento (id_fase_equipamiento) ON UPDATE CASCADE ON DELETE RESTRICT,
     FOREIGN KEY (id_etapa) REFERENCES etapas (id_etapa) ON UPDATE CASCADE ON DELETE RESTRICT,
