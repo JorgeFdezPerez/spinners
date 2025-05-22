@@ -17,8 +17,9 @@ async def main():
     #logging.getLogger('transitions').setLevel(logging.INFO)
     logging.getLogger('EventHandler').setLevel(logging.DEBUG)
     logging.getLogger('RecipeHandler').setLevel(logging.DEBUG)
-    logging.getLogger('ControlRecipeSM').setLevel(logging.DEBUG)
+    #logging.getLogger('ControlRecipeSM').setLevel(logging.DEBUG)
     logging.getLogger("OpcuaClient").setLevel(logging.DEBUG)
+    #logging.getLogger("MasterRecipeFinder").setLevel(logging.DEBUG)
 
     sm = AppSM(makeGraph=False)
     server = JsonSocketServer(port=PORT)
@@ -40,7 +41,22 @@ async def main():
     # mock hmi order to reset plant
     # (would come after client is notified that app is waiting to reset)
     await eventHandler.handleEvent({"hmiEvent": "resetPlant"})
-    #await asyncio.sleep(2)
+    await asyncio.sleep(15)
+    await eventHandler.handleEvent({
+        "hmiEvent": "recipeSelected",
+        "name": "RECETA_DISPENSAR",
+        "params":{"REPETICIONES": 2}
+    })
+    await asyncio.sleep(20)
+    await eventHandler.handleEvent({"hmiEvent": "emergencyStop"})
+    await asyncio.sleep(5)
+    await eventHandler.handleEvent({"hmiEvent": "resetPlant"})
+    await asyncio.sleep(15)
+    await eventHandler.handleEvent({
+        "hmiEvent": "recipeSelected",
+        "name": "RECETA_DISPENSAR",
+        "params":{"REPETICIONES": 2}
+    })
     # MockOpcuaClient launches fake events for phases being completed automatically
     
     #await opcuaClient.startEquipmentPhases([{"me": "ME_TRANSPORTE", "numSrv": 1, "setpoint": 0}])

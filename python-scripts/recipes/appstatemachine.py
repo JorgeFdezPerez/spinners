@@ -28,6 +28,7 @@ class AppSM:
             fatalError()
             retryStartingApp()
             resetPlant()
+            abortProduction()
             resetComplete()
             recipeSelected()
             manualSelected()
@@ -43,10 +44,9 @@ class AppSM:
                 eventHandler.handleEvent(event: dict[str,str])
         """
         self._eventHandler = eventHandler
-        if(self._eventHandler == None):
+        if (self._eventHandler == None):
             raise TypeError("Event handler was not set")
         await self.machine.to_starting()
-
 
     def __init__(self, makeGraph: bool = False):
         self._eventHandler = None
@@ -98,8 +98,16 @@ class AppSM:
         )
         # Start resetting plant
         self.machine.add_transition(
-            "resetPlant", [States.waitingToReset,
-                           States.controllingManually], States.resetting
+            "resetPlant",
+            [States.waitingToReset, States.controllingManually],
+            States.resetting
+        )
+        # Stop plant when there is an alarm
+        self.machine.add_transition(
+            "abortProduction",
+            [States.producingBatch, States.controllingManually],
+            States.waitingToReset
+
         )
         # Plant has reached initial conditions
         self.machine.add_transition(
@@ -121,37 +129,41 @@ class AppSM:
         # Actions
         self.machine.on_enter_starting(self._onEnterStarting)
         self.machine.on_enter_stopped(self._onEnterStopped)
-        self.machine.on_enter_active_waitingToReset(self._onEnterWaitingToReset)
+        self.machine.on_enter_active_waitingToReset(
+            self._onEnterWaitingToReset)
         self.machine.on_enter_active_resetting(self._onEnterResetting)
         self.machine.on_enter_active_idle(self._onEnterIdle)
-        self.machine.on_enter_active_controllingManually(self._onEnterControllingManually)
-        self.machine.on_exit_active_controllingManually(self._onExitControllingManually)
-        self.machine.on_enter_active_producingBatch(self._onEnterProducingBatch)
+        self.machine.on_enter_active_controllingManually(
+            self._onEnterControllingManually)
+        self.machine.on_exit_active_controllingManually(
+            self._onExitControllingManually)
+        self.machine.on_enter_active_producingBatch(
+            self._onEnterProducingBatch)
 
         if (makeGraph):
             graph = self.machine.get_combined_graph(title="App state machine")
             graph.draw(filename=APP_SM_GRAPH_FILENAME, format="png")
 
     async def _onEnterStarting(self):
-        await self._eventHandler.handleEvent({"appSMEvent" : "enterStarting"})
+        await self._eventHandler.handleEvent({"appSMEvent": "enterStarting"})
 
     async def _onEnterStopped(self):
-        await self._eventHandler.handleEvent({"appSMEvent" : "enterStopped"})
+        await self._eventHandler.handleEvent({"appSMEvent": "enterStopped"})
 
     async def _onEnterWaitingToReset(self):
-        await self._eventHandler.handleEvent({"appSMEvent" : "enterWaitingToReset"})
-        
+        await self._eventHandler.handleEvent({"appSMEvent": "enterWaitingToReset"})
+
     async def _onEnterResetting(self):
-        await self._eventHandler.handleEvent({"appSMEvent" : "enterResetting"})
+        await self._eventHandler.handleEvent({"appSMEvent": "enterResetting"})
 
     async def _onEnterIdle(self):
-        await self._eventHandler.handleEvent({"appSMEvent" : "enterIdle"})
+        await self._eventHandler.handleEvent({"appSMEvent": "enterIdle"})
 
     async def _onEnterControllingManually(self):
-        await self._eventHandler.handleEvent({"appSMEvent" : "enterControllingManually"})
+        await self._eventHandler.handleEvent({"appSMEvent": "enterControllingManually"})
 
     async def _onExitControllingManually(self):
-        await self._eventHandler.handleEvent({"appSMEvent" : "exitControllingManually"})
+        await self._eventHandler.handleEvent({"appSMEvent": "exitControllingManually"})
 
     async def _onEnterProducingBatch(self):
-        await self._eventHandler.handleEvent({"appSMEvent" : "enterProducingBatch"})
+        await self._eventHandler.handleEvent({"appSMEvent": "enterProducingBatch"})

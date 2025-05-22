@@ -98,11 +98,13 @@ class OpcuaClient:
             await gatewayNode.call_method("1:AbortarModulos")
             self._logger.debug("Aborted all modules.")
 
+            await asyncio.sleep(0.5)
+
             # Reset aborted modules to idle state
             for module in modules:
                 stateNode = await gatewayNode.get_child(f"1:{module}/1:EstadoActual")
                 state = await stateNode.read_value()
-                if (state != 0):  # 0 is the idle state
+                if (state == 3):  # 3 is the aborted state
                     param_ME = Variant(
                         Value=module, VariantType=VariantType.String)
                     await gatewayNode.call_method("1:ResetModulo", param_ME)
@@ -193,20 +195,35 @@ class OpcuaClient:
             Value=phase["setpoint"], VariantType=VariantType.UInt32)
 
         async with Client(url="opc.tcp://spinners-node-red:54840") as client:
-            # Start phase
             gatewayNode = client.get_node("ns=1;i=1000")
+            stateNode = await gatewayNode.get_child(f"1:{phase["me"]}/1:EstadoActual")
+
+            # Check if in state completed or aborted, in that case reset the module before using it
+            state = await stateNode.read_value()
+            if((state == 2) or (state == 3)):
+                self._logger.debug(f"Trying to launch {phase["me"]} but it is in state {state}, resetting.")
+                await gatewayNode.call_method("1:CompletarFase", param_ME)
+            while((state == 2) or (state == 3)):
+                await asyncio.sleep(0.5)
+                state = await stateNode.read_value()
+
+
+            # Start phase
             await gatewayNode.call_method("1:IniciarFase", param_ME, param_numSrv, param_setpoint)
             self._logger.debug("Started %s." % phase["me"])
 
             # Wait for completion
-            stateNode = await gatewayNode.get_child(f"1:{phase["me"]}/1:EstadoActual")
             state = await stateNode.read_value()
             while (state != 2):  # 2 is state "complete"
-                await asyncio.sleep(0.5)
+                await asyncio.sleep(1)
                 state = await stateNode.read_value()
 
             # Send reset event on completion
+            self._logger.debug("%s phase completed, resetting"% phase["me"])
             await gatewayNode.call_method("1:CompletarFase", param_ME)
+            while (state == 2):
+                await asyncio.sleep(0.5)
+                state = await stateNode.read_value()
 
 
 class OpcuaSubscriptionHandler:

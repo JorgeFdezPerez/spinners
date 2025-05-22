@@ -1,5 +1,6 @@
 import asyncio
 import copy
+import logging
 from mysqlclient import mysqlQuery
 
 
@@ -35,12 +36,15 @@ class MasterRecipeFinder:
 
         The sql client will raise error on timeout or conection error.
         """
+        self._logger.debug("Querying master recipes.")
         queriedRecipes = dict()
 
         # Getting names of all master recipes
         recipeNames = await self._queryMasterRecipes()
+        self._logger.debug("Found names %s"% recipeNames)
 
         for name in recipeNames:
+            self._logger.debug("Querying %s"% name)
             queriedRecipes[name] = dict()
 
             # Getting decription
@@ -51,6 +55,7 @@ class MasterRecipeFinder:
             queriedRecipes[name]["states"] = states
             queriedRecipes[name]["initialState"] = initialState
             queriedRecipes[name]["finalState"] = finalState
+            self._logger.debug("Got states %s"% states)
 
             # Getting actions (equipment module and service number) for each state in the recipe
             queriedRecipes[name]["actions"] = dict()
@@ -59,12 +64,16 @@ class MasterRecipeFinder:
                     masterRecipeName=name,
                     stateName=state
                 )
+            self._logger.debug("Got actions %s"% queriedRecipes[name]["actions"])
 
             # Getting transitions
             queriedRecipes[name]["transitions"] = await self._queryTransitions(masterRecipeName=name)
+            self._logger.debug("Got transitions %s"% queriedRecipes[name]["transitions"])
 
             # Getting parameters
             queriedRecipes[name]["parameters"] = await self._queryParameters(masterRecipeName=name)
+            self._logger.debug("Got parameters %s"% queriedRecipes[name]["parameters"])
+
 
         await self._lock.acquire()
         self._masterRecipes = queriedRecipes
@@ -97,6 +106,7 @@ class MasterRecipeFinder:
         """
         self._lock = asyncio.Lock()
         self._masterRecipes = None
+        self._logger = logging.getLogger("MasterRecipeFinder")
 
     async def _queryMasterRecipes(self):
         """Get all master recipe names. Sql client will raise error on timeout or conection error.
@@ -209,11 +219,11 @@ class MasterRecipeFinder:
         # Decoding the setpoint values according to type
         n = 0
         for i in actions:
-            match(i[4]):
+            match(i[3]):
                 case "INT":
-                    setpoint_value = int(i[5])
+                    setpoint_value = int(i[4])
                 case "REAL":
-                    setpoint_value = float(i[5])
+                    setpoint_value = float(i[4])
                 case None:
                     setpoint_value = None
                 case _ :

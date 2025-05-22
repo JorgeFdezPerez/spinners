@@ -10,7 +10,8 @@ class EventHandler:
     """Event handler. Recieves events in a queue and calls class methods to react to them.
 
     Events are dicts, with first key { "EVENT_TYPE" : "EVENT_CODE" }
-    """    
+    """
+
     async def handleEvent(self, event: dict[str, str]):
         """Add event to queue
 
@@ -18,7 +19,7 @@ class EventHandler:
             event (dict[str,str]): Event to add.
                 Dict with first key { "EVENT_TYPE" : "EVENT_CODE" }. Events can optionally have more keys (params, etc).
         """
-        self._logger.debug("Got %s", event)
+        # self._logger.debug("Got %s", event)
         await self._eventQueue.put(event)
 
     async def loop(self):
@@ -47,7 +48,7 @@ class EventHandler:
             else:
                 self._logger.info("Event gotten is an invalid object.")
 
-    def __init__(self, appSM: AppSM, opcuaClient:OpcuaClient, recipeHandler: RecipeHandler):
+    def __init__(self, appSM: AppSM, opcuaClient: OpcuaClient, recipeHandler: RecipeHandler):
         self._eventQueue = asyncio.Queue()
         self._appSM = appSM
         self._opcuaClient = opcuaClient
@@ -71,7 +72,7 @@ class EventHandler:
 
                 machine = self._appSM.machine
                 currentState = machine.get_model_state(machine.model)
-                if(currentState == "idle"):
+                if (currentState.name == "idle"):
                     recipeInfo = self._recipeHandler.getMasterRecipes()
                     # TODO: Tell socket client recipe info
                     pass
@@ -79,10 +80,30 @@ class EventHandler:
                     # TODO: Tell socket client about error
                     pass
             case "recipeSelected":
-                # TODO: Load recipe
-                await self._appSM.machine.recipeSelected()
+                # Client has requested execution of a recipe
+                # Do it only if currently in idle state
+                machine = self._appSM.machine
+                currentState = machine.get_model_state(machine.model)
+                if (currentState.name == "idle"):
+                    await self._appSM.machine.recipeSelected()
+                    masterRecipeName = event["name"]
+                    paramValues = event["params"]
+                    await self._recipeHandler.startControlRecipe(
+                        masterRecipeName=masterRecipeName,
+                        logInDatabase=True,
+                        paramValues=paramValues)
+                else:
+                    self._logger.debug("Did not select recipe - not in idle")
+                    # TODO: Tell socket client about error
+                    pass
             case "emergencyStop":
-                # TODO: Abort recipe
+                # Hmi has requested emergency stop
+                # Abort all phases and go to state waitingToReset
+                await self._opcuaClient.abortAllPhases()
+                machine = self._appSM.machine
+                currentState = machine.get_model_state(machine.model)
+                if (currentState.name != "waitingToReset"):
+                    await self._appSM.machine.abortProduction()
                 pass
 
     async def _processAppSMEvent(self, event: dict[str, str]):
@@ -96,7 +117,7 @@ class EventHandler:
                 # TODO: Handle opcua connection errors
                 # TODO: Handle mysql connection errors
 
-                await self._opcuaClient.start(eventHandler = self)
+                await self._opcuaClient.start(eventHandler=self)
                 await mysqlTestConnection()
 
                 await self._appSM.machine.startedApp()
@@ -127,17 +148,32 @@ class EventHandler:
 
         Args:
             event (dict[str, str]): Event received
-        """        
+        """
         eventCode = event["socketServerEvent"]
         match eventCode:
             case "connected":
-                await self._appSM.start(eventHandler = self)
+                await self._appSM.start(eventHandler=self)
 
-    async def _processOpcuaEvent(self, event:dict[str,str]):
+    async def _processOpcuaEvent(self, event: dict[str, str]):
         eventCode = event["opcuaEvent"]
         match eventCode:
             case "receivedData":
                 # TODO : Handle receiving abort/alarm data
+                match event["data"]["var"]:
+                    case "EstadoActual":
+                        # Change in the state of one of the equipment modules
+                        if (event["data"]["value"] == 3):
+                            # Equipment module was aborted - abort all other phases,
+                            # then go to state waitingToReset
+                            await self._opcuaClient.abortAllPhases()
+                            machine = self._appSM.machine
+                            currentState = machine.get_model_state(
+                                machine.model)
+                            if (currentState.name != "waitingToReset"):
+                                await self._appSM.machine.abortProduction()
+
+                    case _:
+                        pass
                 pass
             case "completedPhases":
                 # Phases for this state in the recipe are done, so go to next state
@@ -154,9 +190,13 @@ class EventHandler:
                 pass
             case "finishedAllCycles":
                 # Once a recipe (reset recipe or a normal one) is done, go back to idle
-                # (since both transitions are called, appSM will probably log a warning)
-                await self._appSM.machine.resetComplete()
-                await self._appSM.machine.recipeDone()
+
+                machine = self._appSM.machine
+                currentState = machine.get_model_state(machine.model)
+                if (currentState.name == "resetting"):
+                    await self._appSM.machine.resetComplete()
+                elif (currentState.name == "producingBatch"):
+                    await self._appSM.machine.recipeDone()
 
     async def _processError(self, error: dict[str, str]):
         errorCode = error["error"]

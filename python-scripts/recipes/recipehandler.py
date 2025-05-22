@@ -78,7 +78,8 @@ class RecipeHandler:
 
         # Number of cycles to do, based off param named "REPETICIONES"
         if ("REPETICIONES" in paramValues):
-            self._maxCycles = paramValues["REPETICIONES"]
+            if(paramValues["REPETICIONES"] != None):
+                self._maxCycles = paramValues["REPETICIONES"]
         else:
             self._maxCycles = 1
         
@@ -168,8 +169,8 @@ class RecipeHandler:
             self._logger.debug("Completed final cycle.")
             await self._eventHandler.handleEvent({"recipeHandlerEvent": "finishedAllCycles"})
         else:
-            self._logger.debug("Completed one cycle.")
-            self._controlRecipeSM.initControlRecipe()
+            self._logger.debug("Completed a cycle. Total completed : %s"% self._completedCycles)
+            await self._controlRecipeSM.initControlRecipe()
 
     async def _startPhases(self, phases: dict):
         """Send phases dict to event handler in order to start them.
