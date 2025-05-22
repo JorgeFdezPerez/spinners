@@ -1,3 +1,6 @@
 id_transicion;id_etapa_inicial;id_etapa_final;id_condicion
 1;1;2;NULL
 2;2;3;NULL
+3;4;5;NULL
+4;5;6;NULL
+5;6;7;NULL
