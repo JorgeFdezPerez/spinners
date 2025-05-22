@@ -3,3 +3,7 @@ id_fases_etapas;id_fase_equipamiento;id_etapa;id_parametro_setpoint;tipo_setpoin
 2;11;2;NULL;NULL;NULL
 3;14;2;NULL;NULL;NULL
 4;8;3;NULL;NULL;NULL
+5;5;4;NULL;INT;1
+6;10;5;NULL;NULL;NULL
+7;2;6;NULL;NULL;NULL
+8;3;7;NULL;NULL;NULL
