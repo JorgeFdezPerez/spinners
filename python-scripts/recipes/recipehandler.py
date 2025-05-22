@@ -182,7 +182,7 @@ class RecipeHandler:
         Args:
             phases (list[Dict]): Phases to launch, for example:
                 [
-                {"me": "ME_BASES", "numSrv": 4, "setPoint": None},
+                {"me": "ME_BASES", "numSrv": 4, "setPoint": 0},
                 {"me": "ME_TRANSPORTE", "numSrv": 5, "setPoint": 2},
                 ...]
         """

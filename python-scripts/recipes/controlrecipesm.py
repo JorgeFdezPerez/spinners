@@ -182,7 +182,10 @@ class ControlRecipeSM:
             if (setpoint == None):
                 setpoint = equipmentPhase["default_setpoint"]
 
-            # (Setpoint may still have None value if the phase doesn't use a setpoint at all)
+            # (Setpoint may still have 0 value if the phase doesn't use a setpoint at all)
+            # (Due to OPC, it has to be changed to a 0 because a none value cant be sent)
+            if(setpoint == None):
+                setpoint = 0
 
             # Store setpoint in phases
             equipmentPhase["setpoint"] = setpoint
