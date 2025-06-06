@@ -9,6 +9,7 @@ from opcuaclient import OpcuaClient, MockOpcuaClient
 
 PORT = 10000
 
+# Mock recipes server for testing. Does not communicate with opcua
 
 async def main():
 
@@ -25,7 +26,7 @@ async def main():
 
     sm = AppSM(makeGraph=False)
     server = JsonSocketServer(port=PORT)
-    opcuaClient = OpcuaClient()
+    opcuaClient = MockOpcuaClient()
     recipeHandler = RecipeHandler()
     eventHandler = EventHandler(
         appSM=sm,

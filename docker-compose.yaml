@@ -33,6 +33,24 @@ services:
     networks:
       - spinners_network
     command: sleep infinity
+  recipes:
+    build:
+      context: ./container-recipes
+    container_name: spinners-recipes
+    networks:
+      - spinners_network
+    depends_on:
+      - database
+      - gateway
+  recipes_mock:
+    build:
+      context: ./container-recipes
+    container_name: spinners-recipes-mock
+    networks:
+      - spinners_network
+    depends_on:
+      - database
+      - gateway
   gateway:
     build:
       context: ./node-red
