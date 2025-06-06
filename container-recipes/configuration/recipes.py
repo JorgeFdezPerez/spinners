@@ -37,6 +37,7 @@ async def main():
     await server.start(eventHandler=eventHandler)
     await recipeHandler.setEventHandler(eventHandler=eventHandler)
     await opcuaClient.start(eventHandler=eventHandler)
+    await sm.start(eventHandler=eventHandler)
 
     await eventHandler.loop()
 
