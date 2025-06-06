@@ -5,9 +5,13 @@ from transitions.extensions import AsyncGraphMachine
 
 from masterrecipefinder import MasterRecipeFinder
 from controlrecipesm import ControlRecipeSM
+from controlrecipestorer import ControlRecipeStorer
 
 
 class RecipeHandler:
+    """Controls execution of a control recipe based off a master recipe.
+    Allows for pausing the recipe and storing it in the database.
+    """    
     async def setEventHandler(self, eventHandler):
         """Set event handler to notify when launching equipment phases
         and when a cycle of the recipe is done.
@@ -45,15 +49,16 @@ class RecipeHandler:
             recipeInfo[recipeName]["parameters"] = self._masterRecipes[recipeName]["parameters"]
         return recipeInfo
 
-    async def startControlRecipe(self, masterRecipeName: str, logInDatabase: bool = True, paramValues: dict = {}):
+    async def startControlRecipe(self, masterRecipeName: str, logInDatabase: bool = True, username: str = None, paramValues: dict = {}):
         """Start execution of a control recipe based off a master recipe.
 
         Send special parameter "REPETICIONES" to specify number of loops (defaults to 1).
 
         Args:
-            masterRecipeName (str): Recipe to execute
+            masterRecipeName (str): Recipe to execute.
             logInDatabase (bool, optional): Store control recipe in database. Defaults to True.
                 Set to false for things like resets.
+            username (str): Person who created the recipe. Not needed if logInDatabase is False
             paramValues (dict, optional): Parameters to use. Defaults to {}. Format:
                 {
                     "PARAM_1_NAME" : Value
@@ -64,12 +69,12 @@ class RecipeHandler:
             TypeError: "Master recipes are not loaded." if getMasterRecipes wasn't called.
             TypeError: "Event handler not set." if setEventHandler wasn't called.
         """
+        self._logger.debug("Starting control recipe based on %s"% masterRecipeName)
+
         if (self._masterRecipes == None):
             raise TypeError("Master recipes are not loaded.")
         if (self._eventHandler == None):
             raise TypeError("Event handler not set.")
-
-        self._logger.debug("Starting control recipe based on %s"% masterRecipeName)
 
         self._logInDatabase = logInDatabase
         self._paused = False
@@ -92,8 +97,13 @@ class RecipeHandler:
             paramValues=paramValues
         )
 
+        # TODO: What if user doesn't exist
         if (self._logInDatabase):
-            # TODO: Create initial entry for recipe
+            await self._storer.storeNewControlRecipe(
+                masterRecipeName=masterRecipeName,
+                username=username,
+                paramValues=paramValues
+            )
             pass
         else:
             pass
@@ -126,6 +136,15 @@ class RecipeHandler:
             self._transitionOnUnpause = False
             await self._controlRecipeSM.advanceState()
 
+    async def storeEmergencyStop(self, emergencyStopDescription: str):
+        """If logging is enabled for the current recipe, stores the ocurrence of the emergency stop in the mysql database.
+
+        Args:
+            emergencyStopDescription (str): Description of the reason for the emergency stop.
+        """
+        if(self._logInDatabase):
+            await self._storer.addCurrentRecipeAlarm(description=emergencyStopDescription)
+
     def __init__(self):
         """Constructor.
         """
@@ -134,6 +153,7 @@ class RecipeHandler:
             fnStartPhases=self._startPhases,
             fnNotifyFinished=self._onCycleFinished
         )
+        self._storer = ControlRecipeStorer()
         self._logger = logging.getLogger("RecipeHandler")
         self._eventHandler = None
 
@@ -159,12 +179,13 @@ class RecipeHandler:
             {"recipeHandlerEvent": "finishedCycle"}
             {"recipeHandlerEvent": "finishedAllCycles"}
         """
-
-        # TODO: log in database
+        self._completedCycles = self._completedCycles + 1
+        
+        if(self._logInDatabase):
+            await self._storer.setCurrentRecipeProducedAmount(self._completedCycles)
 
         await self._eventHandler.handleEvent({"recipeHandlerEvent": "finishedCycle"})
-
-        self._completedCycles = self._completedCycles + 1
+        
         if (self._completedCycles == self._maxCycles):
             self._logger.debug("Completed final cycle.")
             await self._eventHandler.handleEvent({"recipeHandlerEvent": "finishedAllCycles"})

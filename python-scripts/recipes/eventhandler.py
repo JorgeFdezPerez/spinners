@@ -2,8 +2,9 @@ import asyncio
 import logging
 from appstatemachine import AppSM
 from recipehandler import RecipeHandler
-from mysqlclient import mysqlTestConnection
+from mysqlclient import mysqlTestConnection, mysqlQuery
 from opcuaclient import OpcuaClient
+from jsonsocketserver import JsonSocketServer
 
 
 class EventHandler:
@@ -48,11 +49,12 @@ class EventHandler:
             else:
                 self._logger.info("Event gotten is an invalid object.")
 
-    def __init__(self, appSM: AppSM, opcuaClient: OpcuaClient, recipeHandler: RecipeHandler):
+    def __init__(self, appSM: AppSM, opcuaClient: OpcuaClient, recipeHandler: RecipeHandler, socketServer: JsonSocketServer):
         self._eventQueue = asyncio.Queue()
         self._appSM = appSM
         self._opcuaClient = opcuaClient
         self._recipeHandler = recipeHandler
+        self._socketServer = socketServer
         # set up logging
         self._logger = logging.getLogger("EventHandler")
 
@@ -73,29 +75,29 @@ class EventHandler:
                 machine = self._appSM.machine
                 currentState = machine.get_model_state(machine.model)
                 if (currentState.name == "idle"):
-                    recipeInfo = self._recipeHandler.getMasterRecipes()
-                    # TODO: Tell socket client recipe info
-                    pass
+                    recipeInfo = await self._recipeHandler.getMasterRecipes()
+                    self._logger.debug("Got master recipes info: %s"% recipeInfo)
+                    asyncio.create_task(self._socketServer.sendQueue.put({"info":"recipes", "recipes":recipeInfo}))
                 else:
-                    # TODO: Tell socket client about error
-                    pass
-            case "recipeSelected":
+                    asyncio.create_task(self._socketServer.sendQueue.put({"error":"notInIdle"}))
+            case "runRecipe":
                 # Client has requested execution of a recipe
                 # Do it only if currently in idle state
                 machine = self._appSM.machine
                 currentState = machine.get_model_state(machine.model)
                 if (currentState.name == "idle"):
                     await self._appSM.machine.recipeSelected()
-                    masterRecipeName = event["name"]
-                    paramValues = event["params"]
+                    masterRecipeName = event["recipe"]
+                    username = event["user"]
+                    paramValues = event["parameters"]
                     await self._recipeHandler.startControlRecipe(
                         masterRecipeName=masterRecipeName,
                         logInDatabase=True,
+                        username=username,
                         paramValues=paramValues)
                 else:
                     self._logger.debug("Did not select recipe - not in idle")
-                    # TODO: Tell socket client about error
-                    pass
+                    asyncio.create_task(self._socketServer.sendQueue.put({"error":"notInIdle"}))
             case "emergencyStop":
                 # Hmi has requested emergency stop
                 # Abort all phases and go to state waitingToReset
@@ -104,11 +106,24 @@ class EventHandler:
                 currentState = machine.get_model_state(machine.model)
                 if (currentState.name != "waitingToReset"):
                     await self._appSM.machine.abortProduction()
-                pass
+                    # Log emergency stop in database (if recipe had logging enabled)
+                    await self._recipeHandler.storeEmergencyStop("Parada de emergencia solicitada desde el HMI.")
+                    # Tell socket client
+                    asyncio.create_task(self._socketServer.sendQueue.put({"event":"recipeAborted"}))
+            case "pause":
+                await self._recipeHandler.pauseControlRecipe()
+            case "unpause":
+                await self._recipeHandler.unpauseControlRecipe()
+            case "getUsers":
+                users = await self._getUsers()
+                self._logger.debug("Got list of users: %s"% users)
+                asyncio.create_task(self._socketServer.sendQueue.put({"info":"users", "users":users}))
+
 
     async def _processAppSMEvent(self, event: dict[str, str]):
         eventCode = event["appSMEvent"]
-        # TODO: Tell socket client about every app state change
+        # Tell socket client abour every change in state
+        asyncio.create_task(self._socketServer.sendQueue.put({"state":eventCode}))
         match eventCode:
             case "enterStarting":
                 # In order to start the app, connect to opcua and database servers,
@@ -122,7 +137,6 @@ class EventHandler:
 
                 await self._appSM.machine.startedApp()
             case "enterWaitingToReset":
-                # TODO: Tell socket client
                 pass
             case "enterResetting":
                 # In order to reset the plant: Execute reset recipe "RECETA_REARME"
@@ -166,11 +180,16 @@ class EventHandler:
                             # Equipment module was aborted - abort all other phases,
                             # then go to state waitingToReset
                             await self._opcuaClient.abortAllPhases()
+                            # If the system is not stopped, stop it
                             machine = self._appSM.machine
                             currentState = machine.get_model_state(
                                 machine.model)
                             if (currentState.name != "waitingToReset"):
                                 await self._appSM.machine.abortProduction()
+                                # Store in database (if logging is enabled for the current recipe)
+                                await self._recipeHandler.storeEmergencyStop(f"Alarma en {event["data"]["me"]}")
+                                # Tell socket client about it
+                                asyncio.create_task(self._socketServer.sendQueue.put({"state":eventCode}))
 
                     case _:
                         pass
@@ -190,13 +209,14 @@ class EventHandler:
                 pass
             case "finishedAllCycles":
                 # Once a recipe (reset recipe or a normal one) is done, go back to idle
-
                 machine = self._appSM.machine
                 currentState = machine.get_model_state(machine.model)
                 if (currentState.name == "resetting"):
                     await self._appSM.machine.resetComplete()
                 elif (currentState.name == "producingBatch"):
                     await self._appSM.machine.recipeDone()
+                # Tell socket client
+                asyncio.create_task(self._socketServer.sendQueue.put({"event":"recipeComplete"}))
 
     async def _processError(self, error: dict[str, str]):
         errorCode = error["error"]
@@ -207,3 +227,14 @@ class EventHandler:
                 pass
             case "socketClientDisconnected":
                 pass
+
+    async def _getUsers(self):
+        """Get list of users from database
+
+        Returns:
+            List[str]: List of users
+        """        
+        users = await mysqlQuery("SELECT nombre FROM usuarios")
+        # Usernames are returned as tuples in a list [(username1,),(username2),...]
+        users = [x[0] for x in users]
+        return users

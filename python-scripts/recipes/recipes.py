@@ -5,7 +5,7 @@ from jsonsocketserver import JsonSocketServer
 from appstatemachine import AppSM
 from eventhandler import EventHandler
 from recipehandler import RecipeHandler
-from opcuaclient import OpcuaClient
+from opcuaclient import OpcuaClient, MockOpcuaClient
 
 PORT = 10000
 
@@ -23,46 +23,23 @@ async def main():
 
     sm = AppSM(makeGraph=False)
     server = JsonSocketServer(port=PORT)
-    opcuaClient = OpcuaClient()
+    opcuaClient = MockOpcuaClient()
     recipeHandler = RecipeHandler()
     eventHandler = EventHandler(
-        appSM=sm, opcuaClient=opcuaClient, recipeHandler=recipeHandler)
+        appSM=sm,
+        opcuaClient=opcuaClient,
+        recipeHandler=recipeHandler,
+        socketServer=server
+        )
 
     await server.start(eventHandler=eventHandler)
     await recipeHandler.setEventHandler(eventHandler=eventHandler)
     await opcuaClient.start(eventHandler=eventHandler)
 
-    asyncio.create_task(eventHandler.loop())
+    await eventHandler.loop()
 
-    # MOCK EVENTS FOR TESTING
-    # mock client connection
-    await eventHandler.handleEvent({"socketServerEvent": "connected"})
-    await asyncio.sleep(2)
-    # mock hmi order to reset plant
-    # (would come after client is notified that app is waiting to reset)
-    await eventHandler.handleEvent({"hmiEvent": "resetPlant"})
-    await asyncio.sleep(15)
-    await eventHandler.handleEvent({
-        "hmiEvent": "recipeSelected",
-        "name": "RECETA_DISPENSAR",
-        "params":{"REPETICIONES": 2}
-    })
-    await asyncio.sleep(20)
-    await eventHandler.handleEvent({"hmiEvent": "emergencyStop"})
-    await asyncio.sleep(5)
-    await eventHandler.handleEvent({"hmiEvent": "resetPlant"})
-    await asyncio.sleep(15)
-    await eventHandler.handleEvent({
-        "hmiEvent": "recipeSelected",
-        "name": "RECETA_DISPENSAR",
-        "params":{"REPETICIONES": 2}
-    })
-    # MockOpcuaClient launches fake events for phases being completed automatically
-    
-    #await opcuaClient.startEquipmentPhases([{"me": "ME_TRANSPORTE", "numSrv": 1, "setpoint": 0}])
-    #await asyncio.sleep(6)
-    #await opcuaClient.abortAllPhases()
+    #asyncio.create_task(eventHandler.loop())
 
-    while True:
-        await asyncio.sleep(5)
+    #while True:
+    #    await asyncio.sleep(5)
 asyncio.run(main())
