@@ -145,6 +145,18 @@ class RecipeHandler:
         if(self._logInDatabase):
             await self._storer.addCurrentRecipeAlarm(description=emergencyStopDescription)
 
+    async def continueControlRecipe(self):
+        """Continue a control recipe after it was aborted. Checks if recipe was completed (all cycles done) or not.
+
+        Returns:
+            bool: True if continuing, false if trying to continue a recipe that was completed succesfully.
+        """        
+        if(self._completedCycles < self._maxCycles):
+            await ControlRecipeSM.initControlRecipe()
+            return True
+        else:
+            return False
+
     def __init__(self):
         """Constructor.
         """
