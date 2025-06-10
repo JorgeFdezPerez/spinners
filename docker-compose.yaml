@@ -45,6 +45,7 @@ services:
   recipes_mock:
     build:
       context: ./container-recipes
+      dockerfile: ../container-recipes-mock/Dockerfile
     container_name: spinners-recipes-mock
     networks:
       - spinners_network

@@ -1,7 +1,7 @@
 FROM python:latest
 
 # Default container configuration folder
-ARG CONFIG_PATH="../container-recipes/configuration"
+ARG CONFIG_PATH="configuration"
 
 # Copy python scripts for recipes server
 COPY $CONFIG_PATH/*.py /home/
