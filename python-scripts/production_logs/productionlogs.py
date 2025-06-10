@@ -109,7 +109,7 @@ async def main():
     server = JsonSocketServer(PORT)
     eventHandler = EventHandler(server)
     server._eventHandler = eventHandler
-    await server.start()
+    await server.start(eventHandler=eventHandler)
     await eventHandler.loop()
 
 asyncio.run(main())
