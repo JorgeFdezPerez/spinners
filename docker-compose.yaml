@@ -51,6 +51,14 @@ services:
     depends_on:
       - database
       - gateway
+  production-logs:
+    build:
+      context: ./container-production-logs
+    container_name: spinners-production-logs
+    networks:
+      - spinners_network
+    depends_on:
+      - database
   gateway:
     build:
       context: ./node-red
