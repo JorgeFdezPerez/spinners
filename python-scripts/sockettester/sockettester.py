@@ -56,7 +56,7 @@ async def main():
     await client.send({"hmiEvent":"startManualControl"})
     await asyncio.sleep(1)
     await client.send({"hmiEvent":"startManualPhases",
-                       "phases":{"me": "ME_BASES", "numSrv": 1, "setPoint": None}})
+                       "phases":[{"me": "ME_BASES", "numSrv": 1, "setPoint": None}]})
     await asyncio.sleep(5)
     await client.send({"hmiEvent":"resetPlant"})
 

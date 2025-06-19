@@ -206,7 +206,8 @@ class EventHandler:
                         await self._recipeHandler.transitionControlRecipe()
                     case "controllingManually":
                         await self._manualController.completePhase()
-                        await self._socketServer.sendQueue.put({"event":"manualPhasesDone"})
+                        asyncio.create_task(self._socketServer.sendQueue.put(
+                            {"event": "manualPhasesDone"}))
                 
     async def _processRecipeHandlerEvent(self, event: dict[str, str]):
         eventCode = event["recipeHandlerEvent"]
