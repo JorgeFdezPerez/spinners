@@ -27,10 +27,6 @@ LOAD DATA INFILE '/var/lib/mysql-files/transiciones.csv' INTO TABLE transiciones
 FIELDS TERMINATED by ';' ENCLOSED BY '"' LINES TERMINATED BY '\n'
 IGNORE 1 LINES;
 
-LOAD DATA INFILE '/var/lib/mysql-files/condiciones.csv' INTO TABLE condiciones
-FIELDS TERMINATED by ';' ENCLOSED BY '"' LINES TERMINATED BY '\n'
-IGNORE 1 LINES;
-
 LOAD DATA INFILE '/var/lib/mysql-files/parametros.csv' INTO TABLE parametros
 FIELDS TERMINATED by ';' ENCLOSED BY '"' LINES TERMINATED BY '\n'
 IGNORE 1 LINES;

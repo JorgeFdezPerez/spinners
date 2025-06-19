@@ -137,23 +137,13 @@ CREATE TABLE fases_etapas (
     FOREIGN KEY (id_parametro_setpoint) REFERENCES parametros (id_parametro) ON UPDATE CASCADE ON DELETE RESTRICT
 );
 
-CREATE TABLE condiciones (
-    id_condicion INT NOT NULL AUTO_INCREMENT,
-    id_variable_me INT NOT NULL,
-    equals BIT NOT NULL,
-    PRIMARY KEY (id_condicion),
-    FOREIGN KEY (id_variable_me) REFERENCES variables_me (id_variable_me) ON UPDATE CASCADE ON DELETE RESTRICT
-);
-
 CREATE TABLE transiciones (
     id_transicion INT NOT NULL AUTO_INCREMENT,
     id_etapa_inicial INT NOT NULL,
     id_etapa_final INT NOT NULL,
-    id_condicion INT,
     PRIMARY KEY (id_transicion),
     FOREIGN KEY (id_etapa_inicial) REFERENCES etapas (id_etapa) ON UPDATE CASCADE ON DELETE RESTRICT,
-    FOREIGN KEY (id_etapa_final) REFERENCES etapas (id_etapa) ON UPDATE CASCADE ON DELETE RESTRICT,
-    FOREIGN KEY (id_condicion) REFERENCES condiciones (id_condicion) ON UPDATE CASCADE ON DELETE RESTRICT
+    FOREIGN KEY (id_etapa_final) REFERENCES etapas (id_etapa) ON UPDATE CASCADE ON DELETE RESTRICT
 );
 
 SELECT 'TABLES CREATED' as 'INFO';
