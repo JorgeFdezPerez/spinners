@@ -11,20 +11,21 @@ class EventHandler:
         await self._eventQueue.put(event)
 
     async def loop(self):
-        event = await self._eventQueue.get()
-        if (isinstance(event, dict)):
-            type = next(iter(event))
+        while True:
+            event = await self._eventQueue.get()
+            if (isinstance(event, dict)):
+                type = next(iter(event))
 
-            if (type == "hmiEvent"):
-                if (event["type"] == "getControlRecipesList"):
-                    list = await self._getControlRecipesList()
-                    asyncio.create_task(
-                        self._server.sendQueue.put({"list": list}))
-                elif (event["type"] == "getControlRecipeDetails"):
-                    id = event["controlRecipeID"]
-                    details = await self._getControlRecipeDetails(id)
-                    asyncio.create_task(
-                        self._server.sendQueue.put({"details": details}))
+                if (type == "hmiEvent"):
+                    if (event[type] == "getControlRecipesList"):
+                        list = await self._getControlRecipesList()
+                        asyncio.create_task(
+                            self._server.sendQueue.put({"list": list}))
+                    elif (event[type] == "getControlRecipeDetails"):
+                        id = event["controlRecipeID"]
+                        details = await self._getControlRecipeDetails(id)
+                        asyncio.create_task(
+                            self._server.sendQueue.put({"details": details}))
 
     def __init__(self, socketServer: JsonSocketServer):
         self._eventQueue = asyncio.Queue()
