@@ -54,6 +54,9 @@ class EventHandler:
         # Values are a list of tuples [(ID_1,RECIPE_NAME_1,DATE_1),(ID_2,RECIPE_NAME_2,DATE_2),...]
         controlRecipes = [dict(zip(("id", "masterRecipe", "date"), x))
                           for x in controlRecipes]
+        # Date to string so that it can be encoded by socket server
+        for i in controlRecipes:
+            i["date"] = str(i["date"])
         return controlRecipes
 
     async def _getControlRecipeDetails(self, id: int):
@@ -72,7 +75,8 @@ class EventHandler:
         )
         details = dict(
             zip(("masterRecipe", "user", "date", "produced"), details[0]))
-
+        # Date to string so that it can be encoded by socket server
+        details["date"] = str(details["date"])
         paramValues = await mysqlQuery(
             """
             SELECT parametros.nombre, valores_parametros.valor
@@ -99,7 +103,7 @@ class EventHandler:
         )
         alarmsDict = {}
         for i in alarms:
-            alarmsDict[str(i[0])] = {"description":i[1],"date":i[2]}
+            alarmsDict[str(i[0])] = {"description":i[1],"date":str(i[2])}
         details["alarms"] = alarmsDict
 
         return details
