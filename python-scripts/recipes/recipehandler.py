@@ -145,13 +145,29 @@ class RecipeHandler:
         if(self._logInDatabase):
             await self._storer.addCurrentRecipeAlarm(description=emergencyStopDescription)
 
+    async def rememberAbortedControlRecipe(self):
+        """Remember the current recipe in case the user wants to continue it later
+        """        
+        self._abortedControlRecipeSM = self._controlRecipeSM
+        self._abortedCompletedCycles = self._completedCycles
+        self._abortedMaxCycles = self._maxCycles
+        self._abortedLogInDatabase = self._logInDatabase
+
     async def continueControlRecipe(self):
         """Continue a control recipe after it was aborted. Checks if recipe was completed (all cycles done) or not.
 
         Returns:
-            bool: True if continuing, false if trying to continue a recipe that was completed succesfully.
+            bool: True if continuing, false if trying to continue a recipe that was completed succesfully,
+                or if no recipe has been aborted yet.
         """        
-        if(self._completedCycles < self._maxCycles):
+        if((self._abortedControlRecipeSM != None) and (self._abortedCompletedCycles < self._abortedMaxCycles)):
+            self._controlRecipeSM = self._abortedControlRecipeSM
+            self._abortedControlRecipeSM = None
+            self._completedCycles = self._abortedCompletedCycles
+            self._maxCycles = self._abortedMaxCycles
+            self._logInDatabase = self._abortedLogInDatabase
+            self._paused = False
+            self._transitionOnUnpause = False
             await ControlRecipeSM.initControlRecipe()
             return True
         else:
@@ -176,6 +192,12 @@ class RecipeHandler:
         self._completedCycles = 0
         self._maxCycles = 0
         self._logInDatabase = True
+
+        # Values for remembering aborted recipe
+        self._abortedControlRecipeSM = None
+        self._abortedCompletedCycles = 0
+        self._abortedMaxCycles = 0
+        self._abortedLogInDatabase = True
 
     async def _onCycleFinished(self):
         """Send message to event handler to notify that a cycle of the recipe has been

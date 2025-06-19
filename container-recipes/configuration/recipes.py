@@ -6,6 +6,7 @@ from appstatemachine import AppSM
 from eventhandler import EventHandler
 from recipehandler import RecipeHandler
 from opcuaclient import OpcuaClient, MockOpcuaClient
+from manualcontroller import ManualController
 
 PORT = 10000
 
@@ -27,17 +28,19 @@ async def main():
     server = JsonSocketServer(port=PORT)
     opcuaClient = OpcuaClient()
     recipeHandler = RecipeHandler()
+    manualController = ManualController()
     eventHandler = EventHandler(
         appSM=sm,
         opcuaClient=opcuaClient,
         recipeHandler=recipeHandler,
-        socketServer=server
+        socketServer=server,
+        manualController=manualController
         )
 
     await server.start(eventHandler=eventHandler)
     await recipeHandler.setEventHandler(eventHandler=eventHandler)
     await opcuaClient.start(eventHandler=eventHandler)
-    await sm.start(eventHandler=eventHandler)
+    await manualController.setEventHandler(eventHandler=eventHandler)
 
     await eventHandler.loop()
 

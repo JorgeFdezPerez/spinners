@@ -1,8 +1,8 @@
 import asyncio
 import json
 
-HOST = 'spinners-recipes-mock'
-#HOST = 'localhost'
+#HOST = 'spinners-recipes-mock'
+HOST = 'localhost'
 PORT = 10000
 
 class JsonSocketClient:
@@ -51,6 +51,13 @@ async def main():
     await client.connect()
 
     await asyncio.sleep(1)
+    await client.send({"hmiEvent":"resetPlant"})
+    await asyncio.sleep(4)
+    await client.send({"hmiEvent":"startManualControl"})
+    await asyncio.sleep(1)
+    await client.send({"hmiEvent":"startManualPhases",
+                       "phases":{"me": "ME_BASES", "numSrv": 1, "setPoint": None}})
+    await asyncio.sleep(5)
     await client.send({"hmiEvent":"resetPlant"})
 
     while(True):
