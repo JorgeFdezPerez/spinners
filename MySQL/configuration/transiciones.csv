@@ -6,3 +6,9 @@ id_transicion;id_etapa_inicial;id_etapa_final
 5;6;7
 6;8;9
 7;9;10
+8;11;12
+9;12;13
+10;13;14
+11;14;15
+12;15;16
+13;16;17
