@@ -180,7 +180,8 @@ class EventHandler:
                 await self._recipeHandler.startControlRecipe("RECETA_REARME", logInDatabase=False)
                 # Recipe handler will send its own event once done
             case "enterControllingManually":
-                pass
+                # Reset manual controller
+                self._manualController.completePhase()
             case "exitControllingManually":
                 pass
             case "enterProducingBatch":
