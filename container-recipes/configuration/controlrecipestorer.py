@@ -79,6 +79,19 @@ class ControlRecipeStorer:
                 (paramID, masterRecipeID, str(param_value))
             )
 
+            # Insert new batch
+            await mysqlQuery(
+            """
+                INSERT INTO lotes
+                    (id_receta_control)
+                VALUES
+                    (%s);
+
+                SELECT LAST_INSERT_ID();
+            """,
+            (controlRecipeID, )
+        )
+
     async def setCurrentRecipeProducedAmount(self, amount: int):
         """Update the produced amount of the current recipe (mysql column "cantidad_producida").
 
