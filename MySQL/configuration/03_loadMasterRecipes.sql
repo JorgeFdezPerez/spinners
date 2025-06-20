@@ -15,6 +15,10 @@ LOAD DATA INFILE '/var/lib/mysql-files/recetas_maestras.csv' INTO TABLE recetas_
 FIELDS TERMINATED by ';' ENCLOSED BY '"' LINES TERMINATED BY '\n'
 IGNORE 1 LINES;
 
+LOAD DATA INFILE '/var/lib/mysql-files/parametros.csv' INTO TABLE parametros
+FIELDS TERMINATED by ';' ENCLOSED BY '"' LINES TERMINATED BY '\n'
+IGNORE 1 LINES;
+
 LOAD DATA INFILE '/var/lib/mysql-files/etapas.csv' INTO TABLE etapas
 FIELDS TERMINATED by ';' ENCLOSED BY '"' LINES TERMINATED BY '\n'
 IGNORE 1 LINES;
@@ -24,10 +28,6 @@ FIELDS TERMINATED by ';' ENCLOSED BY '"' LINES TERMINATED BY '\n'
 IGNORE 1 LINES;
 
 LOAD DATA INFILE '/var/lib/mysql-files/transiciones.csv' INTO TABLE transiciones
-FIELDS TERMINATED by ';' ENCLOSED BY '"' LINES TERMINATED BY '\n'
-IGNORE 1 LINES;
-
-LOAD DATA INFILE '/var/lib/mysql-files/parametros.csv' INTO TABLE parametros
 FIELDS TERMINATED by ';' ENCLOSED BY '"' LINES TERMINATED BY '\n'
 IGNORE 1 LINES;
 
