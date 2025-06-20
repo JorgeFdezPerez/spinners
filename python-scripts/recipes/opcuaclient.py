@@ -191,8 +191,13 @@ class OpcuaClient:
         param_ME = Variant(Value=phase["me"], VariantType=VariantType.String)
         param_numSrv = Variant(
             Value=phase["numSrv"], VariantType=VariantType.UInt16)
+        
+        # Opcua does not let you send a none value
+        setpoint = phase["setpoint"]
+        if(setpoint == None):
+            setpoint = 0
         param_setpoint = Variant(
-            Value=phase["setpoint"], VariantType=VariantType.UInt32)
+            Value=setpoint, VariantType=VariantType.UInt32)
 
         async with Client(url="opc.tcp://spinners-node-red:54840") as client:
             gatewayNode = client.get_node("ns=1;i=1000")
