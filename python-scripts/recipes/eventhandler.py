@@ -24,6 +24,9 @@ class EventHandler:
         await self._eventQueue.put(event)
 
     async def loop(self):
+        """Endless loop. Read events from event queue. Type can be "error", "appSMEvent",
+        "socketServerEvent", "hmiEvent", "opcuaEvent", "recipeHandlerEvent", "manualControllerEvent".
+        """        
         while True:
             event = await self._eventQueue.get()
             self._logger.debug("Handling %s", event)
@@ -52,6 +55,8 @@ class EventHandler:
                 self._logger.info("Event gotten is an invalid object.")
 
     def __init__(self, appSM: AppSM, opcuaClient: OpcuaClient, recipeHandler: RecipeHandler, socketServer: JsonSocketServer, manualController: ManualController):
+        """Constructor
+        """        
         self._eventQueue = asyncio.Queue()
         self._appSM = appSM
         self._opcuaClient = opcuaClient
@@ -62,6 +67,13 @@ class EventHandler:
         self._logger = logging.getLogger("EventHandler")
 
     async def _processHmiEvent(self, event: dict[str, str]):
+        """React to events coming from the user interface (via the json socket server).
+        Event can be "resetPlant","startManualControl","startManualPhases","getRecipes","runRecipe",
+        "emergencyStop","pause","unpause","getUsers","continueLastRecipe"
+
+        Args:
+            event (dict[str, str]): Event
+        """        
         eventCode = event["hmiEvent"]
         match eventCode:
             case "resetPlant":
@@ -133,6 +145,13 @@ class EventHandler:
                         self._socketServer.sendQueue.put({"error": "notInIdle"}))
 
     async def _processAppSMEvent(self, event: dict[str, str]):
+        """React to events comming from the App state machine (when it changes state).
+        Events can be "enterStarting","enterWaitingToReset","enterResetting","enterControllingManually",
+        "exitControllingManually","enterProducingBatch"
+
+        Args:
+            event (dict[str, str]): Event.
+        """        
         eventCode = event["appSMEvent"]
         # Tell socket client abour every change in state
         asyncio.create_task(
@@ -161,10 +180,9 @@ class EventHandler:
                 await self._recipeHandler.startControlRecipe("RECETA_REARME", logInDatabase=False)
                 # Recipe handler will send its own event once done
             case "enterControllingManually":
-                # TODO: Enable manual control
-                pass
+                # Reset manual controller
+                self._manualController.completePhase()
             case "exitControllingManually":
-                # TODO: Disable manual control
                 pass
             case "enterProducingBatch":
                 pass
@@ -172,6 +190,7 @@ class EventHandler:
     async def _processSocketServerEvent(self, event: dict[str, str]):
         """React to events coming from JsonSocketServer class.
         (connections, disconnects, etc)
+        Events can be "connected"
 
         Args:
             event (dict[str, str]): Event received
@@ -179,10 +198,16 @@ class EventHandler:
         eventCode = event["socketServerEvent"]
         match eventCode:
             case "connected":
-                await self._appSM.start(eventHandler=self)
                 await self._emergencyStop(event=event)
+                await self._appSM.start(eventHandler=self)
 
     async def _processOpcuaEvent(self, event: dict[str, str]):
+        """React to events coming from the OPC UA client (changes in subscribed data, finishing phases).
+        Events can be "receivedData","completedPhases".
+
+        Args:
+            event (dict[str, str]): Event.
+        """        
         eventCode = event["opcuaEvent"]
         match eventCode:
             case "receivedData":
@@ -210,6 +235,12 @@ class EventHandler:
                             {"event": "manualPhasesDone"}))
                 
     async def _processRecipeHandlerEvent(self, event: dict[str, str]):
+        """React to events coming from recipe handler (finished recipe, have to start phases, etc.).
+        Events can be "startPhases","finishedCycle","finishedAllCycles".
+
+        Args:
+            event (dict[str, str]): Event.
+        """        
         eventCode = event["recipeHandlerEvent"]
         match eventCode:
             case "startPhases":
@@ -231,6 +262,12 @@ class EventHandler:
                     {"event": "recipeComplete"}))
 
     async def _processManualControllerEvent(self, event: dict[str, str]):
+        """React to events coming from manual controller (when it requests to start phases).
+        Event can be "startPhases".
+
+        Args:
+            event (dict[str, str]): Event.
+        """        
         eventCode = event["manualControllerEvent"]
         match eventCode:
             case "startPhases":
@@ -238,6 +275,12 @@ class EventHandler:
                 await self._opcuaClient.startEquipmentPhases(event["phases"])
 
     async def _processError(self, error: dict[str, str]):
+        """React to error events.
+        Event can be "socketServerEncoding","socketServerDecoding","socketClientDisconnected"
+
+        Args:
+            error (dict[str, str]): Error event.
+        """        
         errorCode = error["error"]
         match errorCode:
             case "socketServerEncoding":
@@ -245,7 +288,7 @@ class EventHandler:
             case "socketServerDecoding":
                 pass
             case "socketClientDisconnected":
-                pass
+                self._emergencyStop(error)
 
     async def _getUsers(self):
         """Get list of users from database
@@ -259,6 +302,11 @@ class EventHandler:
         return users
 
     async def _emergencyStop(self, event: dict[str, str]):
+        """Stop all running equipment phases. Go to a safe state
+
+        Args:
+            event (dict[str, str]): Event that caused the emergency stop. For logging in database.
+        """        
         # Stop all running phases
         await self._opcuaClient.abortAllPhases()
 
@@ -278,8 +326,12 @@ class EventHandler:
                 # Store in database (if logging is enabled for the current recipe)
                 if(event["data"] != None):
                     await self._recipeHandler.storeEmergencyStop(f"Alarma en {event["data"]["me"]}")
-                elif(event["hmiEvent"] != None):
+                elif(event["hmiEvent"] == "emergencyStop"):
                     await self._recipeHandler.storeEmergencyStop("Parada de emergencia")
+                elif(event["error"] == "socketClientDisconnected"):
+                    await self._recipeHandler.storeEmergencyStop("Cliente socket desconectado")
+                elif(event["socketServerEvent"] == "connected"):
+                    await self._recipeHandler.storeEmergencyStop("Nueva conexion de cliente socket")
                 # Store control recipe in case it has to be continued later
                 await self._recipeHandler.rememberAbortedControlRecipe()
                 # Tell socket client about it
