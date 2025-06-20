@@ -1,2 +1,4 @@
 id_parametro;id_receta_maestra;nombre;tipo
 1;2;REPETICIONES;INT
+2;3;REPETICIONES;INT
+3;3;DESTINO;INT

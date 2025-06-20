@@ -6,3 +6,6 @@ id_etapa;id_receta_maestra;nombre;es_inicial;es_final
 5;2;E1;0;0
 6;2;E2;0;0
 7;2;E3;0;1
+8;3;E0;1;0
+9;3;E1;0;0
+10;3;E2;0;1
