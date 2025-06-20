@@ -86,10 +86,8 @@ class ControlRecipeStorer:
                     (id_receta_control)
                 VALUES
                     (%s);
-
-                SELECT LAST_INSERT_ID();
             """,
-            (controlRecipeID, )
+            (self._currentControlRecipe, )
         )
 
     async def setCurrentRecipeProducedAmount(self, amount: int):
