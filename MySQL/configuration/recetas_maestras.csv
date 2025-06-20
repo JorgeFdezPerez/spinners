@@ -1,3 +1,4 @@
 id_receta_maestra;id_usuario;codigo_receta_maestra;descripcion;fecha_creada
 1;1;RECETA_REARME;Poner el sistema en condiciones iniciales.;13-5-25 19:05
 2;1;RECETA_DISPENSAR;Dispensar base, cogerla y posarla en el mismo sitio.;22-5-25 9:43
+3;1;RECETA_MOVER;Ir a la estacion DESTINO y volver.;20-6-25 9:33
