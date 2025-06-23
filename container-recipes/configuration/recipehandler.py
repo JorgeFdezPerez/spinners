@@ -1,4 +1,5 @@
 import asyncio
+import copy
 import logging
 
 from transitions.extensions import AsyncGraphMachine
@@ -148,7 +149,7 @@ class RecipeHandler:
     async def rememberAbortedControlRecipe(self):
         """Remember the current recipe in case the user wants to continue it later
         """        
-        self._abortedControlRecipeSM = self._controlRecipeSM
+        self._abortedControlRecipeSM = copy.deepcopy(self._controlRecipeSM)
         self._abortedCompletedCycles = self._completedCycles
         self._abortedMaxCycles = self._maxCycles
         self._abortedLogInDatabase = self._logInDatabase
