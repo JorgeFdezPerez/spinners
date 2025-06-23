@@ -333,7 +333,7 @@ class EventHandler:
                 if("data" in event):
                     await self._recipeHandler.storeEmergencyStop(f"Alarma en {event["data"]["me"]}")
                 elif("hmiEvent" in event):
-                    if(event.keys["hmiEvent"] == "emergencyStop"):
+                    if(event["hmiEvent"] == "emergencyStop"):
                         await self._recipeHandler.storeEmergencyStop("Parada de emergencia")
                 elif("error" in event):
                     if(event["error"] == "socketClientDisconnected"):
