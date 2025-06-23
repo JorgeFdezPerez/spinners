@@ -62,11 +62,11 @@ class OpcuaClient:
             Must have method:
                 async eventHandler.handleEvent(event: dict)
         """
-        self._eventHandler = eventHandler
-
-        asyncio.create_task(self._receiveLoop())
-
-        asyncio.create_task(self._eventHandler.handleEvent({"opcuaEvent": "started"}))
+        if(not self._started):
+            self._eventHandler = eventHandler
+            asyncio.create_task(self._receiveLoop())
+            asyncio.create_task(self._eventHandler.handleEvent({"opcuaEvent": "started"}))
+            self._started = True
 
     async def startEquipmentPhases(self, phases: list[dict]):
         """Create task to run specified phases.
@@ -131,6 +131,7 @@ class OpcuaClient:
         self._eventHandler = None
         self._runningTask = None
         self._logger = logging.getLogger("OpcuaClient")
+        self._started = False
 
     async def _receiveLoop(self):
         """Subscribes to equipment module state variables and loops forever.
