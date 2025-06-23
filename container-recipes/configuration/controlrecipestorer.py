@@ -76,7 +76,7 @@ class ControlRecipeStorer:
                 VALUES
                     (%s,%s,%s)
                 """,
-                (paramID, masterRecipeID, str(param_value))
+                (paramID, self._currentControlRecipe, str(param_value))
             )
 
             # Insert new batch
