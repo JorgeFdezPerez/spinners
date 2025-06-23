@@ -83,7 +83,7 @@ class EventHandler:
             FROM valores_parametros
             INNER JOIN parametros
                 ON parametros.id_parametro = valores_parametros.id_parametro
-            WHERE valores_parametros.id_valor_parametro = %s
+            WHERE valores_parametros.id_receta_control = %s
             """,
             (id,)
         )
