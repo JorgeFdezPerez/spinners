@@ -142,7 +142,7 @@ class EventHandler:
                 currentState = machine.get_model_state(machine.model)
                 if (currentState.name == "idle"):
                     if (await self._recipeHandler.continueControlRecipe()):
-                        await self._appSM.recipeSelected()
+                        await self._appSM.machine.recipeSelected()
                     else:
                         asyncio.create_task(
                             self._socketServer.sendQueue.put({"error": "continuedRecipeWasCompleted"}))
