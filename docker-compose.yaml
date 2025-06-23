@@ -15,6 +15,7 @@ services:
       - mysql_data:/var/lib/mysql
     networks:
       - spinners_network
+    restart: unless-stopped
   devcontainer-python:
     build:
       context: ./devcontainer-python
@@ -42,6 +43,7 @@ services:
     depends_on:
       - database
       - gateway
+    restart: unless-stopped
   recipes_mock:
     build:
       context: ./container-recipes
@@ -60,6 +62,7 @@ services:
       - spinners_network
     depends_on:
       - database
+    restart: unless-stopped
   interfaz:
     build:
       context: ./container-interfaz
@@ -73,6 +76,7 @@ services:
       - gateway
       - recipes
       - production-logs
+    restart: unless-stopped
 
   gateway:
     build:
@@ -83,6 +87,7 @@ services:
     ports:
       - 1880:1880
       - 54840:54840
+    restart: unless-stopped
 
 volumes:
   mysql_data:
