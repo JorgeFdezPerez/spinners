@@ -91,11 +91,12 @@ class RecipeHandler:
         
         self._logger.debug("Number of cycles will be %s"% self._maxCycles)
 
-        masterRecipe = self._masterRecipes[masterRecipeName]
+        self._currentMasterRecipe = self._masterRecipes[masterRecipeName]
+        self._currentParamValues = paramValues
         self._controlRecipeSM.buildControlRecipe(
-            masterRecipe=masterRecipe,
+            masterRecipe=self._currentMasterRecipe,
             makeGraph=False,
-            paramValues=paramValues
+            paramValues=self._currentParamValues
         )
 
         # TODO: What if user doesn't exist
@@ -103,7 +104,7 @@ class RecipeHandler:
             await self._storer.storeNewControlRecipe(
                 masterRecipeName=masterRecipeName,
                 username=username,
-                paramValues=paramValues
+                paramValues=self._currentParamValues
             )
             pass
         else:
@@ -149,7 +150,8 @@ class RecipeHandler:
     async def rememberAbortedControlRecipe(self):
         """Remember the current recipe in case the user wants to continue it later
         """        
-        self._abortedControlRecipeSM = copy.deepcopy(self._controlRecipeSM)
+        self._abortedMasterRecipe = copy.deepcopy(self._currentMasterRecipe)
+        self._abortedParamValues = copy.deepcopy(self._currentParamValues)
         self._abortedCompletedCycles = self._completedCycles
         self._abortedMaxCycles = self._maxCycles
         self._abortedLogInDatabase = self._logInDatabase
@@ -161,9 +163,14 @@ class RecipeHandler:
             bool: True if continuing, false if trying to continue a recipe that was completed succesfully,
                 or if no recipe has been aborted yet.
         """        
-        if((self._abortedControlRecipeSM != None) and (self._abortedCompletedCycles < self._abortedMaxCycles)):
-            self._controlRecipeSM = self._abortedControlRecipeSM
-            self._abortedControlRecipeSM = None
+        if((self._abortedMasterRecipe != None) and (self._abortedCompletedCycles < self._abortedMaxCycles)):
+            self._controlRecipeSM.buildControlRecipe(
+                masterRecipe=self._abortedMasterRecipe,
+                makeGraph=False,
+                paramValues=self._abortedParamValues
+            )
+            self._abortedMasterRecipe = None
+            self._abortedParamValues = None
             self._completedCycles = self._abortedCompletedCycles
             self._maxCycles = self._abortedMaxCycles
             self._logInDatabase = self._abortedLogInDatabase
@@ -187,6 +194,8 @@ class RecipeHandler:
         self._eventHandler = None
 
         self._masterRecipes = None
+        self._currentMasterRecipe = None
+        self._currentParamValues = None
 
         self._paused = False
         self._transitionOnUnpause = False
@@ -195,7 +204,8 @@ class RecipeHandler:
         self._logInDatabase = True
 
         # Values for remembering aborted recipe
-        self._abortedControlRecipeSM = None
+        self._abortedMasterRecipe = None
+        self._abortedParamValues = None
         self._abortedCompletedCycles = 0
         self._abortedMaxCycles = 0
         self._abortedLogInDatabase = True
