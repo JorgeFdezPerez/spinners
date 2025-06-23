@@ -84,7 +84,13 @@ class EventHandler:
                 await self._appSM.machine.manualSelected()
             case "startManualPhases":
                 # Launch a phase while controlling manually
-                await self._manualController.startPhases(phases = event["phases"])
+                machine = self._appSM.machine
+                currentState = machine.get_model_state(machine.model)
+                if (currentState.name == "controllingManually"):
+                    await self._manualController.startPhases(phases = event["phases"])
+                else:
+                    asyncio.create_task(
+                        self._socketServer.sendQueue.put({"error": "notInControllingManually"}))
             case "getRecipes":
                 # Client is requesting recipe list.
                 # Recipe list will be fetched only if in idle state.
