@@ -168,7 +168,7 @@ class RecipeHandler:
             self._logInDatabase = self._abortedLogInDatabase
             self._paused = False
             self._transitionOnUnpause = False
-            await ControlRecipeSM.initControlRecipe()
+            await self._controlRecipeSM.initControlRecipe()
             return True
         else:
             return False
