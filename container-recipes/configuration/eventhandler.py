@@ -330,14 +330,17 @@ class EventHandler:
                 # Go to state waitingToReset
                 await self._appSM.machine.abortProduction()
                 # Store in database (if logging is enabled for the current recipe)
-                if(event["data"] != None):
+                if("data" in event):
                     await self._recipeHandler.storeEmergencyStop(f"Alarma en {event["data"]["me"]}")
-                elif(event["hmiEvent"] == "emergencyStop"):
-                    await self._recipeHandler.storeEmergencyStop("Parada de emergencia")
-                elif(event["error"] == "socketClientDisconnected"):
-                    await self._recipeHandler.storeEmergencyStop("Cliente socket desconectado")
-                elif(event["socketServerEvent"] == "connected"):
-                    await self._recipeHandler.storeEmergencyStop("Nueva conexion de cliente socket")
+                elif("hmiEvent" in event):
+                    if(event.keys["hmiEvent"] == "emergencyStop"):
+                        await self._recipeHandler.storeEmergencyStop("Parada de emergencia")
+                elif("error" in event):
+                    if(event["error"] == "socketClientDisconnected"):
+                        await self._recipeHandler.storeEmergencyStop("Cliente socket desconectado")
+                elif("socketServerEvent" in event):
+                    if(event["socketServerEvent"] == "connected"):
+                        await self._recipeHandler.storeEmergencyStop("Nueva conexion de cliente socket")
                 # Store control recipe in case it has to be continued later
                 await self._recipeHandler.rememberAbortedControlRecipe()
                 # Tell socket client about it
