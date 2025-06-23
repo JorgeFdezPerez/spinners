@@ -60,6 +60,20 @@ services:
       - spinners_network
     depends_on:
       - database
+  interfaz:
+    build:
+      context: ./container-interfaz
+    container_name: spinners-interfaz
+    networks:
+      - spinners_network
+    ports:
+      - 2000:2000
+    depends_on:
+      - database
+      - gateway
+      - recipes
+      - production-logs
+
   gateway:
     build:
       context: ./node-red

@@ -11,6 +11,8 @@ RUN pip install transitions
 RUN pip install mysql-connector-python
 RUN pip install reflex
 RUN pip install graphviz
+RUN pip install streamlit
+RUN pip install pymysql
 # For installing graphviz package to generate docs of state machines
 RUN apt-get update
 RUN yes | apt install software-properties-common
