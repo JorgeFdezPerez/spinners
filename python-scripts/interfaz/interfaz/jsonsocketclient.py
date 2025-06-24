@@ -7,7 +7,7 @@ import json
 class JsonSocketClient:
     sms: str=""
     message_received_flag: bool = False
-    #port= 10000
+    #Incializacion
     def __init__(self,host, port, EOM="\r\n", encoding="utf-8"):
         self._host = host
         self._port = port
@@ -20,7 +20,7 @@ class JsonSocketClient:
         self.conectado = False
         
 
-
+    #Conexión
     async def connect(self):
         self._reader, self._writer = await asyncio.open_connection(self._host, self._port)
         print("Conectado al servidor")
@@ -28,9 +28,11 @@ class JsonSocketClient:
         asyncio.create_task(self._readLoop())
         asyncio.create_task(self._writeLoop())
 
+    #Envío mensaje a cola
     async def send(self, message: dict):
         await self.sendQueue.put(message)
 
+    #Lectura
     async def _readLoop(self):
         while True:
             try:
@@ -54,6 +56,7 @@ class JsonSocketClient:
             except Exception as e:
                 print("Error al recibir datos:", e)
 
+    #Escritura
     async def _writeLoop(self):
         while True:
             message = await self.sendQueue.get()
@@ -69,6 +72,7 @@ class JsonSocketClient:
     def set_on_message(self, callback):
         self.on_message = callback
 
+#Inicio cliente socket
 def iniciar_cliente_socket(nombre_servidor, evento_queue, mensaje_queue, puerto):
     import threading
     def _run():
@@ -78,6 +82,7 @@ def iniciar_cliente_socket(nombre_servidor, evento_queue, mensaje_queue, puerto)
 
     threading.Thread(target=_run).start()
 
+#Ejecutar cliente socket
 async def run_cliente(nombre_servidor, evento_queue, mensaje_queue, puerto):
     import queue
     cliente = JsonSocketClient(nombre_servidor, port=puerto)

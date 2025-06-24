@@ -1,4 +1,4 @@
-
+#Variables con dirección de conexión
 NODES_ESTADO = {
     "Estado Bases": "ns=1;s=ME_BASES_EstadoActual",
     "Estado Spinners": "ns=1;s=ME_SPINNERS_EstadoActual",

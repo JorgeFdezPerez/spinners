@@ -6,8 +6,6 @@ import queue
 import time
 from jsonsocketclient import JsonSocketClient, iniciar_cliente_socket
 from opcua import Client
-from component import boton
-#from streamlit_autorefresh import st_autorefresh
 from variables import (
     NODES_ESTADO,
     SERVICIOS,
@@ -22,7 +20,7 @@ from variables import (
 from BBDD import obtener_datos, datos_disponibles
 
 
-# Interfaz
+#Interfaz
 st.set_page_config(layout="wide")
 st.title("Interaz")
 st.subheader("Conexión OPC UA")
@@ -31,7 +29,7 @@ st.subheader("Conexión OPC UA")
 OPC_SERVER_URL = "opc.tcp://spinners-node-red:54840"
 
 
-# OPC Client 
+#OPC Client 
 class OpcClient:
     def __init__(self):
         self.client = None
@@ -52,13 +50,13 @@ class OpcClient:
         except Exception as e:
             return f"Error: {e}"
 
-# Inicializar el cliente OPC
+#Inicializar el cliente OPC
 if "opc_client" not in st.session_state:
     st.session_state.opc_client = OpcClient()
     st.session_state.connected = False
 
 
-
+#Conexión OPC UA
 if not st.session_state.connected:
     if st.button("Conectar al servidor OPC"):
         try:
@@ -73,6 +71,7 @@ else:
         st.session_state.connected = False
         st.success("Desconectado.")
 
+#Método para traducir Estado Actual
 def estado_to_text(valor):
     if valor == 0:
         return "None"
@@ -85,6 +84,7 @@ def estado_to_text(valor):
     else:
         return "Sin datos"
 
+#Método para traducir Servicio Actual
 def servicio_to_text(mod, valor):
     if not isinstance(valor, int):
         return "Sin datos"
@@ -117,10 +117,12 @@ def servicio_to_text(mod, valor):
 
     return "Sin datos"
 
+#Método Led
 def led_html(valor):
     color = "green" if valor else "gray" if valor == 0 else "red"
     return f"<span style='display:inline-block; width:20px; height:20px; border-radius:50%; background:{color}; margin-right:10px'></span>"
 
+#Método valor led
 def valor_led(val):
     cols = st.columns(len(val))
     for col, (nombre, node_id) in zip(cols, val.items()):
@@ -132,13 +134,13 @@ def valor_led(val):
 # Lectura de nodos
 if st.session_state.connected:
 
-        # Botones de control
+        #Botones de control
     col1, col2, col3 = st.columns(3)
 
     with col1:
         st.subheader("Estado actual")
         
-        # Mostrar estados
+        #Mostrar estados
         for nombre, node_id in NODES_ESTADO.items():
             valor = st.session_state.opc_client.read_node(node_id)
             texto = estado_to_text(valor) if isinstance(valor, int) else valor
@@ -184,7 +186,7 @@ if st.session_state.connected:
 st.subheader("Base de Datos MySQL")
 
 
-# Menú desplegable para seleccionar la tabla
+#Menú desplegable para seleccionar la tabla
 tabla_seleccionada = st.selectbox("Selecciona la tabla que deseas visualizar:", datos_disponibles)
 
     
@@ -247,7 +249,7 @@ if "recetas_informes" not in st.session_state:
     st.session_state.recetas_informes = []
 
 #Interfaz
-# Botón para conectar a los servidores
+#Botón para conectar a los servidores
 if not st.session_state.conectado and not st.session_state.conectado2:
     if st.button("Conectar a los servidores"):
         iniciar_cliente_socket(
@@ -269,7 +271,7 @@ if not st.session_state.conectado and not st.session_state.conectado2:
             st.session_state.cliente_thread_iniciado = True
             st.success("Conectado al servidor Informes")
 
-# Botones de control
+#Botones de control
 col1, col2, col3, col4, col5, col6 = st.columns(6)
 
 
@@ -288,12 +290,7 @@ with col3:
 
 with col4:
     if st.button("Reanudar"):
-        st.session_state.evento_queue.put({"hmiEvent":"unpause"})
-
-# with col5:
-#     if st.button("Sistema de informes"):
-#         st.session_state.evento_queue2.put({"hmiEvent":"getControlRecipesList"})
-        
+        st.session_state.evento_queue.put({"hmiEvent":"unpause"})        
 
 with col5:
      if st.button("Continuar última receta"):
@@ -306,7 +303,7 @@ with col6:
 
 st.subheader("Modo manual")
 
-# Estado para mostrar el modo manual
+#Estado para mostrar el modo manual
 if "mostrar_control_manual" not in st.session_state:
     st.session_state.mostrar_control_manual = False
 
@@ -318,15 +315,15 @@ with col9:
 
 if st.session_state.mostrar_control_manual:
     
-    # Cargar datos desde las tablas necesarias
+    #Cargar datos desde las tablas necesarias
     try:
         df_modulos = obtener_datos("modulos_equipamiento")
         df_fases = obtener_datos("fases_equipamiento")
-        #df_setpoints = obtener_datos("parametros")  # Asumiendo que aquí está el set_point
+        
     except Exception as e:
         st.error(f"No se pudo cargar la información: {e}")
     else:
-        # Desplegables
+        #Desplegables
         modulos_dict = dict(zip(df_modulos["codigo_modulo_equipamiento"], df_modulos["id_modulo_equipamiento"])) 
         modulo = st.selectbox("Selecciona el módulo de equipamiento", list(modulos_dict.keys()))
         modulo_id = modulos_dict[modulo]
@@ -349,7 +346,7 @@ if st.session_state.mostrar_control_manual:
             setpoint = None
     
 
-        # Botón para ejecutar
+        #Botón para ejecutar
         if st.button("Ejecutar acción manual"):
             mensaje_manual = {
                 "hmiEvent": "startManualPhases",
@@ -360,18 +357,18 @@ if st.session_state.mostrar_control_manual:
             st.session_state.evento_queue.put(mensaje_manual)
             st.success(f"Enviado: {mensaje_manual}")
 
-# Mostrar estados en tiempo real
+#Mostrar estados en tiempo real
 st.subheader("Mensajes y eventos del servidor de recetas")
 output_area = st.empty()
 
-# Mostrar el desplegable solo cuando ya hay recetas y usuarios cargados
+#Mostrar el desplegable solo cuando ya hay recetas y usuarios cargados
 if st.session_state.recetas and st.session_state.users:
     st.subheader("Panel para lanzar receta")
     receta_seleccionada = st.selectbox("Selecciona una receta:", st.session_state.recetas)
     usuario_seleccionado = st.selectbox("Selecciona un usuario:", st.session_state.users)
     
     
-    # Mostrar los parámetros solo si la receta está en el dict
+    #Mostrar los parámetros solo si la receta está en el dict
     receta_actual = st.session_state.parametros.get(receta_seleccionada, {})
     parametros = {}
     
@@ -385,7 +382,7 @@ if st.session_state.recetas and st.session_state.users:
         
         parametros[nombre_param]=valor
        
-
+    #Lanzar receta
     if st.button("Lanzar receta"):
         mensaje = {
             "hmiEvent": "runRecipe",
@@ -397,19 +394,23 @@ if st.session_state.recetas and st.session_state.users:
         st.success(f"Receta '{receta_seleccionada}' enviada al servidor.")
 
 st.subheader("Panel de informes")
+#Sistema de informes
 if st.button("Sistema de informes"):
+        st.session_state.mensaj.clear() 
         st.session_state.evento_queue2.put({"hmiEvent":"getControlRecipesList"})
+
 mensajes2_box = st.empty()
 receta_id: int
 if st.session_state.recetas_informes:
         st.subheader("Generación de informe")
-    # Mostrar selectbox con los IDs disponibles
+    #Mostrar selectbox con los IDs disponibles
         opciones = [f"ID {r['id']} - {r['date']}" for r in st.session_state.recetas_informes]
         seleccion = st.selectbox("Selecciona una receta por ID y fecha:", opciones)
-        # Botón para enviar la selección
+        #Botón para enviar la selección
         if seleccion:
             receta_id = int(seleccion.split()[1])
             if st.button("Enviar"):
+                
                 mensaje_envio = {
                     "hmiEvent": "getControlRecipeDetails",
                     "controlRecipeID": receta_id
@@ -423,6 +424,7 @@ recetas = []
 users = []
 parametros = []
 
+#Método para el formateo de texto: texbox recetas
 def formato(nuevo):
     texto = str(nuevo)
     caracter_elim = "{}'"
@@ -437,6 +439,7 @@ def formato(nuevo):
     st.session_state.mensajes.append(texto)
     new_lines.append(nuevo)
 
+#Método para el formateo de texto: texbox informes
 def formato2(nuevo):
     texto = str(nuevo)
 
@@ -449,7 +452,7 @@ def formato2(nuevo):
     return texto
 
   
-
+#Bucle para obtener características de recetas
 while not st.session_state.mensaje_queue.empty():
     nuevo = st.session_state.mensaje_queue.get()
     formato(nuevo)
@@ -467,7 +470,7 @@ while not st.session_state.mensaje_queue.empty():
 
 
 recet: str=""
-# Función para parsear los datos
+#Función para parsear los datos
 def parsear_mensaje(mensaje):
     recetas = []
     for item in mensaje:
@@ -482,15 +485,10 @@ def parsear_mensaje(mensaje):
     return recetas
 
 
-
-nuevas_recetas = False
-
-if "nuevos_mensajes_informe" not in st.session_state:
-    st.session_state.nuevos_mensajes_informe = False
-
 if "fase_informe" not in st.session_state:
     st.session_state.fase_informe = "esperando"
 
+#Bucle para obtener características de informes
 while not st.session_state.mensaje_queue2.empty():
     nuevo = st.session_state.mensaje_queue2.get()
     
@@ -498,78 +496,22 @@ while not st.session_state.mensaje_queue2.empty():
         mensaje_crudo = nuevo["list"]
         recet = parsear_mensaje(mensaje_crudo)  
         st.session_state.recetas_informes = recet
-        #nuevas_recetas = True
         st.session_state.fase_informe = "mostrar_mensaje"
-        #st.session_state.nuevos_mensajes_informe = True  
 
     nuevo = formato2(nuevo)
     st.session_state.mensaj.append(str(nuevo))
-
-
-# Hacer el rerun al final si llegaron nuevas recetas
-if nuevas_recetas:
-    st.rerun() 
-
-
-
-# Mostrar el desplegable solo cuando ya hay recetas y usuarios cargados
-# if st.session_state.recetas and st.session_state.users:
-#     st.subheader("Panel para lanzar receta")
-#     receta_seleccionada = st.selectbox("Selecciona una receta:", st.session_state.recetas)
-#     usuario_seleccionado = st.selectbox("Selecciona un usuario:", st.session_state.users)
-    
-    
-#     # Mostrar los parámetros solo si la receta está en el dict
-#     receta_actual = st.session_state.parametros.get(receta_seleccionada, {})
-#     parametros = {}
-    
-#     for param in receta_actual.get("parameters", []):
-#         nombre_param, tipo_param= param
-
-#         if tipo_param == "INT":
-#             valor = st.number_input(nombre_param, min_value=0, value=0, max_value=199500, step=1, format="%d")
-#         elif tipo_param == "FLOAT":
-#             valor = st.number_input(nombre_param, min_value=0.0, value=0.0, max_value=199500.0, step=0.1, format="%.2f")
-        
-#         parametros[nombre_param]=valor
-       
-
-#     if st.button("Lanzar receta"):
-#         mensaje = {
-#             "hmiEvent": "runRecipe",
-#             "recipe": receta_seleccionada,
-#             "user": usuario_seleccionado,
-#             "parameters": parametros
-#         }
-#         st.session_state.evento_queue.put(mensaje)
-#         st.success(f"Receta '{receta_seleccionada}' enviada al servidor.")
-
-# receta_id: int
-# if st.session_state.recetas_informes:
-#         st.subheader("Generación de informe")
-#     # Mostrar selectbox con los IDs disponibles
-#         opciones = [f"ID {r['id']} - {r['date']}" for r in st.session_state.recetas_informes]
-#         seleccion = st.selectbox("Selecciona una receta por ID y fecha:", opciones)
-#         # Botón para enviar la selección
-#         if seleccion:
-#             receta_id = int(seleccion.split()[1])
-#             if st.button("Enviar"):
-#                 mensaje_envio = {
-#                     "hmiEvent": "getControlRecipeDetails",
-#                     "controlRecipeID": receta_id
-#                 }
-#                 st.session_state.evento_queue2.put(mensaje_envio)
-#                 st.rerun()
  
 
+ 
+#Textbox sistema de informes
 if st.session_state.mensaj:
     mensajes2_box.code("\n".join(st.session_state.mensaj[-10:]))
 
-# Mostrar últimos 10
-if st.session_state.mensajes or st.session_state.mensaj:
+#Textbox gestor de recetas
+if st.session_state.mensajes:
     output_area.code("\n".join(st.session_state.mensajes[-10:]))
     
 
-# Temporizador de auto-actualización
+#Temporizador de auto-actualización
 time.sleep(0.5)
 st.rerun()

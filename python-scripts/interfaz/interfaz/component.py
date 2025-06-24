@@ -3,10 +3,10 @@ import random
 import string
 
 def boton(texto: str, color: str = "#e60000") -> bool:
-    # Generar una clave única para evitar conflictos de CSS
+    #Generar una clave única para evitar conflictos de CSS
     unique_key = ''.join(random.choices(string.ascii_lowercase + string.digits, k=6))
 
-    # Crear estilo único para este botón
+    #Crear estilo único para este botón
     custom_css = f"""
         <style>
             div[data-testid="stButton"] button[data-custom="{unique_key}"] {{
@@ -28,7 +28,7 @@ def boton(texto: str, color: str = "#e60000") -> bool:
     """
     st.markdown(custom_css, unsafe_allow_html=True)
 
-    # Renderizar botón con atributo personalizado (lo agregamos vía unsafe HTML)
+    #Renderizar botón con atributo personalizado (lo agregamos vía unsafe HTML)
     button_html = f"""
         <script>
         const buttons = parent.document.querySelectorAll('button');
