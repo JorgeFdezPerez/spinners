@@ -4,7 +4,8 @@ from typing import Sequence
 
 
 async def mysqlQuery(query: str, params: Sequence[any] = None, user="admin", password="password", host="spinners-mysql", database: str = "spinners"):
-    """Connecto to mysql, execute query, commit and disconnect. Raises error on timeout or conection error.
+    """Connect to mysql, execute query, commit and disconnect. Raises error on timeout or conection error.
+    
     Args:
         query (str): SQL Query to execute.
         params (Sequence[any], optional): Params for query, if needed. Defaults to None.
@@ -44,7 +45,8 @@ async def mysqlQuery(query: str, params: Sequence[any] = None, user="admin", pas
     return results
 
 async def mysqlMultipleQueries(query: str, params: Sequence[any] = None, user="admin", password="password", host="spinners-mysql", database: str = "spinners"):
-    """Connecto to mysql, execute query, commit and disconnect. Raises error on timeout or conection error.
+    """Connect to mysql, execute query, commit and disconnect. Raises error on timeout or conection error.
+
     Args:
         query (str): SQL Query to execute.
         params (Sequence[any], optional): Params for query, if needed. Defaults to None.
