@@ -7,10 +7,22 @@ PORT = 10001
 
 
 class EventHandler:
+    """Event handler. Recieves events in a queue and performs sql queries to react to them.
+
+    Events are dicts, with first key { "EVENT_TYPE" : "EVENT_CODE" }
+    """
     async def handleEvent(self, event: dict[str, str]):
+        """Add event to queue
+
+        Args:
+            event (dict[str,str]): Event to add.
+                Dict with first key { "EVENT_TYPE" : "EVENT_CODE" }. Events can optionally have more keys (params, etc).
+        """
         await self._eventQueue.put(event)
 
     async def loop(self):
+        """Endless loop. Read events from event queue. Type can be "hmiEvent".
+        """    
         while True:
             event = await self._eventQueue.get()
             if (isinstance(event, dict)):
@@ -28,6 +40,11 @@ class EventHandler:
                             self._server.sendQueue.put({"details": details}))
 
     def __init__(self, socketServer: JsonSocketServer):
+        """Constructor.
+
+        Args:
+            socketServer (JsonSocketServer): Socket server to communicate with client.
+        """        
         self._eventQueue = asyncio.Queue()
         self._server = socketServer
 
